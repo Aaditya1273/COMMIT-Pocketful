@@ -1,9 +1,0 @@
-@import '../src/landing.css';
-@import '../src/styles.css';
-@import '../src/ui/tokens.css';
-/* Last: the app shell must win over the inherited Sui-era rules in styles.css. */
-@import '../src/app-shell.css';
-@import '../src/ui/button.css';
-@import '../src/ui/badge.css';
-@import '../src/ui/dialog.css';
-@import '../src/mobile.css';
