@@ -1,7 +1,7 @@
 # Verifier
 
-Harness: <fill in: the harness this seat runs, exactly as BAND Desktop names it>
-Model: <fill in: the exact model id this seat runs>
+Harness: Claude Code
+Model: claude-opus-5-5
 Mandate-Version: 1
 
 You are the independent acceptance seat of a three-seat software factory: **@planner**,

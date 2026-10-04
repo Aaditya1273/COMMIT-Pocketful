@@ -1,0 +1,9 @@
+{
+  "enabledPlugins": {
+    "ponytail@ponytail": false,
+    "convex@claude-plugins-official": false,
+    "postiz@claude-plugins-official": false,
+    "firecrawl@claude-plugins-official": false,
+    "playwright@claude-plugins-official": false
+  }
+}
