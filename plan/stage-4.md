@@ -58,4 +58,14 @@ Dispatched 2026-10-05T21:32 after stage 3 ACCEPT (39de1bf). Start point for the 
 | Builder revision cc1d710 reported (addendum msg b8bc456e: s4-builder-3 suites 147/35/6/5 claimed; s4-builder-2 env error) | 2026-10-05T22:04 |
 | Handoff to verifier (10 parts, msgs b3a8f79c…3f51467f; texts in plan/handoffs/s4-verifier/) | 2026-10-05T22:05:11 |
 
-Repair cycles: 0 so far. Outcome: in progress.
+| Verifier verdict ACCEPT (msg 0b2f42ae; evidence commit e85c931) | 2026-10-05T22:38 (received) |
+
+Repair cycles: 0. Outcome: ACCEPTED (see below).
+
+## Outcome — ACCEPTED
+
+- **Accepted revision:** `cc1d710726857c36ef4cc0de22bb97a7046f5fe2` — `stage-4/` frozen. Copy-forward commit f336d35; stage-1/2/3 identical to 29baf05/ef962af/39de1bf.
+- **Verdict:** ACCEPT. Official isolated (evidence/stage-4/official-harness-s4-verifier-1/report.json, state completed, revision cc1d710): suite 1 147/147, suite 2 35/35, suite 3 6/6, suite 4 5/5 (0 failed, 0 errors, 0 skipped). 25/25 blocking steps: refund/batch contract 5/5 (≈90 assertions); upgrades stage-1/2 → 4 58/58, populated stage-3 → 4 19/19 incl. 5 rounds × 20 racing single/batch corrections (exactly one winner each round); all regression layers, reference models (8 × 1,000 ops) and adversarial rounds pass. Mutation: **100-mutant seeded sample** 77/100 = 77.0 % (server.js 61/67, app.js 16/33).
+- **Evidence:** `evidence/stage-4/README.md`, `evidence/stage-4/run-20261005T164036Z-9d2396/` (manifest sha256 bec2f362…04f7), verification code `verification/stage-4/`.
+- **Known limitations:** reference models do not cover refunds/batches (contract, upgrade and concurrency checks do); 17 app.js mutation survivors not triaged before the stop; server survivors at the exact-ms expiry boundary and close-time historical boundaries are check gaps (not reachable black-box in the time left); hidden suite not run; one builder official run (s4-builder-2) ended state "error" from a Docker base-image lease failure — environment, re-run completed.
+- **Repair cycles:** 0. **Stage wall time:** 21:31 → 22:38 (67 m: build ~31 m, verification ~34 m).
