@@ -1,0 +1,3 @@
+  import consequence fuzz: 4 accepted, 49 rejected
+protocol: clean
+survivors: 189/189 passed

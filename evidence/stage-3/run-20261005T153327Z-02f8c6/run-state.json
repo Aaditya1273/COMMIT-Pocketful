@@ -1,0 +1,33 @@
+{
+  "runId": "20261005T153327Z-02f8c6",
+  "factoryVersion": "1.0.0-rc.3",
+  "status": "COMPLETED",
+  "phase": "VERDICT ACCEPT",
+  "completedSteps": [
+    "clean-build",
+    "container",
+    "official-isolated",
+    "shipped-stage-1-host",
+    "contract",
+    "auth-contract",
+    "ledger-contract",
+    "upgrade",
+    "extra",
+    "survivor-checks",
+    "import-semantic",
+    "ui",
+    "reference-ledger-481927",
+    "reference-ledger-7",
+    "reference-ledger-90210",
+    "reference-holds-481927",
+    "reference-holds-7",
+    "reference-holds-90210",
+    "reference-stage1-481927",
+    "reference-stage1-7",
+    "adversarial-ledger",
+    "adversarial-holds",
+    "adversarial",
+    "mutation-sample"
+  ],
+  "updatedAt": "2026-10-05T15:54:57.919Z"
+}

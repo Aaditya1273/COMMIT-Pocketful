@@ -1,0 +1,39 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 502B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:22-alpine
+#2 DONE 4.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 64B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 310B done
+#4 DONE 0.0s
+
+#5 [1/4] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#5 resolve docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402 0.0s done
+#5 DONE 0.0s
+
+#6 [2/4] WORKDIR /app
+#6 CACHED
+
+#7 [3/4] COPY package.json ./
+#7 DONE 0.1s
+
+#8 [4/4] COPY src ./src
+#8 DONE 0.1s
+
+#9 exporting to image
+#9 exporting layers 0.1s done
+#9 exporting manifest sha256:91f549f82d2b2058091ae481db1da8befb39d10f4d3d4f3494e173babf5d7bc1 0.0s done
+#9 exporting config sha256:de4d28b9ae8b7a77d7e00224a8acdcd149566a77b3c766b3210e78a16cf4260c 0.0s done
+#9 exporting attestation manifest sha256:b637591443cf8bf1e628817cf8a49d5959190c060eb99d29346455a54f367e4c 0.0s done
+#9 exporting manifest list sha256:4171dfd81a3db4d9662272380d5172acd33a1a8c6e2682912aaa48aa0052a0b9 0.0s done
+#9 naming to docker.io/library/vf-pocketful-s3:verify done
+#9 unpacking to docker.io/library/vf-pocketful-s3:verify 0.1s done
+#9 DONE 0.3s

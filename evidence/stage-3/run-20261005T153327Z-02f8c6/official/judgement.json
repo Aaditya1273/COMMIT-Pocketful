@@ -1,0 +1,34 @@
+{
+  "kind": "official-harness",
+  "stage": 3,
+  "revision": "39de1bf419a1deeb826cb3f2c38519301e006896",
+  "mode": "isolated",
+  "suites": {
+    "1": {
+      "collected": 147,
+      "passed": 147,
+      "failed": 0,
+      "errors": 0
+    },
+    "2": {
+      "collected": 35,
+      "passed": 35,
+      "failed": 0,
+      "errors": 0
+    },
+    "3": {
+      "collected": 6,
+      "passed": 6,
+      "failed": 0,
+      "errors": 0
+    }
+  },
+  "overshoot": {
+    "collected": 5,
+    "passed": 0,
+    "failed": 1,
+    "errors": 0
+  },
+  "problems": [],
+  "failed": 0
+}

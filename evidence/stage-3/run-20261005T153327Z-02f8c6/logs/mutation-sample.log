@@ -1,0 +1,187 @@
+discovered 2145 mutants in 3 files; running 100
+baseline passes the check in 82232 ms
+[1/100] killed     m-1bbdb3126f src/public/app.js:61 equality-negation "===" -> "!=="
+[2/100] killed     m-41bed97f43 src/public/app.js:94 negation-removal "!" -> ""
+[3/100] survived   m-f1cfc527e6 src/public/app.js:51 logical "||" -> "&&"
+[4/100] survived   m-dc31f45b69 src/public/app.js:112 literal-boundary "1000" -> "1001"
+[5/100] survived   m-2998744283 src/public/app.js:122 arithmetic "+" -> "-"
+[6/100] killed     m-9d91d7aeea src/public/app.js:171 statement-deletion "payload = JSON.stringify(opts.body);" -> ";"
+[7/100] killed     m-f42b1e0e2b src/public/app.js:178 statement-deletion "text = await res.text();" -> ";"
+[8/100] survived   m-79c3fff388 src/public/app.js:155 logical "||" -> "&&"
+[9/100] killed     m-23ce5add5d src/public/app.js:306 equality-negation "!==" -> "==="
+[10/100] killed     m-42d7e38a92 src/public/app.js:309 statement-deletion "render();" -> ";"
+[11/100] killed     m-857f3542d7 src/public/app.js:275 guard-bypass "accept('requests', ticket)" -> "false"
+[12/100] killed     m-0ac9144c83 src/public/app.js:209 statement-deletion "S.notice = 'Your session has ended. Please log in again.';" -> ";"
+[13/100] killed     m-c38bc0e7ec src/public/app.js:286 guard-bypass "!r.ended" -> "false"
+[14/100] killed     m-7b7b50c99f src/public/app.js:573 guard-bypass "f.status === 'error'" -> "false"
+[15/100] killed     m-384def6005 src/public/app.js:448 equality-negation "===" -> "!=="
+[16/100] killed     m-f62e8e8fdd src/public/app.js:450 statement-deletion "showError('We couldn’t reach Pocketful. Check your connection and try again.'); -> ";"
+[17/100] killed     m-961084888d src/public/app.js:327 negation-removal "!" -> ""
+[18/100] killed     m-752b3085c9 src/public/app.js:636 logical "&&" -> "||"
+[19/100] killed     m-ae96ac9d13 src/public/app.js:717 logical "||" -> "&&"
+[20/100] killed     m-aa5dd1691c src/public/app.js:719 guard-bypass "loading && !list.length" -> "false"
+[21/100] killed     m-108ce69e93 src/public/app.js:914 statement-deletion "f.status = 'success';" -> ";"
+[22/100] killed     m-0bd69ad6df src/public/app.js:915 literal-boundary "1" -> "2"
+[23/100] killed     m-a403030ca7 src/public/app.js:946 statement-deletion "h('ul', { class: 'req-list', testid: 'authorization-list', id: 'authorization-l -> ";"
+[24/100] killed     m-977d1283d7 src/server.js:95 arithmetic "-" -> "+"
+[25/100] killed     m-64e0182844 src/public/app.js:1025 arithmetic "+" -> "-"
+[26/100] killed     m-e6d033f1c0 src/server.js:24 literal-boundary "1024" -> "1025"
+[27/100] killed     m-e82f42c0c4 src/server.js:103 literal-boundary "5" -> "6"
+[28/100] killed     m-c085d6d78f src/server.js:211 guard-bypass "!set" -> "false"
+[29/100] killed     m-8b6fb69ee6 src/server.js:245 equality-negation "===" -> "!=="
+[30/100] killed     m-fb458d9234 src/server.js:290 equality-negation "!==" -> "==="
+[31/100] killed     m-116ce35398 src/server.js:291 guard-bypass "codePoints(v) > MAX_NOTE" -> "false"
+[32/100] killed     m-f2f6049461 src/server.js:318 boundary ">" -> ">="
+[33/100] killed     m-1dc768ab78 src/server.js:323 negation-removal "!" -> ""
+[34/100] killed     m-ff87b6805b src/server.js:455 boundary "<" -> "<="
+[35/100] killed     m-835fbabe24 src/server.js:455 literal-boundary "1" -> "2"
+[36/100] killed     m-93e6f24327 src/server.js:94 literal-boundary "1" -> "2"
+[37/100] killed     m-51af6e4224 src/server.js:575 literal-boundary "409" -> "410"
+[38/100] killed     m-2c648d6ee1 src/server.js:569 equality-negation "!==" -> "==="
+[39/100] killed     m-37ac9f4f12 src/server.js:617 guard-bypass "handles === undefined" -> "false"
+[40/100] killed     m-d9f5c54706 src/server.js:596 guard-bypass "direction === 'incoming' && !incoming" -> "false"
+[41/100] killed     m-f64ee9224d src/server.js:484 arithmetic "-" -> "+"
+[42/100] killed     m-3c5c907955 src/server.js:762 statement-deletion "trackHold(st, a);" -> ";"
+[43/100] killed     m-feda2f17cc src/server.js:775 equality-negation "!==" -> "==="
+[44/100] killed     m-622378e658 src/server.js:788 boundary ">" -> ">="
+[45/100] killed     m-eaaa075f09 src/server.js:793 statement-deletion "payer.balance -= amount;" -> ";"
+[46/100] killed     m-5c762278b6 src/server.js:845 equality-negation "===" -> "!=="
+[47/100] killed     m-9305bbe180 src/server.js:846 logical "&&" -> "||"
+[48/100] survived   m-836af053f3 src/server.js:138 literal-boundary "0" -> "1"
+[49/100] killed     m-0b7fa9d1cf src/server.js:848 guard-bypass "direction === 'outgoing' && !outgoing" -> "false"
+[50/100] killed     m-b45f8a4d96 src/server.js:848 logical "&&" -> "||"
+[51/100] killed     m-f56bea07ae src/server.js:881 equality-negation "===" -> "!=="
+[52/100] killed     m-265581fafe src/server.js:684 guard-bypass "typeof t.from_handle !== 'string'" -> "false"
+[53/100] killed     m-5337f528d2 src/server.js:900 literal-boundary "0" -> "1"
+[54/100] killed     m-a32f9670fa src/server.js:938 equality-negation "!==" -> "==="
+[55/100] killed     m-dfc6505a14 src/server.js:976 boundary ">" -> ">="
+[56/100] killed     m-e21e6bae29 src/server.js:1059 statement-deletion "times.add(rev.effective_ts);" -> ";"
+[57/100] killed     m-6a6a4b814c src/server.js:1072 literal-boundary "0" -> "1"
+[58/100] killed     m-1e1e7ce0d9 src/server.js:1087 negation-removal "!" -> ""
+[59/100] killed     m-822353518b src/server.js:1092 logical "||" -> "&&"
+[60/100] survived   m-abcdf4ef4b src/server.js:870 literal-boundary "1" -> "2"
+[61/100] killed     m-a451dce9f0 src/server.js:1104 literal-boundary "422" -> "423"
+[62/100] survived   m-f4a630c277 src/server.js:874 boundary ">" -> ">="
+[63/100] killed     m-078cf46dd5 src/server.js:1147 literal-boundary "20" -> "21"
+[64/100] killed     m-9cf8a83b9a src/server.js:1106 arithmetic "-" -> "+"
+[65/100] killed     m-3053ab47f7 src/server.js:1152 logical "&&" -> "||"
+[66/100] killed     m-18e7870c84 src/server.js:1236 negation-removal "!" -> ""
+[67/100] killed     m-51d800577f src/server.js:1161 guard-bypass "!validEmail(email)" -> "false"
+[68/100] killed     m-00864177e8 src/server.js:1239 boundary "<" -> "<="
+[69/100] killed     m-849818cdde src/server.js:1236 logical "||" -> "&&"
+[70/100] killed     m-6fbb20b702 src/server.js:1253 guard-bypass "!ids.has(p.from_user_id) || !ids.has(p.to_user_id)" -> "false"
+[71/100] killed     m-ceabb8c44d src/server.js:1273 negation-removal "!" -> ""
+[72/100] killed     m-b97970f793 src/server.js:1232 guard-bypass "typeof u.email !== 'string' || u.email.length === 0 || emails.has(u.email.toLow -> "false"
+[73/100] killed     m-00e6d6e64f src/server.js:1223 logical "||" -> "&&"
+[74/100] killed     m-33f9ac1e3c src/server.js:1310 logical "||" -> "&&"
+[75/100] killed     m-34c413837c src/server.js:1446 equality-negation "===" -> "!=="
+[76/100] killed     m-b72be811ff src/server.js:1459 equality-negation "!==" -> "==="
+[77/100] killed     m-828f39ef3a src/server.js:1463 equality-negation "===" -> "!=="
+[78/100] killed     m-428de779a5 src/server.js:1257 statement-deletion "paymentIds.add(p.id);" -> ";"
+[79/100] killed     m-5e0a6c57c2 src/server.js:1290 guard-bypass "!Array.isArray(operators) || operators.some((id) => typeof id !== 'string' || ! -> "false"
+[80/100] killed     m-017218dcac src/server.js:1290 logical "||" -> "&&"
+[81/100] killed     m-57bf81d3ae src/server.js:1494 statement-deletion "st.operators.add(id);" -> ";"
+[82/100] killed     m-894e983195 src/server.js:1476 logical "||" -> "&&"
+[83/100] killed     m-e057a7a105 src/server.js:1476 guard-bypass "typeof u.handle !== 'string' || !HANDLE_RE.test(u.handle) || st.byHandle.has(u. -> "false"
+[84/100] killed     m-342545f676 src/server.js:1502 logical "||" -> "&&"
+[85/100] killed     m-49e95a51f3 src/server.js:1479 guard-bypass "!validHash(u.password_hash)" -> "false"
+[86/100] killed     m-3ec89ba1fc src/server.js:1540 negation-removal "!" -> ""
+[87/100] killed     m-6dc382abbb src/server.js:1551 negation-removal "!" -> ""
+[88/100] killed     m-90d3d04ac1 src/server.js:1556 negation-removal "!" -> ""
+[89/100] killed     m-6dc6cc9f61 src/server.js:1575 statement-deletion "st.ttlSeconds = t;" -> ";"
+[90/100] killed     m-6d15bce1e4 src/server.js:1584 negation-removal "!" -> ""
+[91/100] survived   m-cf345476cf src/server.js:1553 logical "&&" -> "||"
+[92/100] killed     m-5ba5ad44b5 src/server.js:1627 equality-negation "!==" -> "==="
+[93/100] survived   m-e2e17a0e00 src/server.js:1581 boundary "<" -> "<="
+[94/100] survived   m-2f9d406e83 src/server.js:1584 logical "||" -> "&&"
+[95/100] killed     m-ce0fc7a47a src/server.js:1747 statement-deletion "send(res, e.status, { error: { code: e.code, message: e.message } });" -> ";"
+[96/100] survived   m-3bc4ca1e85 src/server.js:1587 logical "||" -> "&&"
+[97/100] killed     m-6bc65911bb src/server.js:1781 logical "||" -> "&&"
+[98/100] survived   m-96cfb1f526 src/server.js:1722 literal-boundary "204" -> "205"
+[99/100] survived   m-b9f5d19bfb src/server.js:1759 compound-assignment "+=" -> "-="
+[100/100] survived   m-293c69d59c src/server.js:1781 equality-negation "===" -> "!=="
+{
+  "kind": "mutation-campaign",
+  "factoryVersion": "1.0.0-rc.3",
+  "target": "stage-3",
+  "files": [
+    "src/public/app.js",
+    "src/server.js",
+    "src/ui.js"
+  ],
+  "start": "node src/server.js",
+  "check": "/tmp/vf-s3/verification/stage-3/kill.sh {url}",
+  "seed": 1,
+  "selection": "seeded-sample",
+  "discovered": 2145,
+  "executed": 100,
+  "tally": {
+    "killed": 86,
+    "survived": 14,
+    "timeout": 0,
+    "invalid": 0,
+    "error": 0,
+    "equivalent": 0
+  },
+  "layers": {
+    "adversarial": {
+      "killed": 0,
+      "onlyThisLayer": 0
+    },
+    "adversarial-holds": {
+      "killed": 0,
+      "onlyThisLayer": 0
+    },
+    "adversarial-ledger": {
+      "killed": 0,
+      "onlyThisLayer": 0
+    },
+    "auth-contract": {
+      "killed": 15,
+      "onlyThisLayer": 15
+    },
+    "contract": {
+      "killed": 30,
+      "onlyThisLayer": 30
+    },
+    "extra": {
+      "killed": 3,
+      "onlyThisLayer": 3
+    },
+    "ledger-contract": {
+      "killed": 11,
+      "onlyThisLayer": 11
+    },
+    "reference": {
+      "killed": 0,
+      "onlyThisLayer": 0
+    },
+    "reference-holds": {
+      "killed": 0,
+      "onlyThisLayer": 0
+    },
+    "reference-ledger": {
+      "killed": 0,
+      "onlyThisLayer": 0
+    },
+    "survivors": {
+      "killed": 1,
+      "onlyThisLayer": 1
+    },
+    "ui": {
+      "killed": 26,
+      "onlyThisLayer": 26
+    }
+  },
+  "valid": 100,
+  "killRate": 0.86,
+  "detectionRate": 0.86,
+  "formula": "killRate = killed / (killed + survived + timeout); detectionRate counts timeouts as detected; invalid, error and equivalent are excluded from both and listed",
+  "campaignBroken": false,
+  "jobs": 4,
+  "mutantTimeoutMs": 300000,
+  "startedAt": "2026-10-05T15:37:32.308Z",
+  "finishedAt": "2026-10-05T15:54:57.874Z",
+  "durationMs": 1045566,
+  "replay": "node commit/mutate.ts --target stage-3 --start 'node src/server.js' --check '/tmp/vf-s3/verification/stage-3/kill.sh {url}' --only <id> --out <new dir>"
+}

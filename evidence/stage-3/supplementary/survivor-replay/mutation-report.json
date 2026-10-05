@@ -1,0 +1,92 @@
+{
+  "kind": "mutation-campaign",
+  "summary": {
+    "kind": "mutation-campaign",
+    "factoryVersion": "1.0.0-rc.3",
+    "target": "stage-3",
+    "files": [
+      "src/public/app.js",
+      "src/server.js",
+      "src/ui.js"
+    ],
+    "start": "node src/server.js",
+    "check": "/tmp/vf-s3/verification/stage-3/kill.sh {url}",
+    "seed": 1,
+    "selection": "only",
+    "discovered": 2145,
+    "executed": 2,
+    "tally": {
+      "killed": 2,
+      "survived": 0,
+      "timeout": 0,
+      "invalid": 0,
+      "error": 0,
+      "equivalent": 0
+    },
+    "layers": {
+      "auth-contract": {
+        "killed": 0,
+        "onlyThisLayer": 0
+      },
+      "contract": {
+        "killed": 0,
+        "onlyThisLayer": 0
+      },
+      "ledger-contract": {
+        "killed": 2,
+        "onlyThisLayer": 2
+      }
+    },
+    "valid": 2,
+    "killRate": 1,
+    "detectionRate": 1,
+    "formula": "killRate = killed / (killed + survived + timeout); detectionRate counts timeouts as detected; invalid, error and equivalent are excluded from both and listed",
+    "campaignBroken": false,
+    "jobs": 2,
+    "mutantTimeoutMs": 300000,
+    "startedAt": "2026-10-05T15:56:02.759Z",
+    "finishedAt": "2026-10-05T15:57:42.834Z",
+    "durationMs": 100075,
+    "replay": "node commit/mutate.ts --target stage-3 --start 'node src/server.js' --check '/tmp/vf-s3/verification/stage-3/kill.sh {url}' --only <id> --out <new dir>"
+  },
+  "results": [
+    {
+      "id": "m-abcdf4ef4b",
+      "file": "src/server.js",
+      "line": 870,
+      "column": 35,
+      "operator": "literal-boundary",
+      "original": "1",
+      "replacement": "2",
+      "start": 30123,
+      "end": 30124,
+      "outcome": "killed",
+      "durationMs": 16587,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER ledger-contract=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "ledger-contract": "fail"
+      }
+    },
+    {
+      "id": "m-f4a630c277",
+      "file": "src/server.js",
+      "line": 874,
+      "column": 52,
+      "operator": "boundary",
+      "original": ">",
+      "replacement": ">=",
+      "start": 30384,
+      "end": 30385,
+      "outcome": "killed",
+      "durationMs": 16698,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER ledger-contract=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "ledger-contract": "fail"
+      }
+    }
+  ]
+}

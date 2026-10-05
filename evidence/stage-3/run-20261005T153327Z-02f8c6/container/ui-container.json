@@ -1,0 +1,150 @@
+{
+  "kind": "ui-checks",
+  "checks": 16,
+  "passed": 16,
+  "failed": 0,
+  "results": [
+    {
+      "id": "auth-screens-identity-navigation",
+      "requirements": [
+        "R2-17",
+        "R2-18"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "wallet-format-headline-held",
+      "requirements": [
+        "R2-19",
+        "R2-20",
+        "R2-26"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "pay-decimal-rules-no-request",
+      "requirements": [
+        "R2-21",
+        "plan:A2-03"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "pay-resubmit-insufficient-feed",
+      "requirements": [
+        "R2-22",
+        "R2-23"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "pay-refused-after-other-client-spent",
+      "requirements": [
+        "R2-22",
+        "R2-27"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "pay-lost-response-uncertain-retry",
+      "requirements": [
+        "R2-22"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "latest-refresh-wins",
+      "requirements": [
+        "R2-27"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "requests-screen",
+      "requirements": [
+        "R2-24",
+        "R2-27"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "split-preview-equals-server",
+      "requirements": [
+        "R2-25"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "authorizations-screen",
+      "requirements": [
+        "R2-26",
+        "R2-27"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "mobile-375-no-horizontal-scroll",
+      "requirements": [
+        "R2-28",
+        "R2-17"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "no-external-assets",
+      "requirements": [
+        "R2-28",
+        "R-01"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "import-between-requests-keeps-session-and-retry",
+      "requirements": [
+        "R2-02",
+        "R2-18",
+        "R2-22"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "decimal-input-jpy-bhd",
+      "requirements": [
+        "R2-21",
+        "plan:edge-12"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "server-500-is-uncertain",
+      "requirements": [
+        "R2-22"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "unauthenticated-routes-go-to-login",
+      "requirements": [
+        "R2-18",
+        "plan:A2-05"
+      ],
+      "passed": true,
+      "failures": []
+    }
+  ]
+}

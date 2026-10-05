@@ -1,0 +1,46 @@
+building /tmp/vf-s3/stage-3 ...
+  stage 1: pass  (log: /tmp/vf3-evidence-run/official/stage-1.log)
+building upgrade source /tmp/vf-s3/stage-1 ...
+  stage 2: pass  (log: /tmp/vf3-evidence-run/official/stage-2.log)
+building upgrade source /tmp/vf-s3/stage-2 ...
+  stage 3: pass  (log: /tmp/vf3-evidence-run/official/stage-3.log)
+  stage 4: fail  (log: /tmp/vf3-evidence-run/official/stage-4.log)
+highest contiguous stage: 3
+claimed stage: 3 on the shipped checks
+report: /tmp/vf3-evidence-run/official/report.json
+NOTE: this run only includes a portion of the full tests that are applied before judging; this is meant to provide directional feedback, and ultimately you may not pass the stage with the full set of tests.
+harness exit code: 0 (not used for the judgement)
+{
+  "kind": "official-harness",
+  "stage": 3,
+  "revision": "39de1bf419a1deeb826cb3f2c38519301e006896",
+  "mode": "isolated",
+  "suites": {
+    "1": {
+      "collected": 147,
+      "passed": 147,
+      "failed": 0,
+      "errors": 0
+    },
+    "2": {
+      "collected": 35,
+      "passed": 35,
+      "failed": 0,
+      "errors": 0
+    },
+    "3": {
+      "collected": 6,
+      "passed": 6,
+      "failed": 0,
+      "errors": 0
+    }
+  },
+  "overshoot": {
+    "collected": 5,
+    "passed": 0,
+    "failed": 1,
+    "errors": 0
+  },
+  "problems": [],
+  "failed": 0
+}

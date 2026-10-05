@@ -1,0 +1,22 @@
+ok   same-expected-revision seed=11
+ok   same-expected-revision seed=23
+ok   same-expected-revision seed=37
+ok   same-expected-revision seed=51
+ok   same-expected-revision seed=73
+ok   same-key-correction-burst seed=11
+ok   same-key-correction-burst seed=23
+ok   same-key-correction-burst seed=37
+ok   same-key-correction-burst seed=51
+ok   same-key-correction-burst seed=73
+ok   snapshots-under-concurrent-writes seed=11
+ok   snapshots-under-concurrent-writes seed=23
+ok   snapshots-under-concurrent-writes seed=37
+ok   snapshots-under-concurrent-writes seed=51
+ok   snapshots-under-concurrent-writes seed=73
+ok   historical-conservation seed=11
+ok   historical-conservation seed=23
+ok   historical-conservation seed=37
+ok   historical-conservation seed=51
+ok   historical-conservation seed=73
+
+adversarial-ledger: 20/20 rounds passed, 0 failed, 90 state checks

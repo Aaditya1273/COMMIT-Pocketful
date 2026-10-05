@@ -1,0 +1,137 @@
+{
+  "kind": "adversarial-campaign",
+  "workers": 30,
+  "seeds": [
+    11,
+    23,
+    37,
+    51,
+    73
+  ],
+  "campaigns": 20,
+  "checks": 90,
+  "passed": 20,
+  "failed": 0,
+  "results": [
+    {
+      "campaign": "same-expected-revision",
+      "seed": 11,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-expected-revision",
+      "seed": 23,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-expected-revision",
+      "seed": 37,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-expected-revision",
+      "seed": 51,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-expected-revision",
+      "seed": 73,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-key-correction-burst",
+      "seed": 11,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-key-correction-burst",
+      "seed": 23,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-key-correction-burst",
+      "seed": 37,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-key-correction-burst",
+      "seed": 51,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-key-correction-burst",
+      "seed": 73,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "snapshots-under-concurrent-writes",
+      "seed": 11,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "snapshots-under-concurrent-writes",
+      "seed": 23,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "snapshots-under-concurrent-writes",
+      "seed": 37,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "snapshots-under-concurrent-writes",
+      "seed": 51,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "snapshots-under-concurrent-writes",
+      "seed": 73,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "historical-conservation",
+      "seed": 11,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "historical-conservation",
+      "seed": 23,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "historical-conservation",
+      "seed": 37,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "historical-conservation",
+      "seed": 51,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "historical-conservation",
+      "seed": 73,
+      "passed": true,
+      "failures": []
+    }
+  ]
+}
