@@ -624,7 +624,9 @@
       f.busy = false;
       paintFormStatus(kind);
     }
-    if (kind !== 'request') refreshWallet();
+    // An unknown outcome is not refreshed: the balance changes on screen only together with a
+    // confirmed success or refusal, never while the uncertainty message is showing.
+    if (kind !== 'request' && f.status !== 'uncertain') refreshWallet();
   }
 
   function paintFeed() {

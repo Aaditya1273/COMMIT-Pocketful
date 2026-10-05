@@ -283,3 +283,11 @@ ul { margin: 0; padding: 0; list-style: none; }
   .feed-amount { margin-left: auto; }
   .form-foot .btn { width: 100%; }
 }
+
+/* ---- refinements */
+.select-sm { width: auto; min-width: 7.5rem; }
+.wallet-card { align-self: start; }
+@media (max-width: 560px) {
+  .feed-main, .req-main { flex: 1 1 calc(100% - 54px); }
+  .feed-item .feed-main { flex-basis: calc(100% - 54px - 7rem); }
+}
