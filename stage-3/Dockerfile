@@ -1,4 +1,4 @@
-# Pocketful stage 2 — zero runtime dependencies; the API and the browser UI (script, styles, icon) ship in this image.
+# Pocketful stage 3 — zero runtime dependencies; API (incl. ledger, statements, corrections) and browser UI ship in this image.
 FROM node:22-alpine
 WORKDIR /app
 ENV NODE_ENV=production \

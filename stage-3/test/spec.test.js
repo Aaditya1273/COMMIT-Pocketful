@@ -682,15 +682,17 @@ test('seeded fixture ids never collide with generated ids', async () => {
   assert.deepEqual(listed, [r, 'req_3']);
 });
 
-test('fixture created_at is honoured verbatim and does not move the server clock', async () => {
+test('fixture created_at is honoured verbatim; a future one is a reset error (stage 3)', async () => {
+  const future = fixture({ payments: [{ id: 'p_future', from_user_id: 'u_ada', to_user_id: 'u_bob', amount: 1, created_at: '2099-01-01T00:00:00+00:00' }] });
+  assert.deepEqual(err(await call('POST', '/_test/reset', { body: future })), [422, 'validation_failed']);
   await reset(fixture({
     payments: [{ id: 'p_old', from_user_id: 'u_ada', to_user_id: 'u_bob', amount: 1, created_at: '2020-01-01T10:00:00+02:00' },
-      { id: 'p_future', from_user_id: 'u_ada', to_user_id: 'u_bob', amount: 1, created_at: '2099-01-01T00:00:00+00:00' }],
+      { id: 'p_mid', from_user_id: 'u_ada', to_user_id: 'u_bob', amount: 1, created_at: '2024-01-01T00:00:00+00:00' }],
   }));
   const ada = await login('ada');
   const fresh = (await pay(ada, { to_handle: 'bob', amount: 1 })).body;
   assert.ok(Date.parse(fresh.created_at) < Date.parse('2090-01-01T00:00:00Z'), fresh.created_at);
   const feed = (await call('GET', '/activity', { token: ada })).body.payments;
-  assert.deepEqual(feed.map((p) => p.payment_id), ['p_future', fresh.payment_id, 'p_old']);
+  assert.deepEqual(feed.map((p) => p.payment_id), [fresh.payment_id, 'p_mid', 'p_old']);
   assert.equal(feed[2].created_at, '2020-01-01T10:00:00+02:00');
 });

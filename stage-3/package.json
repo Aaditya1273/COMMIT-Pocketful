@@ -1,8 +1,8 @@
 {
-  "name": "pocketful-stage-2",
+  "name": "pocketful-stage-3",
   "version": "1.0.0",
   "private": true,
-  "description": "Pocketful stage 2: stage 1 plus payment authorizations and the browser UI",
+  "description": "Pocketful stage 3: stages 1-2 plus historical balances, statements and payment corrections",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

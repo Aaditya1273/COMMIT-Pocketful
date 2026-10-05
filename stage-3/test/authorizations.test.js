@@ -56,7 +56,7 @@ test('a hold reserves money without moving it; /me exposes total, available, hel
   const w = await world();
   const a = await authorize(w.ada, { to_handle: 'bob', amount: 2000, note: 'deposit', visibility: 'private' });
   assert.equal(a.status, 201);
-  assert.deepEqual(Object.keys(a.body).sort(), ['amount', 'authorization_id', 'captured_amount', 'created_at', 'currency', 'expires_at',
+  assert.deepEqual(Object.keys(a.body).sort(), ['amount', 'authorization_id', 'captured_amount', 'closed_at', 'created_at', 'currency', 'expires_at',
     'from_handle', 'from_user_id', 'note', 'payment_id', 'payment_ids', 'remaining_amount', 'status', 'to_handle', 'to_user_id', 'visibility']);
   assert.equal(a.body.status, 'open');
   assert.equal(a.body.captured_amount, 0);
