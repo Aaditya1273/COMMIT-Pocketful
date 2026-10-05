@@ -44,6 +44,9 @@ Upgrade checks (need running stage-1 and stage-2 services):
 ```sh
 POCKETFUL_URL=http://127.0.0.1:8080 POCKETFUL_S1_URL=http://127.0.0.1:8081 POCKETFUL_S2_URL=http://127.0.0.1:8082 \
   node --test --test-concurrency=1 test/upgrade.test.js
+# and a populated stage-3 export into stage 4:
+POCKETFUL_URL=http://127.0.0.1:8080 POCKETFUL_S3_URL=http://127.0.0.1:8083 \
+  node --test --test-concurrency=1 test/upgrade4.test.js
 ```
 
 Browser checks (need Python with pytest, httpx and playwright + Chromium, e.g. the harness venv),
