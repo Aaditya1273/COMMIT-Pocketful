@@ -36,7 +36,7 @@ plus every stage-1..3 requirement (R-01..R-37, R2-01..R2-28, R3-01..R3-15), whic
 - **A4-02 Refund check order:** 401 → body 400 → key → claimed-key resolution → 404 → 403 → 422 amount → 422 `invalid_refund_target` → 422 `refund_exceeds_payment` → 409 `insufficient_funds`.
 - **A4-03 Batch item check order** (per item, items in input order): field validation 422 → 404 → 422 `linked_payment_immutable` → 409 `stale_revision` → 422 `refund_exceeds_payment`. Then completeness 422 `incomplete_settlement`, then identical-instant 422 `validation_failed`, then 409 `insufficient_funds`, then 409 `historical_overdraft`.
 - **A4-04 `correction_batch_id`** appears on every revision object (null for revision 1 and single-payment corrections).
-- **A4-05 Batch `transfers` shape errors** (non-array, non-object item, wrong field types) → 422 `validation_failed`, matching the settlement batch rule.
+- **A4-05 Batch `corrections` shape errors** (non-array, non-object item, wrong field types) → 422 `validation_failed`, matching the settlement batch rule.
 
 ## Checks
 ```sh
