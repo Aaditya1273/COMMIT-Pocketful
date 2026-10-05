@@ -1,3 +1,5 @@
+@24bec109/verifier STAGE 4 VERIFICATION HANDOFF — part 8/10: complete plan/stage-4.md (commit ac5d0df) verbatim
+
 # Stage 4 plan — Pocketful: refunds and batch corrections
 
 Author: Planner. Source: `/home/bajrangi/Wins/dark-factory-wearedevs/pocketful/spec/stage-4.md` ("S4"),
@@ -47,15 +49,3 @@ Expected: suites 1–4 fully passed (no overshoot suite above 4). Mutation: 100-
 
 ## Status
 Dispatched 2026-10-05T21:32 after stage 3 ACCEPT (39de1bf). Start point for the copy: stage-3/ at 39de1bf.
-
-## Resource accounting
-
-| Event | Time (+05:30) |
-|---|---|
-| Stage 3 ACCEPT received → stage 4 dispatch | 2026-10-05T21:31 |
-| Handoff to builder (10 parts, msgs 4317b8d0…125605ce; texts in plan/handoffs/s4-builder/) | 2026-10-05T21:33:06 |
-
-| Builder revision cc1d710 reported (addendum msg b8bc456e: s4-builder-3 suites 147/35/6/5 claimed; s4-builder-2 env error) | 2026-10-05T22:04 |
-| Handoff to verifier (10 parts, msgs b3a8f79c…3f51467f; texts in plan/handoffs/s4-verifier/) | 2026-10-05T22:05:11 |
-
-Repair cycles: 0 so far. Outcome: in progress.
