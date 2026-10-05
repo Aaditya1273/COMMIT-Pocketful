@@ -129,7 +129,7 @@ test('fixture currencies and seeded data shapes', async () => {
     await reset(fixture({ currency, minor_units: mu }));
     const t = await login('ada');
     const me = (await call('GET', '/me', { token: t })).body;
-    assert.deepEqual(me, { user_id: 'u_ada', display_name: 'ada', handle: 'ada', balance: 10000, currency, minor_units: mu });
+    assert.deepEqual(me, { user_id: 'u_ada', display_name: 'ada', handle: 'ada', balance: 10000, total: 10000, available: 10000, held: 0, currency, minor_units: mu });
   }
 });
 
@@ -188,7 +188,7 @@ test('payment shape, defaults, timestamps', async () => {
   const r = await pay(w.ada, { to_handle: 'bob', amount: 1500, note: 'dinner' });
   assert.equal(r.status, 201);
   assert.deepEqual(Object.keys(r.body).sort(), ['amount', 'created_at', 'currency', 'from_handle', 'from_user_id', 'note',
-    'payment_id', 'request_id', 'settlement_id', 'to_handle', 'to_user_id', 'visibility']);
+    'payment_id', 'request_id', 'settlement_id', 'to_handle', 'to_user_id', 'visibility', 'authorization_id'].sort());
   assert.equal(r.body.visibility, 'public');
   assert.equal(r.body.settlement_id, null);
   assert.match(r.body.created_at, TS_RE);
