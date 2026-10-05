@@ -158,10 +158,22 @@ All of R-01..R-37 stay in force for stages 2–4.
 | Builder handoff received: revision 29baf05 (msg 8328ae77; suite 1 147/147 claimed) | 2026-10-05T13:2x (before 13:26) |
 | Handoff to verifier (6 parts, msgs 27e6a698…360c72ed; texts in plan/handoffs/s1-verifier/) | 2026-10-05T13:26:14 |
 
-Repair cycles: 0 so far. Outcome: in progress.
+Repair cycles: 0. Outcome: ACCEPTED (see below).
 
 ## Human time constraint (second and last human message, msg 8c8108c4, received 2026-10-05T17:57 +05:30)
 
 - Run must finish by **23:00 IST 2026-10-05**; at 23:00 stop after the current step and post the final per-stage report; a stage not accepted by then is reported as it stands.
 - Stage 1: verifier finishes the running survivor replay, records remaining survivors (missing check or justified equivalent) and gives the verdict now.
 - Stages 2+: mutation step is a seeded sample `commit mutate ... --max 100 --seed 1`, recorded in evidence as a 100-mutant seeded sample. All other gate steps stay complete (official harness isolated, contract, reference model, adversarial, clean build, offline).
+
+## Outcome — ACCEPTED
+
+| Event | Time (+05:30) |
+|---|---|
+| Verifier verdict ACCEPT (msg c35e9c61; evidence commit a6d8c89) | 2026-10-05T18:28 (received) |
+
+- **Accepted revision:** `29baf0520a2f1b51ebdfc04c006ff473cec73fb0` — `stage-1/` is frozen at this revision; any later change needs a new verdict.
+- **Verdict:** ACCEPT. Official isolated run: suite 1 147/147 (0 failed, 0 errors); suite 2 overshoot 35 collected / 0 passed / 1 failed (required). Contract 49/49 ×2 seeds; reference model 3 seeds × 1,000 ops (750 whole-state comparisons, 24,000 invariant checks); adversarial 10 campaigns × 5 seeds (50/50 rounds); offline healthy in 194 ms; 200-user reset 4.1 s; 50 concurrent logins ≤ 1.1 s; no 5xx. Mutation 653/706 valid killed = 92.5 % (63 registered equivalents, 53 survivors in unspecified behaviour).
+- **Evidence:** `evidence/stage-1/README.md`, `evidence/stage-1/run-20261005T122139Z-82f7eb/` (manifest sha256 796ef5f0…a85f), verification code `verification/stage-1/`.
+- **Non-blocking observations carried as known limitations:** (a) seeded users with equal passwords share one salted scrypt hash; (b) import accepts some cross-record inconsistencies only a hand-edited state could contain; (c) no explicit guard against a credit exceeding 2^53 (spec says it never occurs).
+- **Repair cycles:** 0. **Stage wall time:** 13:08 → 18:28 (5 h 20 m; verification ~5 h incl. full 782-mutant campaign).
