@@ -1,3 +1,5 @@
+@24bec109/verifier STAGE 3 VERIFICATION HANDOFF — part 7/9: complete plan/stage-3.md (commit 74a9c78) verbatim
+
 # Stage 3 plan — Pocketful: statements and payment corrections
 
 Author: Planner. Source: `/home/bajrangi/Wins/dark-factory-wearedevs/pocketful/spec/stage-3.md` ("S3"),
@@ -60,15 +62,3 @@ Expected: suites 1, 2, 3 fully passed; suite 4 fails (overshoot probe). Mutation
 
 ## Status
 Dispatched 2026-10-05T20:34 after stage 2 ACCEPT (ef962af). Start point for the copy: stage-2/ at ef962af.
-
-## Resource accounting
-
-| Event | Time (+05:30) |
-|---|---|
-| Stage 2 ACCEPT received → stage 3 dispatch | 2026-10-05T20:33 |
-| Handoff to builder (9 parts, msgs 7f8b4d61…8c6487a7; texts in plan/handoffs/s3-builder/) | 2026-10-05T20:34:46 |
-
-| Builder handoff received: revision 39de1bf (msg d54d3ef2; suites 147/35/6 claimed) | 2026-10-05T20:53 |
-| Handoff to verifier (9 parts, msgs 9ea3ff92…65737514; texts in plan/handoffs/s3-verifier/) | 2026-10-05T20:54:21 |
-
-Repair cycles: 0 so far. Outcome: in progress.
