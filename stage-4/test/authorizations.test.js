@@ -91,7 +91,7 @@ test('default capture is final: full or partial, remainder released at once; the
   const p = await capture(w.bob, a, { amount: 1500 });
   assert.equal(p.status, 201);
   assert.deepEqual(Object.keys(p.body).sort(), ['amount', 'authorization_id', 'created_at', 'currency', 'from_handle', 'from_user_id', 'note',
-    'payment_id', 'request_id', 'settlement_id', 'to_handle', 'to_user_id', 'visibility']);
+    'payment_id', 'refund_of', 'request_id', 'settlement_id', 'to_handle', 'to_user_id', 'visibility']);
   assert.deepEqual([p.body.amount, p.body.authorization_id, p.body.request_id, p.body.settlement_id, p.body.note, p.body.visibility, p.body.from_handle, p.body.to_handle],
     [1500, a, null, null, 'n', 'private', 'ada', 'bob']);
   const am = await me(w.ada);

@@ -171,7 +171,7 @@ test('corrections: shape, money movement, revisions, originals preserved, replay
   const body = { expected_revision: 1, amount: 400, effective_at: p.created_at, reason: 'corrected amount' };
   const c = await correct(w.ada, p.payment_id, body, ck);
   assert.equal(c.status, 201);
-  assert.deepEqual(Object.keys(c.body).sort(), ['amount', 'effective_at', 'payment_id', 'reason', 'recorded_at', 'revision']);
+  assert.deepEqual(Object.keys(c.body).sort(), ['amount', 'correction_batch_id', 'effective_at', 'payment_id', 'reason', 'recorded_at', 'revision']);
   assert.deepEqual([c.body.payment_id, c.body.revision, c.body.amount, c.body.effective_at, c.body.reason], [p.payment_id, 2, 400, p.created_at, 'corrected amount']);
   assert.ok(Date.parse(c.body.recorded_at) > Date.parse(p.created_at));
   assert.deepEqual([(await me(w.ada)).balance, (await me(w.bob)).balance], [9600, 2900]);

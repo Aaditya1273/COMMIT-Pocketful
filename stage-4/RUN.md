@@ -1,25 +1,26 @@
-# Pocketful — stage 3
+# Pocketful — stage 4
 
 The stage-1 JSON API, stage-2 payment authorizations and browser UI, plus a revisioned
 ledger: historical balances (`GET /me?as_of=&known_at=`), statements with stable snapshots
 (`GET /statement`), payment corrections (`POST /payments/{id}/corrections`) and revision
-history (`GET /payments/{id}/revisions`). Node.js 22, no runtime dependencies. The UI (script, styles, icon) is served from
+history (`GET /payments/{id}/revisions`), refunds (`POST /payments/{id}/refunds`) and operator
+correction batches (`POST /correction-batches`). Node.js 22, no runtime dependencies. The UI (script, styles, icon) is served from
 the same image; nothing is fetched at run time. State is in memory and ephemeral.
 
 ## Build and run
 
-From this folder (`stage-3/`):
+From this folder (`stage-4/`):
 
 ```sh
-docker build -t pocketful-stage-3 . && docker run --rm -e PORT=8080 -p 8080:8080 pocketful-stage-3
+docker build -t pocketful-stage-4 . && docker run --rm -e PORT=8080 -p 8080:8080 pocketful-stage-4
 ```
 
 - Listens on `0.0.0.0:$PORT` (default `8080`); `GET /health` → `200 {"status":"ok"}`.
-- Works with no network at run time: `docker run --rm --network none -e PORT=9000 pocketful-stage-3`.
+- Works with no network at run time: `docker run --rm --network none -e PORT=9000 pocketful-stage-4`.
 - Seed with `POST /_test/reset`, then open `http://localhost:8080/login`.
 - Browser routes: `/`, `/requests`, `/split`, `/authorizations`, `/signup`, `/login`.
   `/requests` and `/authorizations` serve the page for `Accept: text/html` and JSON otherwise.
-- Exports from the stage-1 and stage-2 services import unchanged (`POST /_test/import`);
+- Exports from the stage-1, stage-2 and stage-3 services import unchanged (`POST /_test/import`);
   every imported payment becomes revision 1 of its own history.
 
 Without Docker (Node.js ≥ 22): `PORT=8080 node src/server.js`.
@@ -73,5 +74,10 @@ POCKETFUL_URL=http://127.0.0.1:8080 POCKETFUL_S1_URL=http://127.0.0.1:8081 \
   between the same two wallets; it is refused with `insufficient_funds` if unaffordable now,
   else with `historical_overdraft` if total or available would be negative at any past
   boundary. Statement snapshots freeze the full result and are kept until reset.
+- Refunds are new reverse payments (`refund_of` set) debited from the receiver's available funds;
+  cumulative refunds never exceed the corrected amount, and corrections never go below it.
+  Correction batches check items in input order, then settlement completeness and identical
+  member instants, then combined current affordability, then historical total/available; all
+  revisions commit together with one shared `recorded_at` and `correction_batch_id`.
 - Passwords are salted scrypt hashes; seeded users that share a password share one salted hash
   so large resets stay inside the 10 s budget.

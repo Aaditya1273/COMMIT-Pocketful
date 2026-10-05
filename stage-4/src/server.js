@@ -1,7 +1,7 @@
 'use strict';
-// Pocketful stage 3 — stages 1 and 2 (payments, requests, splits, feed, settlements,
-// authorizations, browser UI) plus a revisioned ledger: historical balances (as_of /
-// known_at), statements with stable snapshots, and payment corrections.
+// Pocketful stage 4 — stages 1-3 (payments, requests, splits, feed, settlements,
+// authorizations, browser UI, revisioned ledger, statements, corrections) plus refunds
+// and operator correction batches.
 //
 // Single process, in-memory state. Every state read-modify-write runs in one
 // synchronous section of the event loop (after the request body has been read and
@@ -133,6 +133,7 @@ function emptyState() {
     openHolds: new Map(), // payer user id -> Set of open authorization records
     ttlSeconds: DEFAULT_TTL_SECONDS,
     snapshots: new Map(), // token -> frozen statement result
+    correctionBatches: new Map(), // id -> {id, recorded_at}
     idem: new Map(), // scope -> {user, method, path, key, body, response}
     counter: 0,
     seq: 0,
@@ -187,6 +188,7 @@ function renderPayment(st, p) {
     request_id: p.request_id,
     settlement_id: p.settlement_id,
     authorization_id: p.authorization_id,
+    refund_of: p.refund_of === undefined ? null : p.refund_of,
     created_at: p.created_at,
   };
 }
@@ -400,7 +402,7 @@ function idempotentWrite(ctx, { emptyAs, perform }) {
 // Money movement (synchronous; callers have already validated everything)
 
 function createPayment(st, {
-  from, to, amount, note, visibility, requestId = null, settlementId = null, authorizationId = null, ts,
+  from, to, amount, note, visibility, requestId = null, settlementId = null, authorizationId = null, refundOf = null, ts,
 }) {
   const p = {
     id: newId(st, 'pay_', st.payments),
@@ -412,6 +414,7 @@ function createPayment(st, {
     request_id: requestId,
     settlement_id: settlementId,
     authorization_id: authorizationId,
+    refund_of: refundOf,
     ts,
     created_at: formatTs(ts),
     seq: ++st.seq,
@@ -887,7 +890,7 @@ function instantParam(query, name) {
 function firstRevision(p) {
   return {
     revision: 1, amount: p.amount, effective_ts: p.ts, effective_at: p.created_at,
-    recorded_ts: p.ts, recorded_at: p.created_at, reason: '',
+    recorded_ts: p.ts, recorded_at: p.created_at, reason: '', correction_batch_id: null,
   };
 }
 
@@ -1038,6 +1041,7 @@ function renderRevision(p, r) {
   return {
     payment_id: p.id, revision: r.revision, amount: r.amount,
     effective_at: r.effective_at, recorded_at: r.recorded_at, reason: r.reason,
+    correction_batch_id: r.correction_batch_id === undefined ? null : r.correction_batch_id,
   };
 }
 
@@ -1050,11 +1054,11 @@ function listRevisions(ctx, id) {
 
 // Would this user's total or available go negative at any effective/event boundary
 // under the latest revisions (with `override` substituted for one payment)?
-function historicalOverdraft(st, userId, override) {
+function historicalOverdraft(st, userId, overrides) {
   const moves = [];
   const times = new Set();
   for (const p of paymentsOf(st, userId)) {
-    const rev = override && override.p === p ? override.rev : p.revisions[p.revisions.length - 1];
+    const rev = overrides.has(p) ? overrides.get(p) : p.revisions[p.revisions.length - 1];
     moves.push({ t: rev.effective_ts, d: signedFor(p, userId, rev.amount) });
     times.add(rev.effective_ts);
   }
@@ -1092,50 +1096,180 @@ function postCorrection(ctx, id) {
       if (typeof amount !== 'number' || !Number.isInteger(amount) || amount < 0 || amount > MAX_AMOUNT) {
         throw invalid('amount must be an integer from 0 to 1000000000');
       }
-      const effMs = parseInstant(body.effective_at);
-      const at = Date.now();
-      if (effMs === null) throw invalid('effective_at must be an RFC 3339 instant with an offset');
-      if (effMs > at) throw invalid('effective_at must not be later than now');
-      const reason = body.reason;
-      if (typeof reason !== 'string' || codePoints(reason) < 1 || codePoints(reason) > 200) {
-        throw invalid('reason must be 1 to 200 characters');
+      const fields = correctionFields(body, { amount, er });
+      if (p.settlement_id !== null || p.authorization_id !== null || p.refund_of !== null) {
+        throw new HttpError(422, 'linked_payment_immutable', 'settlement members, captures and refunds cannot be corrected');
       }
-      if (p.settlement_id !== null || p.authorization_id !== null) {
-        throw new HttpError(422, 'linked_payment_immutable', 'settlement members and captures cannot be corrected');
-      }
-      const latest = p.revisions[p.revisions.length - 1];
-      if (er !== latest.revision) throw new HttpError(409, 'stale_revision', `current revision is ${latest.revision}`);
-      const diff = amount - latest.amount;
-      const sender = st.users.get(p.from);
-      const receiver = st.users.get(p.to);
-      if (diff > 0 && availableOf(st, sender) < diff) {
-        throw new HttpError(409, 'insufficient_funds', 'the sender cannot currently afford the increase');
-      }
-      if (diff < 0 && availableOf(st, receiver) < -diff) {
-        throw new HttpError(409, 'insufficient_funds', 'the receiver cannot currently afford the decrease');
-      }
-      let recordedTs = now(st);
-      if (recordedTs <= latest.recorded_ts) recordedTs = latest.recorded_ts + 1;
-      st.lastTs = Math.max(st.lastTs, recordedTs);
-      const rev = {
-        revision: latest.revision + 1,
-        amount,
-        effective_ts: effMs,
-        effective_at: body.effective_at,
-        recorded_ts: recordedTs,
-        recorded_at: formatTs(recordedTs),
-        reason,
-      };
-      const override = { p, rev };
-      if (historicalOverdraft(st, sender.id, override) || historicalOverdraft(st, receiver.id, override)) {
-        throw new HttpError(409, 'historical_overdraft', 'the correction would overdraw a wallet in the past');
-      }
-      p.revisions.push(rev);
-      sender.balance -= diff;
-      receiver.balance += diff;
+      const item = checkAgainstPayment(st, p, fields);
+      const [rev] = applyCorrections(st, [item], null);
       return renderRevision(p, rev);
     },
   });
+}
+
+// Field validation shared by single corrections and batch items (all 422).
+function correctionFields(body, pre = {}) {
+  const er = pre.er !== undefined ? pre.er : body.expected_revision;
+  if (typeof er !== 'number' || !Number.isInteger(er) || er < 1) throw invalid('expected_revision must be a positive integer');
+  const amount = pre.amount !== undefined ? pre.amount : body.amount;
+  if (typeof amount !== 'number' || !Number.isInteger(amount) || amount < 0 || amount > MAX_AMOUNT) {
+    throw invalid('amount must be an integer from 0 to 1000000000');
+  }
+  const effMs = parseInstant(body.effective_at);
+  if (effMs === null) throw invalid('effective_at must be an RFC 3339 instant with an offset');
+  if (effMs > Date.now()) throw invalid('effective_at must not be later than now');
+  const reason = body.reason;
+  if (typeof reason !== 'string' || codePoints(reason) < 1 || codePoints(reason) > 200) {
+    throw invalid('reason must be 1 to 200 characters');
+  }
+  return { er, amount, effMs, effectiveAt: body.effective_at, reason };
+}
+
+function refundedAmount(st, paymentId) {
+  let sum = 0;
+  for (const q of st.payments.values()) if (q.refund_of === paymentId) sum += q.amount;
+  return sum;
+}
+
+// Stale revision, then the already-refunded floor.
+function checkAgainstPayment(st, p, fields) {
+  const latest = p.revisions[p.revisions.length - 1];
+  if (fields.er !== latest.revision) throw new HttpError(409, 'stale_revision', `current revision is ${latest.revision}`);
+  if (fields.amount < refundedAmount(st, p.id)) {
+    throw new HttpError(422, 'refund_exceeds_payment', 'a correction cannot go below the amount already refunded');
+  }
+  return { p, latest, ...fields };
+}
+
+// Check the combined effect of several corrections (current available funds, then the
+// historical total/available at every boundary) and commit them together with one shared
+// recorded_at, strictly later than every member's previous recorded_at.
+function applyCorrections(st, items, batchId) {
+  const net = new Map();
+  for (const it of items) {
+    const diff = it.amount - it.latest.amount;
+    net.set(it.p.from, (net.get(it.p.from) || 0) - diff);
+    net.set(it.p.to, (net.get(it.p.to) || 0) + diff);
+  }
+  for (const [uid, delta] of net) {
+    if (delta < 0 && availableOf(st, st.users.get(uid)) + delta < 0) {
+      throw new HttpError(409, 'insufficient_funds', 'a wallet cannot currently afford this correction');
+    }
+  }
+  let recordedTs = now(st);
+  for (const it of items) if (recordedTs <= it.latest.recorded_ts) recordedTs = it.latest.recorded_ts + 1;
+  const overrides = new Map();
+  for (const it of items) {
+    overrides.set(it.p, {
+      revision: it.latest.revision + 1,
+      amount: it.amount,
+      effective_ts: it.effMs,
+      effective_at: it.effectiveAt,
+      recorded_ts: recordedTs,
+      recorded_at: formatTs(recordedTs),
+      reason: it.reason,
+      correction_batch_id: batchId,
+    });
+  }
+  for (const uid of net.keys()) {
+    if (historicalOverdraft(st, uid, overrides)) {
+      throw new HttpError(409, 'historical_overdraft', 'the correction would overdraw a wallet in the past');
+    }
+  }
+  st.lastTs = Math.max(st.lastTs, recordedTs);
+  for (const it of items) it.p.revisions.push(overrides.get(it.p));
+  for (const [uid, delta] of net) st.users.get(uid).balance += delta;
+  return items.map((it) => overrides.get(it.p));
+}
+
+// ---- refunds ------------------------------------------------------------------
+
+function postRefund(ctx, id) {
+  return idempotentWrite(ctx, {
+    perform(st, me, body) {
+      const p = st.payments.get(id);
+      if (!p) throw notFound('unknown payment');
+      if (p.to !== me.id) throw forbidden('only the receiver may refund this payment');
+      const amount = parseAmount(body.amount);
+      if (p.refund_of !== null) throw new HttpError(422, 'invalid_refund_target', 'a refund cannot be refunded');
+      const corrected = p.revisions[p.revisions.length - 1].amount;
+      if (refundedAmount(st, p.id) + amount > corrected) {
+        throw new HttpError(422, 'refund_exceeds_payment', 'refunds would exceed the payment amount');
+      }
+      const sender = st.users.get(p.from);
+      transfer(st, me, sender, amount);
+      const r = createPayment(st, {
+        from: me, to: sender, amount, note: p.note, visibility: p.visibility, refundOf: p.id, ts: now(st),
+      });
+      return renderPayment(st, r);
+    },
+  });
+}
+
+// ---- correction batches -------------------------------------------------------------
+
+function postCorrectionBatch(ctx) {
+  return idempotentWrite(ctx, {
+    perform(st, me, body) {
+      if (!st.operators.has(me.id)) throw forbidden('only a settlement operator may submit correction batches');
+      const list = body.corrections;
+      if (!Array.isArray(list)) throw invalid('corrections must be an array');
+      if (list.length < 1 || list.length > MAX_TRANSFERS) throw invalid('corrections must contain 1 to 32 items');
+      const seen = new Set();
+      list.forEach((c, i) => {
+        if (!isObject(c)) throw invalid(`corrections[${i}] must be an object`);
+        if (typeof c.payment_id === 'string') {
+          if (seen.has(c.payment_id)) throw invalid('payment_ids must be distinct');
+          seen.add(c.payment_id);
+        }
+      });
+      // Item errors in input order: fields, unknown, immutable, stale, refunded floor.
+      const items = list.map((c, i) => {
+        if (typeof c.payment_id !== 'string' || c.payment_id.length === 0) throw invalid(`corrections[${i}].payment_id is required`);
+        const fields = correctionFields(c);
+        const p = st.payments.get(c.payment_id);
+        if (!p) throw notFound(`unknown payment ${c.payment_id}`);
+        if (p.authorization_id !== null || p.refund_of !== null) {
+          throw new HttpError(422, 'linked_payment_immutable', 'captures and refunds cannot be corrected');
+        }
+        return checkAgainstPayment(st, p, fields);
+      });
+      // Settlement completeness, then identical effective instants per settlement.
+      const bySettlement = new Map();
+      for (const it of items) {
+        if (it.p.settlement_id === null) continue;
+        if (!bySettlement.has(it.p.settlement_id)) bySettlement.set(it.p.settlement_id, []);
+        bySettlement.get(it.p.settlement_id).push(it);
+      }
+      for (const [sid, members] of bySettlement) {
+        const all = settlementMembers(st, sid);
+        if (all.length !== members.length) {
+          throw new HttpError(422, 'incomplete_settlement', `every member of settlement ${sid} must be corrected together`);
+        }
+      }
+      for (const members of bySettlement.values()) {
+        if (members.some((m) => m.effMs !== members[0].effMs)) {
+          throw invalid('members of one settlement must share one effective instant');
+        }
+      }
+      const batchId = newId(st, 'cb_', st.correctionBatches);
+      const revs = applyCorrections(st, items, batchId);
+      st.correctionBatches.set(batchId, { id: batchId, recorded_at: revs[0].recorded_at });
+      return {
+        correction_batch_id: batchId,
+        recorded_at: revs[0].recorded_at,
+        revisions: items.map((it, i) => renderRevision(it.p, revs[i])),
+      };
+    },
+  });
+}
+
+function settlementMembers(st, sid) {
+  const s = st.settlements.get(sid);
+  if (s) return s.payment_ids;
+  const ids = [];
+  for (const q of st.payments.values()) if (q.settlement_id === sid) ids.push(q.id);
+  return ids;
 }
 
 // ---- auth -------------------------------------------------------------------
@@ -1263,6 +1397,7 @@ function validateFixture(f) {
       request_id: optionalString(p.request_id, null, `${w}.request_id`),
       settlement_id: optionalString(p.settlement_id, null, `${w}.settlement_id`),
       authorization_id: optionalString(p.authorization_id, null, `${w}.authorization_id`),
+      refund_of: optionalString(p.refund_of, null, `${w}.refund_of`),
       ts: parseFixtureTs(p.created_at, `${w}.created_at`),
       created_at: typeof p.created_at === 'string' ? p.created_at : null,
     };
@@ -1434,6 +1569,7 @@ function exportState() {
       authorization_ttl_seconds: st.ttlSeconds,
       authorizations: [...st.authorizations.values()].map((a) => ({ ...a, payment_ids: [...a.payment_ids] })),
       snapshots: [...st.snapshots.entries()].map(([token, s]) => ({ token, ...s })),
+      correction_batches: [...st.correctionBatches.values()].map((b) => ({ ...b })),
       idempotency: [...st.idem.values()].map((r) => ({ ...r })),
     },
   }];
@@ -1499,6 +1635,8 @@ function stateFromExport(doc) {
     if (!isSafeInt(p.amount) || p.amount < 0) throw stateError('payment amount');
     if (typeof p.note !== 'string' || !VISIBILITIES.has(p.visibility)) throw stateError('payment note/visibility');
     if (p.authorization_id === undefined) p.authorization_id = null; // stage-1 export layout
+    if (p.refund_of === undefined) p.refund_of = null; // stage-1..3 export layout
+    if (!isNullableString(p.refund_of)) throw stateError('payment refund_of');
     if (!isNullableString(p.request_id) || !isNullableString(p.settlement_id) || !isNullableString(p.authorization_id)) {
       throw stateError('payment links');
     }
@@ -1508,7 +1646,7 @@ function stateFromExport(doc) {
     const rec = {
       id: p.id, from: p.from, to: p.to, amount: p.amount, note: p.note, visibility: p.visibility,
       request_id: p.request_id, settlement_id: p.settlement_id, authorization_id: p.authorization_id,
-      ts: p.ts, created_at: p.created_at, seq: p.seq,
+      refund_of: p.refund_of, ts: p.ts, created_at: p.created_at, seq: p.seq,
     };
     // Stage-1 and stage-2 exports have no revision history: revision 1 is the payment itself.
     if (p.revisions === undefined) {
@@ -1524,6 +1662,7 @@ function stateFromExport(doc) {
         return {
           revision: r.revision, amount: r.amount, effective_ts: r.effective_ts, effective_at: r.effective_at,
           recorded_ts: r.recorded_ts, recorded_at: r.recorded_at, reason: r.reason,
+          correction_batch_id: typeof r.correction_batch_id === 'string' ? r.correction_batch_id : null,
         };
       });
     }
@@ -1614,6 +1753,10 @@ function stateFromExport(doc) {
   for (const u of st.users.values()) {
     if (heldBy(st, u.id) > u.balance) throw stateError(`open holds exceed the balance of ${u.id}`);
   }
+  for (const b of s.correction_batches === undefined ? [] : arrayField(s, 'correction_batches')) {
+    if (!isObject(b) || !isId(b.id) || typeof b.recorded_at !== 'string') throw stateError('correction batch');
+    st.correctionBatches.set(b.id, { id: b.id, recorded_at: b.recorded_at });
+  }
   for (const snap of s.snapshots === undefined ? [] : arrayField(s, 'snapshots')) {
     if (!isObject(snap) || typeof snap.token !== 'string' || !st.users.has(snap.user) || !isSafeInt(snap.opening_balance)
       || !isSafeInt(snap.closing_balance) || !Array.isArray(snap.entries)) {
@@ -1667,6 +1810,8 @@ const routes = [
   ['GET', /^\/statement$/, getStatement],
   ['POST', /^\/payments\/([^/]+)\/corrections$/, postCorrection],
   ['GET', /^\/payments\/([^/]+)\/revisions$/, listRevisions],
+  ['POST', /^\/payments\/([^/]+)\/refunds$/, postRefund],
+  ['POST', /^\/correction-batches$/, postCorrectionBatch],
 ];
 
 // Browser routes. /requests and /authorizations are shared with the API and serve the
@@ -1808,7 +1953,7 @@ function start() {
   server.headersTimeout = 76 * 1000;
   server.requestTimeout = 0;
   server.listen(port, '0.0.0.0', () => {
-    console.log(`pocketful stage 3 listening on 0.0.0.0:${port}`);
+    console.log(`pocketful stage 4 listening on 0.0.0.0:${port}`);
   });
   hashPassword(crypto.randomBytes(12).toString('hex')).then((h) => { dummyHash = h; });
   const stop = () => server.close(() => process.exit(0)) && setTimeout(() => process.exit(0), 500).unref();
