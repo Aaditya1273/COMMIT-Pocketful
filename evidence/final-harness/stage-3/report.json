@@ -1,0 +1,103 @@
+{
+  "revision": "34d2975aa41c74a9c77695690f59fa4c8999d1d3",
+  "track": "pocketful",
+  "stages": {
+    "1": "pass",
+    "2": "pass",
+    "3": "pass"
+  },
+  "highest_contiguous": 3,
+  "started_at": "2026-10-05T17:10:33.259239+00:00",
+  "finished_at": "2026-10-05T17:11:21.905416+00:00",
+  "schema_version": 2,
+  "run_id": "09e8e879132a4e09a674974d70833b4f",
+  "mode": "isolated",
+  "provenance": "working-tree",
+  "state": "completed",
+  "pytest_args": [],
+  "suite_digest": "fbe2aeab11b79fd3d36ed815b24c8879274830a9996b647671e62ab610a297d0",
+  "checks": {
+    "1": {
+      "collected": 147,
+      "passed": 147,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "deselected": 0,
+      "xfailed": 0,
+      "files": {
+        "stage_1/test_me_payments.py": {
+          "passed": 24,
+          "total": 24
+        },
+        "stage_1/test_requests_splits_feed.py": {
+          "passed": 39,
+          "total": 39
+        },
+        "stage_1/test_retries_splits_input.py": {
+          "passed": 51,
+          "total": 51
+        },
+        "stage_1/test_sample.py": {
+          "passed": 19,
+          "total": 19
+        },
+        "stage_1/test_seeded_state.py": {
+          "passed": 14,
+          "total": 14
+        }
+      }
+    },
+    "2": {
+      "collected": 35,
+      "passed": 35,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "deselected": 0,
+      "xfailed": 0,
+      "files": {
+        "stage_2/test_sample.py": {
+          "passed": 10,
+          "total": 10
+        },
+        "stage_2/test_ui.py": {
+          "passed": 25,
+          "total": 25
+        }
+      }
+    },
+    "3": {
+      "collected": 6,
+      "passed": 6,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "deselected": 0,
+      "xfailed": 0,
+      "files": {
+        "stage_3/test_sample.py": {
+          "passed": 6,
+          "total": 6
+        }
+      }
+    }
+  },
+  "overshoot": null,
+  "claimed_stage": "3",
+  "share": 1.0,
+  "upgrade_sources": {
+    "2": {
+      "folder": "~/Wins/band-work/result/stage-1",
+      "revision": "34d2975aa41c74a9c77695690f59fa4c8999d1d3"
+    },
+    "3": {
+      "folder": "~/Wins/band-work/result/stage-2",
+      "revision": "34d2975aa41c74a9c77695690f59fa4c8999d1d3"
+    },
+    "4": {
+      "folder": "~/Wins/band-work/result/stage-3",
+      "revision": "34d2975aa41c74a9c77695690f59fa4c8999d1d3"
+    }
+  }
+}
