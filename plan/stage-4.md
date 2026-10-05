@@ -46,4 +46,4 @@ env -u PYTHONHOME -u PYTHONPATH .venv/bin/python -m harness run --track pocketfu
 Expected: suites 1–4 fully passed (no overshoot suite above 4). Mutation: 100-mutant seeded sample.
 
 ## Status
-DRAFT — dispatched only after stage 3 is ACCEPTED and only if time before the 23:00 IST stop allows.
+Dispatched 2026-10-05T21:32 after stage 3 ACCEPT (39de1bf). Start point for the copy: stage-3/ at 39de1bf.

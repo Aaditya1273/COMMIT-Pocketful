@@ -71,4 +71,14 @@ Dispatched 2026-10-05T20:34 after stage 2 ACCEPT (ef962af). Start point for the 
 | Builder handoff received: revision 39de1bf (msg d54d3ef2; suites 147/35/6 claimed) | 2026-10-05T20:53 |
 | Handoff to verifier (9 parts, msgs 9ea3ff92…65737514; texts in plan/handoffs/s3-verifier/) | 2026-10-05T20:54:21 |
 
-Repair cycles: 0 so far. Outcome: in progress.
+| Verifier verdict ACCEPT (msg 1a0a8ec3; evidence commit 3f22c78) | 2026-10-05T21:31 (received) |
+
+Repair cycles: 0. Outcome: ACCEPTED (see below).
+
+## Outcome — ACCEPTED
+
+- **Accepted revision:** `39de1bf419a1deeb826cb3f2c38519301e006896` — `stage-3/` frozen. Copy-forward commit c3b6c21; stage-1/ == 29baf05, stage-2/ == ef962af.
+- **Verdict:** ACCEPT. Official isolated: suites 1/2/3 147/147, 35/35, 6/6 (0 failed, 0 errors); suite 4 overshoot 5 collected / 0 passed / 1 failed (required). Ledger contract 12/12; upgrade (real stage-1 and stage-2 exports) 58/58; reference models (ledger, holds, stage-1) all agree; adversarial-ledger 20/20 (30 concurrent corrections on one expected revision → exactly one 201), adversarial-holds 25/25, adversarial 50/50; UI 16/16; contract 49/49; auth 14/14. Mutation: **100-mutant seeded sample** 86/100 = 86.0 %; 2 survivors were real check gaps (leap-day year, ±23:59 offset) — checks added, candidate passes, supplementary replay kills both; 12 equivalent/unspecified.
+- **Evidence:** `evidence/stage-3/README.md`, `evidence/stage-3/run-20261005T153327Z-02f8c6/` (manifest sha256 c8f5acf4…af29), verification code `verification/stage-3/`.
+- **Known limitations:** mutation sample only; hidden suite not run; stage-2 import has no void time (closed_at = latest known event); seeded closed holds not reconstructed; snapshots in memory until reset (travel in exports); seeded equal passwords share one salted hash.
+- **Repair cycles:** 0. **Stage wall time:** 20:33 → 21:31 (58 m: build 19 m, verification 37 m).
