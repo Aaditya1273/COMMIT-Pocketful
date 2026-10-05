@@ -1,0 +1,27 @@
+ok   compete-for-available seed=11
+ok   compete-for-available seed=23
+ok   compete-for-available seed=37
+ok   compete-for-available seed=51
+ok   compete-for-available seed=73
+ok   concurrent-captures-over-remainder seed=11
+ok   concurrent-captures-over-remainder seed=23
+ok   concurrent-captures-over-remainder seed=37
+ok   concurrent-captures-over-remainder seed=51
+ok   concurrent-captures-over-remainder seed=73
+ok   same-key-new-paths seed=11
+ok   same-key-new-paths seed=23
+ok   same-key-new-paths seed=37
+ok   same-key-new-paths seed=51
+ok   same-key-new-paths seed=73
+ok   capture-vs-void seed=11
+ok   capture-vs-void seed=23
+ok   capture-vs-void seed=37
+ok   capture-vs-void seed=51
+ok   capture-vs-void seed=73
+ok   capture-racing-expiry seed=11
+ok   capture-racing-expiry seed=23
+ok   capture-racing-expiry seed=37
+ok   capture-racing-expiry seed=51
+ok   capture-racing-expiry seed=73
+
+adversarial-holds: 25/25 rounds passed, 0 failed, 94 state checks

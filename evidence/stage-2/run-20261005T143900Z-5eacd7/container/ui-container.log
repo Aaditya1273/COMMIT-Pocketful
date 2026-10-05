@@ -1,0 +1,18 @@
+ok   auth-screens-identity-navigation
+ok   wallet-format-headline-held
+ok   pay-decimal-rules-no-request
+ok   pay-resubmit-insufficient-feed
+ok   pay-refused-after-other-client-spent
+ok   pay-lost-response-uncertain-retry
+ok   latest-refresh-wins
+ok   requests-screen
+ok   split-preview-equals-server
+ok   authorizations-screen
+ok   mobile-375-no-horizontal-scroll
+ok   no-external-assets
+ok   import-between-requests-keeps-session-and-retry
+ok   decimal-input-jpy-bhd
+ok   server-500-is-uncertain
+ok   unauthenticated-routes-go-to-login
+
+ui: 16/16 checks passed, 0 failed

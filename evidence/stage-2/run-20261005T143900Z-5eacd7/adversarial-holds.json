@@ -1,0 +1,168 @@
+{
+  "kind": "adversarial-campaign",
+  "workers": 50,
+  "seeds": [
+    11,
+    23,
+    37,
+    51,
+    73
+  ],
+  "campaigns": 25,
+  "checks": 94,
+  "passed": 25,
+  "failed": 0,
+  "requests": 1930,
+  "results": [
+    {
+      "campaign": "compete-for-available",
+      "seed": 11,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "compete-for-available",
+      "seed": 23,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "compete-for-available",
+      "seed": 37,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "compete-for-available",
+      "seed": 51,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "compete-for-available",
+      "seed": 73,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "concurrent-captures-over-remainder",
+      "seed": 11,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "concurrent-captures-over-remainder",
+      "seed": 23,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "concurrent-captures-over-remainder",
+      "seed": 37,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "concurrent-captures-over-remainder",
+      "seed": 51,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "concurrent-captures-over-remainder",
+      "seed": 73,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-key-new-paths",
+      "seed": 11,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-key-new-paths",
+      "seed": 23,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-key-new-paths",
+      "seed": 37,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-key-new-paths",
+      "seed": 51,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "same-key-new-paths",
+      "seed": 73,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "capture-vs-void",
+      "seed": 11,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "capture-vs-void",
+      "seed": 23,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "capture-vs-void",
+      "seed": 37,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "capture-vs-void",
+      "seed": 51,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "capture-vs-void",
+      "seed": 73,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "capture-racing-expiry",
+      "seed": 11,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "capture-racing-expiry",
+      "seed": 23,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "capture-racing-expiry",
+      "seed": 37,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "capture-racing-expiry",
+      "seed": 51,
+      "passed": true,
+      "failures": []
+    },
+    {
+      "campaign": "capture-racing-expiry",
+      "seed": 73,
+      "passed": true,
+      "failures": []
+    }
+  ]
+}

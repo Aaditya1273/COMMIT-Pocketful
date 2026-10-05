@@ -1,0 +1,420 @@
+{
+  "kind": "adversarial-campaign",
+  "base": "http://127.0.0.1:43375",
+  "workers": 50,
+  "seeds": [
+    11,
+    23,
+    37,
+    51,
+    73
+  ],
+  "campaigns": 50,
+  "rounds": 50,
+  "checks": 380,
+  "passed": 50,
+  "failed": 0,
+  "requests": 5740,
+  "results": [
+    {
+      "campaign": "same-key-burst",
+      "seed": 11,
+      "passed": true,
+      "failures": [],
+      "ms": 207,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only same-key-burst --seeds 11"
+    },
+    {
+      "campaign": "same-key-burst",
+      "seed": 23,
+      "passed": true,
+      "failures": [],
+      "ms": 143,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only same-key-burst --seeds 23"
+    },
+    {
+      "campaign": "same-key-burst",
+      "seed": 37,
+      "passed": true,
+      "failures": [],
+      "ms": 135,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only same-key-burst --seeds 37"
+    },
+    {
+      "campaign": "same-key-burst",
+      "seed": 51,
+      "passed": true,
+      "failures": [],
+      "ms": 133,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only same-key-burst --seeds 51"
+    },
+    {
+      "campaign": "same-key-burst",
+      "seed": 73,
+      "passed": true,
+      "failures": [],
+      "ms": 135,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only same-key-burst --seeds 73"
+    },
+    {
+      "campaign": "overdraw",
+      "seed": 11,
+      "passed": true,
+      "failures": [],
+      "ms": 184,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only overdraw --seeds 11"
+    },
+    {
+      "campaign": "overdraw",
+      "seed": 23,
+      "passed": true,
+      "failures": [],
+      "ms": 183,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only overdraw --seeds 23"
+    },
+    {
+      "campaign": "overdraw",
+      "seed": 37,
+      "passed": true,
+      "failures": [],
+      "ms": 181,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only overdraw --seeds 37"
+    },
+    {
+      "campaign": "overdraw",
+      "seed": 51,
+      "passed": true,
+      "failures": [],
+      "ms": 181,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only overdraw --seeds 51"
+    },
+    {
+      "campaign": "overdraw",
+      "seed": 73,
+      "passed": true,
+      "failures": [],
+      "ms": 179,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only overdraw --seeds 73"
+    },
+    {
+      "campaign": "request-race",
+      "seed": 11,
+      "passed": true,
+      "failures": [],
+      "ms": 115,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only request-race --seeds 11"
+    },
+    {
+      "campaign": "request-race",
+      "seed": 23,
+      "passed": true,
+      "failures": [],
+      "ms": 108,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only request-race --seeds 23"
+    },
+    {
+      "campaign": "request-race",
+      "seed": 37,
+      "passed": true,
+      "failures": [],
+      "ms": 100,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only request-race --seeds 37"
+    },
+    {
+      "campaign": "request-race",
+      "seed": 51,
+      "passed": true,
+      "failures": [],
+      "ms": 111,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only request-race --seeds 51"
+    },
+    {
+      "campaign": "request-race",
+      "seed": 73,
+      "passed": true,
+      "failures": [],
+      "ms": 108,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only request-race --seeds 73"
+    },
+    {
+      "campaign": "settlement-drain",
+      "seed": 11,
+      "passed": true,
+      "failures": [],
+      "ms": 96,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only settlement-drain --seeds 11"
+    },
+    {
+      "campaign": "settlement-drain",
+      "seed": 23,
+      "passed": true,
+      "failures": [],
+      "ms": 96,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only settlement-drain --seeds 23"
+    },
+    {
+      "campaign": "settlement-drain",
+      "seed": 37,
+      "passed": true,
+      "failures": [],
+      "ms": 99,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only settlement-drain --seeds 37"
+    },
+    {
+      "campaign": "settlement-drain",
+      "seed": 51,
+      "passed": true,
+      "failures": [],
+      "ms": 97,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only settlement-drain --seeds 51"
+    },
+    {
+      "campaign": "settlement-drain",
+      "seed": 73,
+      "passed": true,
+      "failures": [],
+      "ms": 101,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only settlement-drain --seeds 73"
+    },
+    {
+      "campaign": "ring-chaos",
+      "seed": 11,
+      "passed": true,
+      "failures": [],
+      "ms": 163,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only ring-chaos --seeds 11"
+    },
+    {
+      "campaign": "ring-chaos",
+      "seed": 23,
+      "passed": true,
+      "failures": [],
+      "ms": 146,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only ring-chaos --seeds 23"
+    },
+    {
+      "campaign": "ring-chaos",
+      "seed": 37,
+      "passed": true,
+      "failures": [],
+      "ms": 149,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only ring-chaos --seeds 37"
+    },
+    {
+      "campaign": "ring-chaos",
+      "seed": 51,
+      "passed": true,
+      "failures": [],
+      "ms": 133,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only ring-chaos --seeds 51"
+    },
+    {
+      "campaign": "ring-chaos",
+      "seed": 73,
+      "passed": true,
+      "failures": [],
+      "ms": 132,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only ring-chaos --seeds 73"
+    },
+    {
+      "campaign": "lost-response-retry",
+      "seed": 11,
+      "passed": true,
+      "failures": [],
+      "ms": 129,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only lost-response-retry --seeds 11"
+    },
+    {
+      "campaign": "lost-response-retry",
+      "seed": 23,
+      "passed": true,
+      "failures": [],
+      "ms": 122,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only lost-response-retry --seeds 23"
+    },
+    {
+      "campaign": "lost-response-retry",
+      "seed": 37,
+      "passed": true,
+      "failures": [],
+      "ms": 140,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only lost-response-retry --seeds 37"
+    },
+    {
+      "campaign": "lost-response-retry",
+      "seed": 51,
+      "passed": true,
+      "failures": [],
+      "ms": 127,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only lost-response-retry --seeds 51"
+    },
+    {
+      "campaign": "lost-response-retry",
+      "seed": 73,
+      "passed": true,
+      "failures": [],
+      "ms": 128,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only lost-response-retry --seeds 73"
+    },
+    {
+      "campaign": "same-key-conflict",
+      "seed": 11,
+      "passed": true,
+      "failures": [],
+      "ms": 67,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only same-key-conflict --seeds 11"
+    },
+    {
+      "campaign": "same-key-conflict",
+      "seed": 23,
+      "passed": true,
+      "failures": [],
+      "ms": 67,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only same-key-conflict --seeds 23"
+    },
+    {
+      "campaign": "same-key-conflict",
+      "seed": 37,
+      "passed": true,
+      "failures": [],
+      "ms": 65,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only same-key-conflict --seeds 37"
+    },
+    {
+      "campaign": "same-key-conflict",
+      "seed": 51,
+      "passed": true,
+      "failures": [],
+      "ms": 65,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only same-key-conflict --seeds 51"
+    },
+    {
+      "campaign": "same-key-conflict",
+      "seed": 73,
+      "passed": true,
+      "failures": [],
+      "ms": 68,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only same-key-conflict --seeds 73"
+    },
+    {
+      "campaign": "signup-race",
+      "seed": 11,
+      "passed": true,
+      "failures": [],
+      "ms": 747,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only signup-race --seeds 11"
+    },
+    {
+      "campaign": "signup-race",
+      "seed": 23,
+      "passed": true,
+      "failures": [],
+      "ms": 715,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only signup-race --seeds 23"
+    },
+    {
+      "campaign": "signup-race",
+      "seed": 37,
+      "passed": true,
+      "failures": [],
+      "ms": 726,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only signup-race --seeds 37"
+    },
+    {
+      "campaign": "signup-race",
+      "seed": 51,
+      "passed": true,
+      "failures": [],
+      "ms": 723,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only signup-race --seeds 51"
+    },
+    {
+      "campaign": "signup-race",
+      "seed": 73,
+      "passed": true,
+      "failures": [],
+      "ms": 725,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only signup-race --seeds 73"
+    },
+    {
+      "campaign": "export-under-load",
+      "seed": 11,
+      "passed": true,
+      "failures": [],
+      "ms": 113,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only export-under-load --seeds 11"
+    },
+    {
+      "campaign": "export-under-load",
+      "seed": 23,
+      "passed": true,
+      "failures": [],
+      "ms": 101,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only export-under-load --seeds 23"
+    },
+    {
+      "campaign": "export-under-load",
+      "seed": 37,
+      "passed": true,
+      "failures": [],
+      "ms": 109,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only export-under-load --seeds 37"
+    },
+    {
+      "campaign": "export-under-load",
+      "seed": 51,
+      "passed": true,
+      "failures": [],
+      "ms": 104,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only export-under-load --seeds 51"
+    },
+    {
+      "campaign": "export-under-load",
+      "seed": 73,
+      "passed": true,
+      "failures": [],
+      "ms": 103,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only export-under-load --seeds 73"
+    },
+    {
+      "campaign": "split-pay-all",
+      "seed": 11,
+      "passed": true,
+      "failures": [],
+      "ms": 96,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only split-pay-all --seeds 11"
+    },
+    {
+      "campaign": "split-pay-all",
+      "seed": 23,
+      "passed": true,
+      "failures": [],
+      "ms": 97,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only split-pay-all --seeds 23"
+    },
+    {
+      "campaign": "split-pay-all",
+      "seed": 37,
+      "passed": true,
+      "failures": [],
+      "ms": 105,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only split-pay-all --seeds 37"
+    },
+    {
+      "campaign": "split-pay-all",
+      "seed": 51,
+      "passed": true,
+      "failures": [],
+      "ms": 102,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only split-pay-all --seeds 51"
+    },
+    {
+      "campaign": "split-pay-all",
+      "seed": 73,
+      "passed": true,
+      "failures": [],
+      "ms": 105,
+      "reproduction": "node verification/stage-1/adversarial.mjs --base-url <url> --only split-pay-all --seeds 73"
+    }
+  ]
+}

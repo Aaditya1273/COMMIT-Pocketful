@@ -1,0 +1,29 @@
+{
+  "kind": "reference-campaign",
+  "runId": "20261005T144200Z-1857ec",
+  "factoryVersion": "1.0.0-rc.3",
+  "campaign": "pocketful-stage-1-reference",
+  "moduleSha256": "82cef72ef02d4719aa57a1826f8bcc0a78c6beee76cd4248b395643e8d98187b",
+  "seed": 481927,
+  "operationsRequested": 1000,
+  "operationsExecuted": 1000,
+  "stateComparisons": 250,
+  "invariantChecks": 8000,
+  "outcomes": {
+    "200": 97,
+    "201": 477,
+    "409 insufficient_funds": 65,
+    "409 request_not_pending": 80,
+    "422 validation_failed": 44,
+    "404 not_found": 18,
+    "409 idempotency_key_reuse": 110,
+    "200 replay": 64,
+    "403 forbidden": 33,
+    "422 self_payment": 7,
+    "422 self_request": 5
+  },
+  "durationMs": 7317,
+  "result": "agree",
+  "firstDivergence": null,
+  "reproduction": "node commit/campaign.ts --module verification/stage-2/reference.mjs --base-url <url> --seed 481927 --operations 1000"
+}

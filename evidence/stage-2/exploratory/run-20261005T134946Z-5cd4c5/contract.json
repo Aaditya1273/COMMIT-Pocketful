@@ -1,0 +1,488 @@
+{
+  "kind": "contract-checks",
+  "base": "http://127.0.0.1:43093",
+  "checks": 49,
+  "passed": 49,
+  "failed": 0,
+  "requests": 2060,
+  "results": [
+    {
+      "id": "health",
+      "requirements": [
+        "R-03",
+        "R-05"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 30
+    },
+    {
+      "id": "unknown-route-envelope",
+      "requirements": [
+        "R-06",
+        "plan:A-11"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 93
+    },
+    {
+      "id": "reset-seeds-balances-and-logins",
+      "requirements": [
+        "R-04",
+        "R-22"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 93
+    },
+    {
+      "id": "reset-seeded-feed-and-requests",
+      "requirements": [
+        "R-04",
+        "R-31",
+        "R-28"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 92
+    },
+    {
+      "id": "reset-invalidates-tokens-and-keys",
+      "requirements": [
+        "R-04"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 318
+    },
+    {
+      "id": "reset-negative-balance-422-unchanged",
+      "requirements": [
+        "R-04"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 90
+    },
+    {
+      "id": "reset-bad-fixtures-422",
+      "requirements": [
+        "R-04",
+        "plan:edge-17"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 101
+    },
+    {
+      "id": "reset-currency-jpy-bhd",
+      "requirements": [
+        "R-04",
+        "R-22"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 180
+    },
+    {
+      "id": "reset-operator-default-empty",
+      "requirements": [
+        "R-34"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 88
+    },
+    {
+      "id": "signup-login-shape",
+      "requirements": [
+        "R-13",
+        "R-14",
+        "R-11"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 147
+    },
+    {
+      "id": "signup-handle-derivation",
+      "requirements": [
+        "R-11"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 210
+    },
+    {
+      "id": "signup-new-user-can-receive-and-be-asked",
+      "requirements": [
+        "R-13"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 120
+    },
+    {
+      "id": "signup-errors",
+      "requirements": [
+        "R-13",
+        "R-09"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 168
+    },
+    {
+      "id": "login-errors",
+      "requirements": [
+        "R-14"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 146
+    },
+    {
+      "id": "bearer-required",
+      "requirements": [
+        "R-15"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 141
+    },
+    {
+      "id": "password-not-stored-plaintext",
+      "requirements": [
+        "R-16"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 146
+    },
+    {
+      "id": "payment-201-shape-and-balances",
+      "requirements": [
+        "R-23",
+        "R-12"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 98
+    },
+    {
+      "id": "payment-amount-forms",
+      "requirements": [
+        "R-07"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 97
+    },
+    {
+      "id": "payment-amount-invalid-422",
+      "requirements": [
+        "R-07"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 124
+    },
+    {
+      "id": "payment-amount-max-boundary",
+      "requirements": [
+        "R-07",
+        "R-12"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 95
+    },
+    {
+      "id": "payment-errors",
+      "requirements": [
+        "R-23",
+        "R-09"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 124
+    },
+    {
+      "id": "payment-exact-balance-and-unknown-fields",
+      "requirements": [
+        "R-23",
+        "R-05"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 92
+    },
+    {
+      "id": "note-verbatim-roundtrip",
+      "requirements": [
+        "R-08"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 90
+    },
+    {
+      "id": "idem-header-rules",
+      "requirements": [
+        "R-17"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 119
+    },
+    {
+      "id": "idem-replay-and-reuse",
+      "requirements": [
+        "R-19",
+        "R-21"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 105
+    },
+    {
+      "id": "idem-numeric-equality",
+      "requirements": [
+        "R-19",
+        "plan:A-14"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 88
+    },
+    {
+      "id": "idem-scope-user-and-path",
+      "requirements": [
+        "R-18"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 98
+    },
+    {
+      "id": "idem-failed-key-reusable",
+      "requirements": [
+        "R-19"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 102
+    },
+    {
+      "id": "idem-replay-after-resource-changed",
+      "requirements": [
+        "R-19",
+        "R-25"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 100
+    },
+    {
+      "id": "request-create",
+      "requirements": [
+        "R-24"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 114
+    },
+    {
+      "id": "request-pay",
+      "requirements": [
+        "R-25",
+        "R-12"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 99
+    },
+    {
+      "id": "request-pay-errors",
+      "requirements": [
+        "R-25",
+        "plan:A-02"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 117
+    },
+    {
+      "id": "request-decline-cancel",
+      "requirements": [
+        "R-26",
+        "R-27",
+        "plan:A-02"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 119
+    },
+    {
+      "id": "get-requests-filters-order-paging",
+      "requirements": [
+        "R-28",
+        "R-10"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 157
+    },
+    {
+      "id": "split-shares-table",
+      "requirements": [
+        "R-29",
+        "R-30"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 103
+    },
+    {
+      "id": "split-caller-only-and-zero-share",
+      "requirements": [
+        "R-29",
+        "R-30",
+        "plan:A-03"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 93
+    },
+    {
+      "id": "split-errors",
+      "requirements": [
+        "R-29",
+        "R-09"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 104
+    },
+    {
+      "id": "activity-visibility-order-paging",
+      "requirements": [
+        "R-31",
+        "R-10"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 111
+    },
+    {
+      "id": "settlement-201-net-chain",
+      "requirements": [
+        "R-35",
+        "R-36",
+        "R-37"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 92
+    },
+    {
+      "id": "settlement-auth-and-shape",
+      "requirements": [
+        "R-35",
+        "R-34"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 112
+    },
+    {
+      "id": "settlement-precedence-and-atomicity",
+      "requirements": [
+        "R-35",
+        "R-36"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 105
+    },
+    {
+      "id": "settlement-replay",
+      "requirements": [
+        "R-37",
+        "R-19",
+        "R-21"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 92
+    },
+    {
+      "id": "export-shape-unauthenticated",
+      "requirements": [
+        "R-32"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 90
+    },
+    {
+      "id": "export-import-roundtrip",
+      "requirements": [
+        "R-32",
+        "R-33",
+        "R-34"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 445
+    },
+    {
+      "id": "import-invalid-unchanged",
+      "requirements": [
+        "R-33"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 111
+    },
+    {
+      "id": "import-corruption-fuzz",
+      "requirements": [
+        "R-33",
+        "R-06"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 1281
+    },
+    {
+      "id": "import-into-second-instance",
+      "requirements": [
+        "R-33"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 0
+    },
+    {
+      "id": "conservation-after-suite",
+      "requirements": [
+        "R-12"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 117
+    },
+    {
+      "id": "protocol-violations",
+      "requirements": [
+        "R-05",
+        "R-06"
+      ],
+      "passed": true,
+      "failures": [],
+      "ms": 0
+    }
+  ]
+}

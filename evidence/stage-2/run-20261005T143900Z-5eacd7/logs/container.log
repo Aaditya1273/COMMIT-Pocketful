@@ -1,0 +1,11 @@
+offline: healthy after 42 ms on --network none (none cpus=2000000000 mem=2147483648)
+offline: outbound request from inside the container fails, as required
+default port: 8080 serves with PORT unset/empty
+contract: 49/49 checks passed, 0 failed, 2068 requests
+reset 200 users with distinct passwords + 500 payments + 300 requests: 204 in 3973 ms
+50 concurrent logins (distinct users): 50 ok, slowest 993 ms, wall 1001 ms
+50 concurrent mixed requests: statuses {"200":30,"201":20}, slowest 206 ms
+5 MiB body: 201 
+limits: all within §2 budgets
+auth-contract: 14/14 checks passed, 0 failed, 278 requests
+ui: 16/16 checks passed, 0 failed

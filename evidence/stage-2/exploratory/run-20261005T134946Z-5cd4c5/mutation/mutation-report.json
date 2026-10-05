@@ -1,0 +1,1980 @@
+{
+  "kind": "mutation-campaign",
+  "summary": {
+    "kind": "mutation-campaign",
+    "factoryVersion": "1.0.0-rc.3",
+    "target": "stage-2",
+    "files": [
+      "src/public/app.js",
+      "src/server.js",
+      "src/ui.js"
+    ],
+    "start": "node src/server.js",
+    "check": "/tmp/vf-s2/verification/stage-2/kill.sh {url}",
+    "seed": 1,
+    "selection": "seeded-sample",
+    "discovered": 1768,
+    "executed": 100,
+    "tally": {
+      "killed": 56,
+      "survived": 6,
+      "timeout": 37,
+      "invalid": 1,
+      "error": 0,
+      "equivalent": 0
+    },
+    "layers": {
+      "adversarial": {
+        "killed": 0,
+        "onlyThisLayer": 0
+      },
+      "adversarial-holds": {
+        "killed": 0,
+        "onlyThisLayer": 0
+      },
+      "auth-contract": {
+        "killed": 9,
+        "onlyThisLayer": 9
+      },
+      "contract": {
+        "killed": 36,
+        "onlyThisLayer": 36
+      },
+      "reference": {
+        "killed": 0,
+        "onlyThisLayer": 0
+      },
+      "reference-holds": {
+        "killed": 0,
+        "onlyThisLayer": 0
+      },
+      "survivors": {
+        "killed": 8,
+        "onlyThisLayer": 8
+      },
+      "ui": {
+        "killed": 3,
+        "onlyThisLayer": 3
+      }
+    },
+    "valid": 99,
+    "killRate": 0.5656565656565656,
+    "detectionRate": 0.9393939393939394,
+    "formula": "killRate = killed / (killed + survived + timeout); detectionRate counts timeouts as detected; invalid, error and equivalent are excluded from both and listed",
+    "campaignBroken": false,
+    "jobs": 8,
+    "mutantTimeoutMs": 180000,
+    "startedAt": "2026-10-05T13:53:07.359Z",
+    "finishedAt": "2026-10-05T14:13:33.930Z",
+    "durationMs": 1226571,
+    "replay": "node commit/mutate.ts --target stage-2 --start 'node src/server.js' --check '/tmp/vf-s2/verification/stage-2/kill.sh {url}' --only <id> --out <new dir>"
+  },
+  "results": [
+    {
+      "id": "m-41bed97f43",
+      "file": "src/public/app.js",
+      "line": 94,
+      "column": 9,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 3680,
+      "end": 3681,
+      "outcome": "timeout",
+      "durationMs": 181668,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-d8c3c084ab",
+      "file": "src/public/app.js",
+      "line": 98,
+      "column": 66,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 3933,
+      "end": 3936,
+      "outcome": "timeout",
+      "durationMs": 181733,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-4a402db808",
+      "file": "src/public/app.js",
+      "line": 101,
+      "column": 24,
+      "operator": "literal-boundary",
+      "original": "13",
+      "replacement": "14",
+      "start": 4061,
+      "end": 4063,
+      "outcome": "timeout",
+      "durationMs": 181657,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-3e0762cece",
+      "file": "src/public/app.js",
+      "line": 103,
+      "column": 77,
+      "operator": "literal-boundary",
+      "original": "0",
+      "replacement": "1",
+      "start": 4235,
+      "end": 4236,
+      "outcome": "timeout",
+      "durationMs": 181674,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-a94f1e5ca5",
+      "file": "src/public/app.js",
+      "line": 111,
+      "column": 17,
+      "operator": "literal-boundary",
+      "original": "0",
+      "replacement": "1",
+      "start": 4529,
+      "end": 4530,
+      "outcome": "timeout",
+      "durationMs": 181655,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-6b53cc7482",
+      "file": "src/public/app.js",
+      "line": 153,
+      "column": 9,
+      "operator": "guard-bypass",
+      "original": "overrides && overrides[code]",
+      "replacement": "false",
+      "start": 6503,
+      "end": 6531,
+      "outcome": "timeout",
+      "durationMs": 181375,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-862aca960b",
+      "file": "src/public/app.js",
+      "line": 167,
+      "column": 9,
+      "operator": "guard-bypass",
+      "original": "opts.key",
+      "replacement": "false",
+      "start": 7117,
+      "end": 7125,
+      "outcome": "timeout",
+      "durationMs": 181682,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-f5eff56aa8",
+      "file": "src/public/app.js",
+      "line": 187,
+      "column": 20,
+      "operator": "boundary",
+      "original": ">=",
+      "replacement": ">",
+      "start": 7922,
+      "end": 7924,
+      "outcome": "timeout",
+      "durationMs": 181632,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-b33ede986c",
+      "file": "src/public/app.js",
+      "line": 190,
+      "column": 31,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 8196,
+      "end": 8197,
+      "outcome": "timeout",
+      "durationMs": 180579,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-cdc8eb53fe",
+      "file": "src/public/app.js",
+      "line": 224,
+      "column": 9,
+      "operator": "guard-bypass",
+      "original": "r.ok && accept('me', ticket)",
+      "replacement": "false",
+      "start": 9124,
+      "end": 9152,
+      "outcome": "timeout",
+      "durationMs": 180566,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-0e312501c1",
+      "file": "src/public/app.js",
+      "line": 225,
+      "column": 7,
+      "operator": "statement-deletion",
+      "original": "S.me = r.data;",
+      "replacement": ";",
+      "start": 9162,
+      "end": 9176,
+      "outcome": "timeout",
+      "durationMs": 180565,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-43591fe772",
+      "file": "src/public/app.js",
+      "line": 242,
+      "column": 5,
+      "operator": "statement-deletion",
+      "original": "paintFeed();",
+      "replacement": ";",
+      "start": 9783,
+      "end": 9795,
+      "outcome": "timeout",
+      "durationMs": 180574,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-e0a3c13199",
+      "file": "src/public/app.js",
+      "line": 272,
+      "column": 18,
+      "operator": "logical",
+      "original": "&&",
+      "replacement": "||",
+      "start": 11030,
+      "end": 11032,
+      "outcome": "timeout",
+      "durationMs": 180544,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-0b63eb25ae",
+      "file": "src/public/app.js",
+      "line": 317,
+      "column": 9,
+      "operator": "guard-bypass",
+      "original": "screen.auth && !S.token",
+      "replacement": "false",
+      "start": 12820,
+      "end": 12843,
+      "outcome": "timeout",
+      "durationMs": 180573,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-8ddc9d48c1",
+      "file": "src/public/app.js",
+      "line": 332,
+      "column": 18,
+      "operator": "equality-negation",
+      "original": "!==",
+      "replacement": "===",
+      "start": 13407,
+      "end": 13410,
+      "outcome": "timeout",
+      "durationMs": 180135,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-7ec5d90ffd",
+      "file": "src/public/app.js",
+      "line": 380,
+      "column": 84,
+      "operator": "logical",
+      "original": "||",
+      "replacement": "&&",
+      "start": 15444,
+      "end": 15446,
+      "outcome": "timeout",
+      "durationMs": 180537,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-c8482a1706",
+      "file": "src/public/app.js",
+      "line": 422,
+      "column": 99,
+      "operator": "arithmetic",
+      "original": "+",
+      "replacement": "-",
+      "start": 17095,
+      "end": 17096,
+      "outcome": "timeout",
+      "durationMs": 180116,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-db6af8a390",
+      "file": "src/public/app.js",
+      "line": 489,
+      "column": 15,
+      "operator": "logical",
+      "original": "||",
+      "replacement": "&&",
+      "start": 20515,
+      "end": 20517,
+      "outcome": "timeout",
+      "durationMs": 180048,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-2771f07fab",
+      "file": "src/public/app.js",
+      "line": 512,
+      "column": 49,
+      "operator": "arithmetic",
+      "original": "+",
+      "replacement": "-",
+      "start": 22121,
+      "end": 22122,
+      "outcome": "killed",
+      "durationMs": 171411,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "fail"
+      }
+    },
+    {
+      "id": "m-f287662d0e",
+      "file": "src/public/app.js",
+      "line": 574,
+      "column": 23,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 26118,
+      "end": 26121,
+      "outcome": "killed",
+      "durationMs": 171368,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "fail"
+      }
+    },
+    {
+      "id": "m-e52a62c27e",
+      "file": "src/public/app.js",
+      "line": 595,
+      "column": 23,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 27006,
+      "end": 27009,
+      "outcome": "timeout",
+      "durationMs": 180078,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-eed44315ec",
+      "file": "src/public/app.js",
+      "line": 602,
+      "column": 9,
+      "operator": "guard-bypass",
+      "original": "f.sig !== sig || !f.key",
+      "replacement": "false",
+      "start": 27460,
+      "end": 27483,
+      "outcome": "timeout",
+      "durationMs": 180141,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-9696c11b5f",
+      "file": "src/public/app.js",
+      "line": 624,
+      "column": 16,
+      "operator": "boolean-literal",
+      "original": "false",
+      "replacement": "true",
+      "start": 28211,
+      "end": 28216,
+      "outcome": "timeout",
+      "durationMs": 180139,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-19367d6bcb",
+      "file": "src/public/app.js",
+      "line": 636,
+      "column": 33,
+      "operator": "logical",
+      "original": "||",
+      "replacement": "&&",
+      "start": 28672,
+      "end": 28674,
+      "outcome": "killed",
+      "durationMs": 171425,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "fail"
+      }
+    },
+    {
+      "id": "m-d20f874947",
+      "file": "src/public/app.js",
+      "line": 636,
+      "column": 45,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 28684,
+      "end": 28687,
+      "outcome": "timeout",
+      "durationMs": 181225,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-821de60ad8",
+      "file": "src/public/app.js",
+      "line": 652,
+      "column": 5,
+      "operator": "statement-deletion",
+      "original": "body.replaceChildren(...notes, h('ul', { class: 'feed', testid: 'activity-list' }, a.items.map(feedItem)));",
+      "replacement": ";",
+      "start": 29548,
+      "end": 29655,
+      "outcome": "timeout",
+      "durationMs": 180902,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-6113e4d75e",
+      "file": "src/public/app.js",
+      "line": 709,
+      "column": 17,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 32955,
+      "end": 32956,
+      "outcome": "timeout",
+      "durationMs": 180639,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-ed37e43046",
+      "file": "src/public/app.js",
+      "line": 728,
+      "column": 83,
+      "operator": "arithmetic",
+      "original": "+",
+      "replacement": "-",
+      "start": 34322,
+      "end": 34323,
+      "outcome": "timeout",
+      "durationMs": 180038,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-f6db5dc6d1",
+      "file": "src/public/app.js",
+      "line": 803,
+      "column": 50,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 38594,
+      "end": 38597,
+      "outcome": "timeout",
+      "durationMs": 180009,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-4a96dd84b0",
+      "file": "src/public/app.js",
+      "line": 822,
+      "column": 66,
+      "operator": "literal-boundary",
+      "original": "1",
+      "replacement": "2",
+      "start": 39263,
+      "end": 39264,
+      "outcome": "timeout",
+      "durationMs": 180032,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-e64bd40e3d",
+      "file": "src/public/app.js",
+      "line": 849,
+      "column": 11,
+      "operator": "statement-deletion",
+      "original": "h('div', { id: 'preview-body', 'aria-live': 'polite' }))));",
+      "replacement": ";",
+      "start": 41324,
+      "end": 41383,
+      "outcome": "timeout",
+      "durationMs": 180065,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-889fb2388f",
+      "file": "src/public/app.js",
+      "line": 887,
+      "column": 9,
+      "operator": "guard-bypass",
+      "original": "!slot",
+      "replacement": "false",
+      "start": 43041,
+      "end": 43046,
+      "outcome": "timeout",
+      "durationMs": 180030,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-2be14982d7",
+      "file": "src/public/app.js",
+      "line": 889,
+      "column": 14,
+      "operator": "guard-bypass",
+      "original": "f.status === 'uncertain'",
+      "replacement": "false",
+      "start": 43206,
+      "end": 43230,
+      "outcome": "timeout",
+      "durationMs": 181351,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-b1463e2d48",
+      "file": "src/public/app.js",
+      "line": 963,
+      "column": 48,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 46770,
+      "end": 46773,
+      "outcome": "timeout",
+      "durationMs": 181372,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-79675899c4",
+      "file": "src/public/app.js",
+      "line": 967,
+      "column": 19,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 47036,
+      "end": 47039,
+      "outcome": "timeout",
+      "durationMs": 180842,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-f2b482b58e",
+      "file": "src/public/app.js",
+      "line": 984,
+      "column": 27,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 48111,
+      "end": 48114,
+      "outcome": "timeout",
+      "durationMs": 180023,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-be044f24fe",
+      "file": "src/public/app.js",
+      "line": 1000,
+      "column": 14,
+      "operator": "logical",
+      "original": "&&",
+      "replacement": "||",
+      "start": 49254,
+      "end": 49256,
+      "outcome": "timeout",
+      "durationMs": 180011,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-2eb0b7ccb0",
+      "file": "src/server.js",
+      "line": 24,
+      "column": 23,
+      "operator": "literal-boundary",
+      "original": "2",
+      "replacement": "3",
+      "start": 935,
+      "end": 936,
+      "outcome": "timeout",
+      "durationMs": 180064,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-7bb75c926d",
+      "file": "src/server.js",
+      "line": 46,
+      "column": 45,
+      "operator": "literal-boundary",
+      "original": "401",
+      "replacement": "402",
+      "start": 1835,
+      "end": 1838,
+      "outcome": "killed",
+      "durationMs": 14127,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-ba3faa0cf3",
+      "file": "src/server.js",
+      "line": 51,
+      "column": 27,
+      "operator": "equality-negation",
+      "original": "!==",
+      "replacement": "===",
+      "start": 2019,
+      "end": 2022,
+      "outcome": "killed",
+      "durationMs": 516,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-9dfcd8b178",
+      "file": "src/server.js",
+      "line": 73,
+      "column": 14,
+      "operator": "boundary",
+      "original": ">",
+      "replacement": ">=",
+      "start": 2877,
+      "end": 2878,
+      "outcome": "timeout",
+      "durationMs": 180012,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-c63a952161",
+      "file": "src/server.js",
+      "line": 94,
+      "column": 64,
+      "operator": "literal-boundary",
+      "original": "1",
+      "replacement": "2",
+      "start": 3736,
+      "end": 3737,
+      "outcome": "timeout",
+      "durationMs": 180007,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass"
+      }
+    },
+    {
+      "id": "m-0c9318c192",
+      "file": "src/server.js",
+      "line": 151,
+      "column": 5,
+      "operator": "statement-deletion",
+      "original": "st.counter += 1;",
+      "replacement": ";",
+      "start": 5418,
+      "end": 5434,
+      "outcome": "killed",
+      "durationMs": 20447,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-493cae515b",
+      "file": "src/server.js",
+      "line": 209,
+      "column": 3,
+      "operator": "statement-deletion",
+      "original": "set.add(a);",
+      "replacement": ";",
+      "start": 6976,
+      "end": 6987,
+      "outcome": "killed",
+      "durationMs": 22860,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "fail"
+      }
+    },
+    {
+      "id": "m-fc1b1c36d5",
+      "file": "src/server.js",
+      "line": 242,
+      "column": 59,
+      "operator": "literal-boundary",
+      "original": "0",
+      "replacement": "1",
+      "start": 7802,
+      "end": 7803,
+      "outcome": "killed",
+      "durationMs": 22844,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "fail"
+      }
+    },
+    {
+      "id": "m-1dab636f4d",
+      "file": "src/server.js",
+      "line": 272,
+      "column": 37,
+      "operator": "arithmetic",
+      "original": "-",
+      "replacement": "+",
+      "start": 8564,
+      "end": 8565,
+      "outcome": "killed",
+      "durationMs": 15589,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-b33d372e8c",
+      "file": "src/server.js",
+      "line": 278,
+      "column": 62,
+      "operator": "logical",
+      "original": "||",
+      "replacement": "&&",
+      "start": 8780,
+      "end": 8782,
+      "outcome": "killed",
+      "durationMs": 15842,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-dd9a4bdeda",
+      "file": "src/server.js",
+      "line": 285,
+      "column": 9,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 8921,
+      "end": 8924,
+      "outcome": "killed",
+      "durationMs": 14861,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-7f1eeff56a",
+      "file": "src/server.js",
+      "line": 286,
+      "column": 16,
+      "operator": "equality-negation",
+      "original": "!==",
+      "replacement": "===",
+      "start": 8962,
+      "end": 8965,
+      "outcome": "killed",
+      "durationMs": 15621,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-9761091941",
+      "file": "src/server.js",
+      "line": 287,
+      "column": 7,
+      "operator": "guard-bypass",
+      "original": "codePoints(v) > MAX_NOTE",
+      "replacement": "false",
+      "start": 9022,
+      "end": 9046,
+      "outcome": "killed",
+      "durationMs": 14737,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-c87696d770",
+      "file": "src/server.js",
+      "line": 309,
+      "column": 24,
+      "operator": "literal-boundary",
+      "original": "50",
+      "replacement": "51",
+      "start": 9725,
+      "end": 9727,
+      "outcome": "killed",
+      "durationMs": 74973,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "fail"
+      }
+    },
+    {
+      "id": "m-ce81d2259d",
+      "file": "src/server.js",
+      "line": 388,
+      "column": 13,
+      "operator": "literal-boundary",
+      "original": "200",
+      "replacement": "201",
+      "start": 12558,
+      "end": 12561,
+      "outcome": "killed",
+      "durationMs": 14493,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-ad9fbf54f5",
+      "file": "src/server.js",
+      "line": 450,
+      "column": 16,
+      "operator": "literal-boundary",
+      "original": "0",
+      "replacement": "1",
+      "start": 14225,
+      "end": 14226,
+      "outcome": "killed",
+      "durationMs": 14451,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-45cd2cbd3f",
+      "file": "src/server.js",
+      "line": 486,
+      "column": 11,
+      "operator": "guard-bypass",
+      "original": "!to",
+      "replacement": "false",
+      "start": 15206,
+      "end": 15209,
+      "outcome": "killed",
+      "durationMs": 14809,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-33c039c109",
+      "file": "src/server.js",
+      "line": 525,
+      "column": 7,
+      "operator": "statement-deletion",
+      "original": "r.status = 'paid';",
+      "replacement": ";",
+      "start": 16830,
+      "end": 16848,
+      "outcome": "killed",
+      "durationMs": 14412,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-d9e4bb117f",
+      "file": "src/server.js",
+      "line": 542,
+      "column": 16,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 17380,
+      "end": 17383,
+      "outcome": "killed",
+      "durationMs": 13829,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-da664b0d54",
+      "file": "src/server.js",
+      "line": 567,
+      "column": 9,
+      "operator": "guard-bypass",
+      "original": "direction === 'outgoing' && !outgoing",
+      "replacement": "false",
+      "start": 18273,
+      "end": 18310,
+      "outcome": "killed",
+      "durationMs": 13868,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-956e01c3cd",
+      "file": "src/server.js",
+      "line": 635,
+      "column": 35,
+      "operator": "logical",
+      "original": "||",
+      "replacement": "&&",
+      "start": 20767,
+      "end": 20769,
+      "outcome": "killed",
+      "durationMs": 13217,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-da9746a0bb",
+      "file": "src/server.js",
+      "line": 635,
+      "column": 55,
+      "operator": "logical",
+      "original": "||",
+      "replacement": "&&",
+      "start": 20787,
+      "end": 20789,
+      "outcome": "killed",
+      "durationMs": 13192,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-db6466bad1",
+      "file": "src/server.js",
+      "line": 660,
+      "column": 13,
+      "operator": "guard-bypass",
+      "original": "!from",
+      "replacement": "false",
+      "start": 22081,
+      "end": 22086,
+      "outcome": "killed",
+      "durationMs": 70250,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "fail"
+      }
+    },
+    {
+      "id": "m-3d02b5d417",
+      "file": "src/server.js",
+      "line": 663,
+      "column": 13,
+      "operator": "guard-bypass",
+      "original": "from.id === to.id",
+      "replacement": "false",
+      "start": 22308,
+      "end": 22325,
+      "outcome": "killed",
+      "durationMs": 13045,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-8d7dee58ea",
+      "file": "src/server.js",
+      "line": 663,
+      "column": 21,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 22316,
+      "end": 22319,
+      "outcome": "killed",
+      "durationMs": 12938,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-db888e19b4",
+      "file": "src/server.js",
+      "line": 672,
+      "column": 45,
+      "operator": "literal-boundary",
+      "original": "0",
+      "replacement": "1",
+      "start": 22736,
+      "end": 22737,
+      "outcome": "killed",
+      "durationMs": 13109,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-3b37938d13",
+      "file": "src/server.js",
+      "line": 758,
+      "column": 11,
+      "operator": "guard-bypass",
+      "original": "amount > a.remaining",
+      "replacement": "false",
+      "start": 25855,
+      "end": 25875,
+      "outcome": "killed",
+      "durationMs": 18352,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "fail"
+      }
+    },
+    {
+      "id": "m-2bbf3a241a",
+      "file": "src/server.js",
+      "line": 771,
+      "column": 32,
+      "operator": "logical",
+      "original": "||",
+      "replacement": "&&",
+      "start": 26451,
+      "end": 26453,
+      "outcome": "killed",
+      "durationMs": 17351,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "fail"
+      }
+    },
+    {
+      "id": "m-37939fb058",
+      "file": "src/server.js",
+      "line": 814,
+      "column": 22,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 27824,
+      "end": 27825,
+      "outcome": "killed",
+      "durationMs": 18172,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "fail"
+      }
+    },
+    {
+      "id": "m-4b27502460",
+      "file": "src/server.js",
+      "line": 816,
+      "column": 37,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 27938,
+      "end": 27939,
+      "outcome": "killed",
+      "durationMs": 17843,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "fail"
+      }
+    },
+    {
+      "id": "m-1a3a6ac2fb",
+      "file": "src/server.js",
+      "line": 829,
+      "column": 29,
+      "operator": "literal-boundary",
+      "original": "0",
+      "replacement": "1",
+      "start": 28387,
+      "end": 28388,
+      "outcome": "killed",
+      "durationMs": 12835,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-7452ebb25b",
+      "file": "src/server.js",
+      "line": 899,
+      "column": 23,
+      "operator": "logical",
+      "original": "||",
+      "replacement": "&&",
+      "start": 30967,
+      "end": 30969,
+      "outcome": "killed",
+      "durationMs": 290,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-615513a8ea",
+      "file": "src/server.js",
+      "line": 908,
+      "column": 15,
+      "operator": "literal-boundary",
+      "original": "3",
+      "replacement": "4",
+      "start": 31404,
+      "end": 31405,
+      "outcome": "killed",
+      "durationMs": 12587,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-122519e2c6",
+      "file": "src/server.js",
+      "line": 913,
+      "column": 53,
+      "operator": "literal-boundary",
+      "original": "0",
+      "replacement": "1",
+      "start": 31789,
+      "end": 31790,
+      "outcome": "killed",
+      "durationMs": 79052,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "fail"
+      }
+    },
+    {
+      "id": "m-bbd4accb86",
+      "file": "src/server.js",
+      "line": 928,
+      "column": 31,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 32692,
+      "end": 32695,
+      "outcome": "killed",
+      "durationMs": 12839,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-19c4b4aee8",
+      "file": "src/server.js",
+      "line": 931,
+      "column": 7,
+      "operator": "guard-bypass",
+      "original": "!Array.isArray(requests)",
+      "replacement": "false",
+      "start": 32921,
+      "end": 32945,
+      "outcome": "killed",
+      "durationMs": 82384,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "fail"
+      }
+    },
+    {
+      "id": "m-af227f8baa",
+      "file": "src/server.js",
+      "line": 938,
+      "column": 44,
+      "operator": "literal-boundary",
+      "original": "0",
+      "replacement": "1",
+      "start": 33443,
+      "end": 33444,
+      "outcome": "killed",
+      "durationMs": 82338,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "fail"
+      }
+    },
+    {
+      "id": "m-38e3f77852",
+      "file": "src/server.js",
+      "line": 956,
+      "column": 55,
+      "operator": "logical",
+      "original": "||",
+      "replacement": "&&",
+      "start": 34444,
+      "end": 34446,
+      "outcome": "killed",
+      "durationMs": 81222,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "fail"
+      }
+    },
+    {
+      "id": "m-e9720b73af",
+      "file": "src/server.js",
+      "line": 956,
+      "column": 72,
+      "operator": "literal-boundary",
+      "original": "64",
+      "replacement": "65",
+      "start": 34461,
+      "end": 34463,
+      "outcome": "killed",
+      "durationMs": 80627,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "fail"
+      }
+    },
+    {
+      "id": "m-05573eba0e",
+      "file": "src/server.js",
+      "line": 957,
+      "column": 9,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 34528,
+      "end": 34529,
+      "outcome": "killed",
+      "durationMs": 334,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-b6fdbb3b12",
+      "file": "src/server.js",
+      "line": 978,
+      "column": 34,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 35728,
+      "end": 35729,
+      "outcome": "killed",
+      "durationMs": 11502,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "fail"
+      }
+    },
+    {
+      "id": "m-84c2569af3",
+      "file": "src/server.js",
+      "line": 984,
+      "column": 7,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 36001,
+      "end": 36002,
+      "outcome": "killed",
+      "durationMs": 286,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-0a4cd6e0fa",
+      "file": "src/server.js",
+      "line": 991,
+      "column": 75,
+      "operator": "logical",
+      "original": "||",
+      "replacement": "&&",
+      "start": 36393,
+      "end": 36395,
+      "outcome": "survived",
+      "durationMs": 116418,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=pass\nCOMMIT-LAYER extra=pass\nCOMMIT-LAYER semantic-import=pass\nCOMMIT-LAYER shipped-stage-1=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "pass",
+        "extra": "pass",
+        "semantic-import": "pass",
+        "shipped-stage-1": "pass"
+      }
+    },
+    {
+      "id": "m-356b801f77",
+      "file": "src/server.js",
+      "line": 1000,
+      "column": 11,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 37082,
+      "end": 37083,
+      "outcome": "survived",
+      "durationMs": 115598,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=pass\nCOMMIT-LAYER extra=pass\nCOMMIT-LAYER semantic-import=pass\nCOMMIT-LAYER shipped-stage-1=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "pass",
+        "extra": "pass",
+        "semantic-import": "pass",
+        "shipped-stage-1": "pass"
+      }
+    },
+    {
+      "id": "m-866cfeb300",
+      "file": "src/server.js",
+      "line": 1000,
+      "column": 64,
+      "operator": "literal-boundary",
+      "original": "0",
+      "replacement": "1",
+      "start": 37135,
+      "end": 37136,
+      "outcome": "survived",
+      "durationMs": 105769,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=pass\nCOMMIT-LAYER extra=pass\nCOMMIT-LAYER semantic-import=pass\nCOMMIT-LAYER shipped-stage-1=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "pass",
+        "extra": "pass",
+        "semantic-import": "pass",
+        "shipped-stage-1": "pass"
+      }
+    },
+    {
+      "id": "m-785b7981a9",
+      "file": "src/server.js",
+      "line": 1023,
+      "column": 36,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 38293,
+      "end": 38294,
+      "outcome": "killed",
+      "durationMs": 18075,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "fail"
+      }
+    },
+    {
+      "id": "m-7da027618b",
+      "file": "src/server.js",
+      "line": 1047,
+      "column": 3,
+      "operator": "statement-deletion",
+      "original": "st.minorUnits = plan.minorUnits;",
+      "replacement": ";",
+      "start": 39288,
+      "end": 39320,
+      "outcome": "killed",
+      "durationMs": 12018,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-073ebfde53",
+      "file": "src/server.js",
+      "line": 1063,
+      "column": 17,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 39961,
+      "end": 39964,
+      "outcome": "killed",
+      "durationMs": 10780,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-2f8e347da3",
+      "file": "src/server.js",
+      "line": 1125,
+      "column": 59,
+      "operator": "logical",
+      "original": "&&",
+      "replacement": "||",
+      "start": 42232,
+      "end": 42234,
+      "outcome": "killed",
+      "durationMs": 12073,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-d78c45f340",
+      "file": "src/server.js",
+      "line": 1139,
+      "column": 59,
+      "operator": "equality-negation",
+      "original": "===",
+      "replacement": "!==",
+      "start": 42811,
+      "end": 42814,
+      "outcome": "killed",
+      "durationMs": 10498,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-df22e067c0",
+      "file": "src/server.js",
+      "line": 1140,
+      "column": 7,
+      "operator": "guard-bypass",
+      "original": "![0, 2, 3].includes(s.minor_units)",
+      "replacement": "false",
+      "start": 42854,
+      "end": 42888,
+      "outcome": "killed",
+      "durationMs": 65158,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "fail"
+      }
+    },
+    {
+      "id": "m-5219949b3b",
+      "file": "src/server.js",
+      "line": 1172,
+      "column": 9,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 44411,
+      "end": 44412,
+      "outcome": "killed",
+      "durationMs": 11761,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-6510231c99",
+      "file": "src/server.js",
+      "line": 1175,
+      "column": 39,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 44708,
+      "end": 44709,
+      "outcome": "killed",
+      "durationMs": 12016,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-fcd2a9d258",
+      "file": "src/server.js",
+      "line": 1180,
+      "column": 92,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 45140,
+      "end": 45141,
+      "outcome": "killed",
+      "durationMs": 11547,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-250f118255",
+      "file": "src/server.js",
+      "line": 1194,
+      "column": 9,
+      "operator": "guard-bypass",
+      "original": "!isNullableString(r.payment_id) || !isNullableString(r.split_id)",
+      "replacement": "false",
+      "start": 45933,
+      "end": 45997,
+      "outcome": "survived",
+      "durationMs": 85134,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=pass\nCOMMIT-LAYER extra=pass\nCOMMIT-LAYER semantic-import=pass\nCOMMIT-LAYER shipped-stage-1=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "pass",
+        "extra": "pass",
+        "semantic-import": "pass",
+        "shipped-stage-1": "pass"
+      }
+    },
+    {
+      "id": "m-e912ee583c",
+      "file": "src/server.js",
+      "line": 1195,
+      "column": 21,
+      "operator": "equality-negation",
+      "original": "!==",
+      "replacement": "===",
+      "start": 46054,
+      "end": 46057,
+      "outcome": "killed",
+      "durationMs": 11829,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-9fedc5c4ae",
+      "file": "src/server.js",
+      "line": 1206,
+      "column": 38,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 46768,
+      "end": 46769,
+      "outcome": "killed",
+      "durationMs": 12982,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-83838935be",
+      "file": "src/server.js",
+      "line": 1227,
+      "column": 55,
+      "operator": "logical",
+      "original": "||",
+      "replacement": "&&",
+      "start": 48082,
+      "end": 48084,
+      "outcome": "survived",
+      "durationMs": 80943,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=pass\nCOMMIT-LAYER extra=pass\nCOMMIT-LAYER semantic-import=pass\nCOMMIT-LAYER shipped-stage-1=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "pass",
+        "extra": "pass",
+        "semantic-import": "pass",
+        "shipped-stage-1": "pass"
+      }
+    },
+    {
+      "id": "m-e33a505860",
+      "file": "src/server.js",
+      "line": 1231,
+      "column": 25,
+      "operator": "negation-removal",
+      "original": "!",
+      "replacement": "",
+      "start": 48293,
+      "end": 48294,
+      "outcome": "killed",
+      "durationMs": 15325,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=fail\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "fail"
+      }
+    },
+    {
+      "id": "m-465861ed14",
+      "file": "src/server.js",
+      "line": 1240,
+      "column": 9,
+      "operator": "guard-bypass",
+      "original": "typeof a.expires_ts !== 'number' || !Number.isFinite(a.expires_ts) || !isTsString(a.expires_at)\n      || typeof a.ts !== 'number' || !Number.isFinite(a.ts) || !isTsString(a.created_at) || !isCount(a.seq)",
+      "replacement": "false",
+      "start": 48893,
+      "end": 49096,
+      "outcome": "survived",
+      "durationMs": 75908,
+      "evidence": "COMMIT-LAYER contract=pass\nCOMMIT-LAYER auth-contract=pass\nCOMMIT-LAYER reference-holds=pass\nCOMMIT-LAYER ui=pass\nCOMMIT-LAYER reference=pass\nCOMMIT-LAYER adversarial-holds=pass\nCOMMIT-LAYER adversarial=pass\nCOMMIT-LAYER survivors=pass\nCOMMIT-LAYER extra=pass\nCOMMIT-LAYER semantic-import=pass\nCOMMIT-LAYER shipped-stage-1=pass\n",
+      "layers": {
+        "contract": "pass",
+        "auth-contract": "pass",
+        "reference-holds": "pass",
+        "ui": "pass",
+        "reference": "pass",
+        "adversarial-holds": "pass",
+        "adversarial": "pass",
+        "survivors": "pass",
+        "extra": "pass",
+        "semantic-import": "pass",
+        "shipped-stage-1": "pass"
+      }
+    },
+    {
+      "id": "m-6683654b94",
+      "file": "src/server.js",
+      "line": 1315,
+      "column": 9,
+      "operator": "guard-bypass",
+      "original": "m !== method",
+      "replacement": "false",
+      "start": 52178,
+      "end": 52190,
+      "outcome": "killed",
+      "durationMs": 9430,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-0bb5255602",
+      "file": "src/server.js",
+      "line": 1376,
+      "column": 7,
+      "operator": "statement-deletion",
+      "original": "chunks.push(c);",
+      "replacement": ";",
+      "start": 53708,
+      "end": 53723,
+      "outcome": "killed",
+      "durationMs": 233,
+      "evidence": "COMMIT-LAYER contract=fail\n",
+      "layers": {
+        "contract": "fail"
+      }
+    },
+    {
+      "id": "m-ce2a2d752d",
+      "file": "src/server.js",
+      "line": 1416,
+      "column": 24,
+      "operator": "equality-negation",
+      "original": "!==",
+      "replacement": "===",
+      "start": 54780,
+      "end": 54783,
+      "outcome": "invalid",
+      "durationMs": 20066,
+      "reason": "candidate never became healthy",
+      "evidence": "pocketful stage 2 listening on 0.0.0.0:8080\n"
+    }
+  ]
+}

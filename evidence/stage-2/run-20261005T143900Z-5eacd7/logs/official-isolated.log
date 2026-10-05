@@ -1,0 +1,38 @@
+building /tmp/vf-s2/stage-2 ...
+  stage 1: pass  (log: /tmp/vf2-evidence-run3/official/stage-1.log)
+building upgrade source /tmp/vf-s2/stage-1 ...
+  stage 2: pass  (log: /tmp/vf2-evidence-run3/official/stage-2.log)
+  stage 3: fail  (log: /tmp/vf2-evidence-run3/official/stage-3.log)
+highest contiguous stage: 2
+claimed stage: 2 on the shipped checks
+report: /tmp/vf2-evidence-run3/official/report.json
+NOTE: this run only includes a portion of the full tests that are applied before judging; this is meant to provide directional feedback, and ultimately you may not pass the stage with the full set of tests.
+harness exit code: 0 (not used for the judgement)
+{
+  "kind": "official-harness",
+  "stage": 2,
+  "revision": "ef962af95a5b8507cf97395525468c1510c1b51c",
+  "mode": "isolated",
+  "suites": {
+    "1": {
+      "collected": 147,
+      "passed": 147,
+      "failed": 0,
+      "errors": 0
+    },
+    "2": {
+      "collected": 35,
+      "passed": 35,
+      "failed": 0,
+      "errors": 0
+    }
+  },
+  "overshoot": {
+    "collected": 6,
+    "passed": 2,
+    "failed": 1,
+    "errors": 0
+  },
+  "problems": [],
+  "failed": 0
+}

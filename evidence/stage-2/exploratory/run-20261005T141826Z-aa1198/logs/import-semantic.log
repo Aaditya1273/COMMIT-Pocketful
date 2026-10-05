@@ -1,0 +1,37 @@
+ok       422 validation_failed  negative balance
+ok       422 validation_failed  fractional balance
+ok       422 validation_failed  string balance
+ok       422 validation_failed  huge balance > 2^53
+ok       422 validation_failed  duplicate payment
+ok       422 validation_failed  duplicate request
+ok       422 validation_failed  duplicate user
+ok       422 validation_failed  duplicate handle
+ok       422 validation_failed  invalid handle
+ok       422 validation_failed  user missing id
+ok       422 validation_failed  user missing password hash
+ok       422 validation_failed  plaintext-looking hash
+ok       422 validation_failed  payment from unknown user
+ok       422 validation_failed  payment to unknown user
+advisory 204   payment from == to balances={"bob":2507,"cy":0,"ada":9993,"dan":5000,"op":0} sum=17500
+ok       422 validation_failed  payment missing created_at
+ok       422 validation_failed  payment created_at garbage
+advisory 204   request requester == payer balances={"bob":2507,"cy":0,"ada":9993,"dan":5000,"op":0} sum=17500
+advisory 204   request pending with payment balances={"bob":2507,"cy":0,"ada":9993,"dan":5000,"op":0} sum=17500
+advisory 204   request paid refs unknown payment balances={"bob":2507,"cy":0,"ada":9993,"dan":5000,"op":0} sum=17500
+advisory 204   payment amount 0 balances={"bob":2507,"cy":0,"ada":9993,"dan":5000,"op":0} sum=17500
+ok       422 validation_failed  payment amount string
+ok       422 validation_failed  payment bad visibility
+advisory 204   payment refs unknown request balances={"bob":2507,"cy":0,"ada":9993,"dan":5000,"op":0} sum=17500
+advisory 204   payment refs unknown settlement balances={"bob":2507,"cy":0,"ada":9993,"dan":5000,"op":0} sum=17500
+ok       422 validation_failed  request bad status
+advisory 204   request paid without payment balances={"bob":2507,"cy":0,"ada":9993,"dan":5000,"op":0} sum=17500
+ok       422 validation_failed  request payer unknown
+ok       422 validation_failed  token for unknown user
+ok       422 validation_failed  operator unknown user
+ok       422 validation_failed  minor_units 5
+ok       422 validation_failed  currency missing
+ok       422 validation_failed  users not array
+ok       422 validation_failed  idempotency not array
+ok       422 validation_failed  idempotency record unknown user
+violations []
+import-semantic: 0 blocking failures

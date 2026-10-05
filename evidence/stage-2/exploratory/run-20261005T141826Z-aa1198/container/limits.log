@@ -1,0 +1,5 @@
+reset 200 users with distinct passwords + 500 payments + 300 requests: 204 in 3962 ms
+50 concurrent logins (distinct users): 50 ok, slowest 995 ms, wall 1001 ms
+50 concurrent mixed requests: statuses {"200":30,"201":20}, slowest 262 ms
+5 MiB body: 201 
+limits: all within §2 budgets

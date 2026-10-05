@@ -1,0 +1,16 @@
+ok   me-fields-no-holds
+ok   seeded-holds
+ok   seeded-hold-reset-errors
+ok   authorize-201-and-errors
+ok   capture-final-default
+ok   capture-partial-extended
+ok   capture-errors-precedence
+ok   void-rules
+ok   expiry-by-clock
+ok   get-authorizations-filters-paging
+ok   available-governs-payments-requests-settlements
+ok   content-negotiation
+ok   export-import-holds
+ok   protocol-violations
+
+auth-contract: 14/14 checks passed, 0 failed, 278 requests

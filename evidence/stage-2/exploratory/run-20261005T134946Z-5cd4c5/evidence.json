@@ -1,0 +1,918 @@
+{
+  "schemaVersion": 2,
+  "kind": "commit-evidence",
+  "runId": "20261005T134946Z-5cd4c5",
+  "factoryVersion": "1.0.0-rc.3",
+  "stage": "pocketful stage 2",
+  "specification": "pocketful/spec/stage-2.md + stage-1.md; plan/stage-2.md (R2-01..R2-28, edge cases 1-13, A2-01..A2-08) + plan/stage-1.md regression set",
+  "plan": "verification/stage-2/plan.json",
+  "revision": {
+    "commit": "ef962af95a5b8507cf97395525468c1510c1b51c",
+    "branch": "HEAD",
+    "targetDirty": false,
+    "targetDigest": "030a6bc1aa805257326cf77f3beddb5a7e9dfb38dc867e8116e645e8ef11490e",
+    "targetDigestAfter": "030a6bc1aa805257326cf77f3beddb5a7e9dfb38dc867e8116e645e8ef11490e",
+    "candidateChanged": false
+  },
+  "environment": {
+    "factoryVersion": "1.0.0-rc.3",
+    "node": "v26.5.0",
+    "platform": "linux",
+    "release": "7.1.5-arch1-2",
+    "arch": "x64",
+    "git": "git version 2.55.0",
+    "python": "Python 3.14.6",
+    "docker": {
+      "installed": true,
+      "daemonReachable": true,
+      "detail": "daemon 29.6.2"
+    }
+  },
+  "startedAt": "2026-10-05T13:49:46.466Z",
+  "finishedAt": "2026-10-05T14:13:33.974Z",
+  "service": {
+    "start": "node src/server.js",
+    "healthy": true
+  },
+  "steps": [
+    {
+      "id": "clean-build",
+      "kind": "build",
+      "blocking": true,
+      "requirements": [
+        "R-01",
+        "R2-28"
+      ],
+      "command": "docker build --no-cache -t vf-pocketful-s2:verify stage-2",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 1647,
+      "outputBytes": 1399,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/clean-build.log",
+      "logSha256": "9f3c59e98bdf3c33ee253e23e156cdc26f10d2f7e1c207fb0c3eb18a93102ce5",
+      "report": null
+    },
+    {
+      "id": "container",
+      "kind": "offline",
+      "blocking": true,
+      "requirements": [
+        "R-01",
+        "R-02",
+        "R-03",
+        "R2-03..R2-28"
+      ],
+      "command": "verification/stage-2/container.sh '../vf2-evidence-run'/container vf-pocketful-s2:verify",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 44921,
+      "outputBytes": 635,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/container.log",
+      "logSha256": "133ee7a87edb20ccb1705d546c99525e9c9efa666a02e862c56f2c4a208ccc4c",
+      "report": null
+    },
+    {
+      "id": "official-isolated",
+      "kind": "supplied-checks",
+      "blocking": true,
+      "requirements": [
+        "R-01..R-37",
+        "R2-01..R2-28"
+      ],
+      "command": "verification/stage-2/official.sh '../vf2-evidence-run'/official . 2",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 42635,
+      "outputBytes": 1123,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/official-isolated.log",
+      "logSha256": "a913fbc96d12568ca8afb9f6c8450adbb340200e36c0ab90b845cbb12e16572d",
+      "report": "official/judgement.json"
+    },
+    {
+      "id": "shipped-stage-1-host",
+      "kind": "supplied-checks",
+      "blocking": true,
+      "requirements": [
+        "R2-01"
+      ],
+      "command": "env -u PYTHONHOME -u PYTHONPATH -C \"${COMMIT_KICKOFF:-/home/bajrangi/Wins/dark-factory-wearedevs}\" \"${COMMIT_KICKOFF:-/home/bajrangi/Wins/dark-factory-wearedevs}/.venv/bin/python\" -m pytest -p harness.plugin pocketful/test/stage_1 --base-url 'http://127.0.0.1:43093' -q -p no:cacheprovider",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 18846,
+      "outputBytes": 261,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/shipped-stage-1-host.log",
+      "logSha256": "3ab228a10ced1bc0fd2ab3621dc625f144abaefa579a8e08f6c2afb4c6b57c11",
+      "report": null
+    },
+    {
+      "id": "contract",
+      "kind": "contract",
+      "blocking": true,
+      "requirements": [
+        "R2-01",
+        "R-02..R-37"
+      ],
+      "command": "node verification/stage-2/contract.mjs --base-url 'http://127.0.0.1:43093' --seed 1337 --out '../vf2-evidence-run'/contract.json",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 6991,
+      "outputBytes": 1556,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/contract.log",
+      "logSha256": "87b662764ac7e880f2695e77e187adf925c0b8f34fef03420baa8033261858de",
+      "report": "contract.json"
+    },
+    {
+      "id": "auth-contract",
+      "kind": "contract",
+      "blocking": true,
+      "requirements": [
+        "R2-03..R2-16"
+      ],
+      "command": "node verification/stage-2/auth-contract.mjs --base-url 'http://127.0.0.1:43093' --out '../vf2-evidence-run'/auth-contract.json",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 3799,
+      "outputBytes": 454,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/auth-contract.log",
+      "logSha256": "fd078e467e9547ff07583d9949dbd6e3f2fad38f5c60eb867fd477c59eeb5b18",
+      "report": "auth-contract.json"
+    },
+    {
+      "id": "upgrade",
+      "kind": "contract",
+      "blocking": true,
+      "requirements": [
+        "R2-02"
+      ],
+      "command": "verification/stage-2/upgrade-step.sh 'http://127.0.0.1:43093'",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 304,
+      "outputBytes": 22,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/upgrade.log",
+      "logSha256": "eaae1c91f753889c4587fb04e7291119e2f4c4e19f42d141bf1c33c269794efa",
+      "report": null
+    },
+    {
+      "id": "extra",
+      "kind": "contract",
+      "blocking": true,
+      "requirements": [
+        "R-04",
+        "R-13",
+        "R-14",
+        "R-25",
+        "R-34",
+        "R-35"
+      ],
+      "command": "node verification/stage-2/extra.mjs 'http://127.0.0.1:43093'",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 324,
+      "outputBytes": 36,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/extra.log",
+      "logSha256": "52e1becd852154e2836721f2ac5e1b60aa6154a888369e105c689d6d875b1fff",
+      "report": null
+    },
+    {
+      "id": "survivor-checks",
+      "kind": "contract",
+      "blocking": true,
+      "requirements": [
+        "R-04",
+        "R-07",
+        "R-10",
+        "R-12",
+        "R-19",
+        "R-28",
+        "R-31",
+        "R-33",
+        "R-35"
+      ],
+      "command": "node verification/stage-2/survivors.mjs 'http://127.0.0.1:43093'",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 3147,
+      "outputBytes": 93,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/survivor-checks.log",
+      "logSha256": "e0ea61349f6af7440cec2801f359debf82e9430b5e3d5c1c562e7c273294468e",
+      "report": null
+    },
+    {
+      "id": "import-semantic",
+      "kind": "contract",
+      "blocking": true,
+      "requirements": [
+        "R-33"
+      ],
+      "command": "node verification/stage-2/import-semantic-probe.mjs 'http://127.0.0.1:43093'",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 258,
+      "outputBytes": 2351,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/import-semantic.log",
+      "logSha256": "e34144126f46bf7580cd11e44356543f43e01583d4658fc6f57cc5849821e7ad",
+      "report": null
+    },
+    {
+      "id": "ui",
+      "kind": "contract",
+      "blocking": true,
+      "requirements": [
+        "R2-17..R2-28"
+      ],
+      "command": "env -u PYTHONHOME -u PYTHONPATH \"${COMMIT_KICKOFF:-/home/bajrangi/Wins/dark-factory-wearedevs}/.venv/bin/python\" verification/stage-2/ui_checks.py 'http://127.0.0.1:43093' --out '../vf2-evidence-run'/ui.json",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 24682,
+      "outputBytes": 477,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/ui.log",
+      "logSha256": "2deaddc312f34c7bdc06fe284daa72adc83b8e9af47cddc85653f38ee8861856",
+      "report": "ui.json"
+    },
+    {
+      "id": "reference-holds-481927",
+      "kind": "reference",
+      "blocking": true,
+      "requirements": [
+        "R2-04..R2-15"
+      ],
+      "command": "node commit/campaign.ts --module verification/stage-2/reference-holds.mjs --base-url 'http://127.0.0.1:43093' --seed 481927 --operations 1000 --out '../vf2-evidence-run'/reference-holds-481927",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 5422,
+      "outputBytes": 903,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/reference-holds-481927.log",
+      "logSha256": "39e60475ca5e95b34c2deabf6e1f9cb92462cebbf0be061a8f496d04e1bb11d1",
+      "report": "reference-holds-481927/reference-report.json"
+    },
+    {
+      "id": "reference-holds-7",
+      "kind": "reference",
+      "blocking": true,
+      "requirements": [
+        "R2-04..R2-15"
+      ],
+      "command": "node commit/campaign.ts --module verification/stage-2/reference-holds.mjs --base-url 'http://127.0.0.1:43093' --seed 7 --operations 1000 --out '../vf2-evidence-run'/reference-holds-7",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 5418,
+      "outputBytes": 894,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/reference-holds-7.log",
+      "logSha256": "65e18af8e2e3369897bcf7ba87bad0176dec190b1858aa5375cae238a359ea14",
+      "report": "reference-holds-7/reference-report.json"
+    },
+    {
+      "id": "reference-holds-90210",
+      "kind": "reference",
+      "blocking": true,
+      "requirements": [
+        "R2-04..R2-15"
+      ],
+      "command": "node commit/campaign.ts --module verification/stage-2/reference-holds.mjs --base-url 'http://127.0.0.1:43093' --seed 90210 --operations 1000 --out '../vf2-evidence-run'/reference-holds-90210",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 5534,
+      "outputBytes": 904,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/reference-holds-90210.log",
+      "logSha256": "9a82c6d113b55a4ef492789430b986daefb5ab5d621627d0e40e2b3593d2e925",
+      "report": "reference-holds-90210/reference-report.json"
+    },
+    {
+      "id": "reference-stage1-481927",
+      "kind": "reference",
+      "blocking": true,
+      "requirements": [
+        "R2-01",
+        "R-12",
+        "R-17..R-31"
+      ],
+      "command": "node commit/campaign.ts --module verification/stage-2/reference.mjs --base-url 'http://127.0.0.1:43093' --seed 481927 --operations 1000 --out '../vf2-evidence-run'/reference-stage1-481927",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 7762,
+      "outputBytes": 896,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/reference-stage1-481927.log",
+      "logSha256": "a53497a1ff016351a9d7b886ef92c69e781ff61c3e4b6f9e27b4398b1345d9c3",
+      "report": "reference-stage1-481927/reference-report.json"
+    },
+    {
+      "id": "reference-stage1-7",
+      "kind": "reference",
+      "blocking": true,
+      "requirements": [
+        "R2-01",
+        "R-12",
+        "R-17..R-31"
+      ],
+      "command": "node commit/campaign.ts --module verification/stage-2/reference.mjs --base-url 'http://127.0.0.1:43093' --seed 7 --operations 1000 --out '../vf2-evidence-run'/reference-stage1-7",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 7319,
+      "outputBytes": 886,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/reference-stage1-7.log",
+      "logSha256": "85f13b081fa399fc73333ac647937533ca767c59e591b01b64836eea3dda7068",
+      "report": "reference-stage1-7/reference-report.json"
+    },
+    {
+      "id": "adversarial-holds",
+      "kind": "adversarial",
+      "blocking": true,
+      "requirements": [
+        "R2-04",
+        "R2-08",
+        "R2-10",
+        "R2-14",
+        "R2-15"
+      ],
+      "command": "node verification/stage-2/adversarial-holds.mjs --base-url 'http://127.0.0.1:43093' --seeds 11,23,37,51,73 --burst 50 --out '../vf2-evidence-run'/adversarial-holds.json",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 12620,
+      "outputBytes": 962,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/adversarial-holds.log",
+      "logSha256": "914bec83f076c6d14d8c2f4a4c4367c4d0a0342504a99965735a7192999ab311",
+      "report": "adversarial-holds.json"
+    },
+    {
+      "id": "adversarial",
+      "kind": "adversarial",
+      "blocking": true,
+      "requirements": [
+        "R2-01",
+        "R-12",
+        "R-20",
+        "R-25",
+        "R-36"
+      ],
+      "command": "node verification/stage-2/adversarial.mjs --base-url 'http://127.0.0.1:43093' --seeds 11,23,37,51,73 --burst 50 --out '../vf2-evidence-run'/adversarial.json",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 8920,
+      "outputBytes": 1880,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/adversarial.log",
+      "logSha256": "9a0f36f66e21819e7884bdaa2374dd9a699ef5e83a0d9446f97e6429d096b5e6",
+      "report": "adversarial.json"
+    },
+    {
+      "id": "mutation-sample",
+      "kind": "mutation",
+      "blocking": true,
+      "requirements": [
+        "suite strength (100-mutant seeded sample, --max 100 --seed 1, per the owner's time constraint)"
+      ],
+      "command": "node commit/mutate.ts --target stage-2 --start 'node src/server.js' --check \"$PWD/verification/stage-2/kill.sh {url}\" --out '../vf2-evidence-run'/mutation --files src --jobs 8 --max 100 --seed 1",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 1226657,
+      "outputBytes": 10487,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/mutation-sample.log",
+      "logSha256": "6c07b20366e84334178ad9fd15b8a8969f931574f07a580e2092c8006bc2d0c5",
+      "report": "mutation/mutation-report.json"
+    }
+  ],
+  "reports": {
+    "official-isolated": {
+      "kind": "official-harness",
+      "stage": 2,
+      "revision": "ef962af95a5b8507cf97395525468c1510c1b51c",
+      "mode": "isolated",
+      "suites": {
+        "1": {
+          "collected": 147,
+          "passed": 147,
+          "failed": 0,
+          "errors": 0
+        },
+        "2": {
+          "collected": 35,
+          "passed": 35,
+          "failed": 0,
+          "errors": 0
+        }
+      },
+      "overshoot": {
+        "collected": 6,
+        "passed": 2,
+        "failed": 1,
+        "errors": 0
+      },
+      "problems": [],
+      "failed": 0
+    },
+    "contract": {
+      "kind": "contract-checks",
+      "base": "http://127.0.0.1:43093",
+      "checks": 49,
+      "passed": 49,
+      "failed": 0,
+      "requests": 2060
+    },
+    "auth-contract": {
+      "kind": "contract-checks",
+      "checks": 14,
+      "passed": 14,
+      "failed": 0,
+      "requests": 273
+    },
+    "ui": {
+      "kind": "ui-checks",
+      "checks": 13,
+      "passed": 13,
+      "failed": 0
+    },
+    "reference-holds-481927": {
+      "kind": "reference-campaign",
+      "runId": "20261005T135214Z-f110f3",
+      "factoryVersion": "1.0.0-rc.3",
+      "campaign": "pocketful-stage-2-holds-reference",
+      "moduleSha256": "3eb406af53f5f54ae08c271ca6976ebf46e89f78c498bd8d914a9723f522e5c6",
+      "seed": 481927,
+      "operationsRequested": 1000,
+      "operationsExecuted": 1000,
+      "stateComparisons": 250,
+      "invariantChecks": 3000,
+      "outcomes": {
+        "200": 92,
+        "201": 224,
+        "409 insufficient_funds": 342,
+        "200 replay": 59,
+        "409 authorization_not_open": 204,
+        "409 idempotency_key_reuse": 27,
+        "422 validation_failed": 9,
+        "403 forbidden": 31,
+        "422 capture_exceeds_authorization": 8,
+        "422 self_payment": 4
+      },
+      "durationMs": 5344,
+      "result": "agree",
+      "firstDivergence": null,
+      "reproduction": "node commit/campaign.ts --module verification/stage-2/reference-holds.mjs --base-url <url> --seed 481927 --operations 1000"
+    },
+    "reference-holds-7": {
+      "kind": "reference-campaign",
+      "runId": "20261005T135219Z-d84074",
+      "factoryVersion": "1.0.0-rc.3",
+      "campaign": "pocketful-stage-2-holds-reference",
+      "moduleSha256": "3eb406af53f5f54ae08c271ca6976ebf46e89f78c498bd8d914a9723f522e5c6",
+      "seed": 7,
+      "operationsRequested": 1000,
+      "operationsExecuted": 1000,
+      "stateComparisons": 250,
+      "invariantChecks": 3000,
+      "outcomes": {
+        "200": 82,
+        "201": 228,
+        "409 insufficient_funds": 314,
+        "403 forbidden": 35,
+        "409 authorization_not_open": 237,
+        "200 replay": 55,
+        "409 idempotency_key_reuse": 26,
+        "422 validation_failed": 10,
+        "422 self_payment": 7,
+        "422 capture_exceeds_authorization": 6
+      },
+      "durationMs": 5340,
+      "result": "agree",
+      "firstDivergence": null,
+      "reproduction": "node commit/campaign.ts --module verification/stage-2/reference-holds.mjs --base-url <url> --seed 7 --operations 1000"
+    },
+    "reference-holds-90210": {
+      "kind": "reference-campaign",
+      "runId": "20261005T135225Z-6a9f72",
+      "factoryVersion": "1.0.0-rc.3",
+      "campaign": "pocketful-stage-2-holds-reference",
+      "moduleSha256": "3eb406af53f5f54ae08c271ca6976ebf46e89f78c498bd8d914a9723f522e5c6",
+      "seed": 90210,
+      "operationsRequested": 1000,
+      "operationsExecuted": 1000,
+      "stateComparisons": 250,
+      "invariantChecks": 3000,
+      "outcomes": {
+        "200": 104,
+        "201": 232,
+        "409 insufficient_funds": 343,
+        "200 replay": 56,
+        "409 authorization_not_open": 177,
+        "409 idempotency_key_reuse": 17,
+        "403 forbidden": 48,
+        "422 capture_exceeds_authorization": 2,
+        "422 validation_failed": 11,
+        "422 self_payment": 10
+      },
+      "durationMs": 5453,
+      "result": "agree",
+      "firstDivergence": null,
+      "reproduction": "node commit/campaign.ts --module verification/stage-2/reference-holds.mjs --base-url <url> --seed 90210 --operations 1000"
+    },
+    "reference-stage1-481927": {
+      "kind": "reference-campaign",
+      "runId": "20261005T135230Z-a5546b",
+      "factoryVersion": "1.0.0-rc.3",
+      "campaign": "pocketful-stage-1-reference",
+      "moduleSha256": "82cef72ef02d4719aa57a1826f8bcc0a78c6beee76cd4248b395643e8d98187b",
+      "seed": 481927,
+      "operationsRequested": 1000,
+      "operationsExecuted": 1000,
+      "stateComparisons": 250,
+      "invariantChecks": 8000,
+      "outcomes": {
+        "200": 97,
+        "201": 477,
+        "409 insufficient_funds": 65,
+        "409 request_not_pending": 80,
+        "422 validation_failed": 44,
+        "404 not_found": 18,
+        "409 idempotency_key_reuse": 110,
+        "200 replay": 64,
+        "403 forbidden": 33,
+        "422 self_payment": 7,
+        "422 self_request": 5
+      },
+      "durationMs": 7683,
+      "result": "agree",
+      "firstDivergence": null,
+      "reproduction": "node commit/campaign.ts --module verification/stage-2/reference.mjs --base-url <url> --seed 481927 --operations 1000"
+    },
+    "reference-stage1-7": {
+      "kind": "reference-campaign",
+      "runId": "20261005T135238Z-15b0fd",
+      "factoryVersion": "1.0.0-rc.3",
+      "campaign": "pocketful-stage-1-reference",
+      "moduleSha256": "82cef72ef02d4719aa57a1826f8bcc0a78c6beee76cd4248b395643e8d98187b",
+      "seed": 7,
+      "operationsRequested": 1000,
+      "operationsExecuted": 1000,
+      "stateComparisons": 250,
+      "invariantChecks": 8000,
+      "outcomes": {
+        "200": 88,
+        "201": 431,
+        "403 forbidden": 43,
+        "200 replay": 65,
+        "409 request_not_pending": 92,
+        "409 insufficient_funds": 91,
+        "409 idempotency_key_reuse": 92,
+        "404 not_found": 34,
+        "422 validation_failed": 47,
+        "422 self_payment": 14,
+        "422 self_request": 3
+      },
+      "durationMs": 7247,
+      "result": "agree",
+      "firstDivergence": null,
+      "reproduction": "node commit/campaign.ts --module verification/stage-2/reference.mjs --base-url <url> --seed 7 --operations 1000"
+    },
+    "adversarial-holds": {
+      "kind": "adversarial-campaign",
+      "workers": 50,
+      "seeds": [
+        11,
+        23,
+        37,
+        51,
+        73
+      ],
+      "campaigns": 25,
+      "checks": 94,
+      "passed": 25,
+      "failed": 0,
+      "requests": 1930
+    },
+    "adversarial": {
+      "kind": "adversarial-campaign",
+      "base": "http://127.0.0.1:43093",
+      "workers": 50,
+      "seeds": [
+        11,
+        23,
+        37,
+        51,
+        73
+      ],
+      "campaigns": 50,
+      "rounds": 50,
+      "checks": 380,
+      "passed": 50,
+      "failed": 0,
+      "requests": 5740
+    },
+    "mutation-sample": {
+      "kind": "mutation-campaign",
+      "factoryVersion": "1.0.0-rc.3",
+      "target": "stage-2",
+      "files": [
+        "src/public/app.js",
+        "src/server.js",
+        "src/ui.js"
+      ],
+      "start": "node src/server.js",
+      "check": "/tmp/vf-s2/verification/stage-2/kill.sh {url}",
+      "seed": 1,
+      "selection": "seeded-sample",
+      "discovered": 1768,
+      "executed": 100,
+      "tally": {
+        "killed": 56,
+        "survived": 6,
+        "timeout": 37,
+        "invalid": 1,
+        "error": 0,
+        "equivalent": 0
+      },
+      "layers": {
+        "adversarial": {
+          "killed": 0,
+          "onlyThisLayer": 0
+        },
+        "adversarial-holds": {
+          "killed": 0,
+          "onlyThisLayer": 0
+        },
+        "auth-contract": {
+          "killed": 9,
+          "onlyThisLayer": 9
+        },
+        "contract": {
+          "killed": 36,
+          "onlyThisLayer": 36
+        },
+        "reference": {
+          "killed": 0,
+          "onlyThisLayer": 0
+        },
+        "reference-holds": {
+          "killed": 0,
+          "onlyThisLayer": 0
+        },
+        "survivors": {
+          "killed": 8,
+          "onlyThisLayer": 8
+        },
+        "ui": {
+          "killed": 3,
+          "onlyThisLayer": 3
+        }
+      },
+      "valid": 99,
+      "killRate": 0.5656565656565656,
+      "detectionRate": 0.9393939393939394,
+      "formula": "killRate = killed / (killed + survived + timeout); detectionRate counts timeouts as detected; invalid, error and equivalent are excluded from both and listed",
+      "campaignBroken": false,
+      "jobs": 8,
+      "mutantTimeoutMs": 180000,
+      "startedAt": "2026-10-05T13:53:07.359Z",
+      "finishedAt": "2026-10-05T14:13:33.930Z",
+      "durationMs": 1226571,
+      "replay": "node commit/mutate.ts --target stage-2 --start 'node src/server.js' --check '/tmp/vf-s2/verification/stage-2/kill.sh {url}' --only <id> --out <new dir>"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "logs/clean-build.log",
+      "type": "log",
+      "producer": "clean-build",
+      "sha256": "9f3c59e98bdf3c33ee253e23e156cdc26f10d2f7e1c207fb0c3eb18a93102ce5"
+    },
+    {
+      "path": "logs/container.log",
+      "type": "log",
+      "producer": "container",
+      "sha256": "133ee7a87edb20ccb1705d546c99525e9c9efa666a02e862c56f2c4a208ccc4c"
+    },
+    {
+      "path": "logs/official-isolated.log",
+      "type": "log",
+      "producer": "official-isolated",
+      "sha256": "a913fbc96d12568ca8afb9f6c8450adbb340200e36c0ab90b845cbb12e16572d"
+    },
+    {
+      "path": "official/judgement.json",
+      "type": "report",
+      "producer": "official-isolated",
+      "sha256": "8dc4e4c58badbc0558802e2dce8f319310df1f5ba0875ff89dabcea539e46ba2"
+    },
+    {
+      "path": "logs/shipped-stage-1-host.log",
+      "type": "log",
+      "producer": "shipped-stage-1-host",
+      "sha256": "3ab228a10ced1bc0fd2ab3621dc625f144abaefa579a8e08f6c2afb4c6b57c11"
+    },
+    {
+      "path": "logs/contract.log",
+      "type": "log",
+      "producer": "contract",
+      "sha256": "87b662764ac7e880f2695e77e187adf925c0b8f34fef03420baa8033261858de"
+    },
+    {
+      "path": "contract.json",
+      "type": "report",
+      "producer": "contract",
+      "sha256": "5891fc75949149ee9e287c658994ab74e37ce10932911c53d1e9c4728a39edd5"
+    },
+    {
+      "path": "logs/auth-contract.log",
+      "type": "log",
+      "producer": "auth-contract",
+      "sha256": "fd078e467e9547ff07583d9949dbd6e3f2fad38f5c60eb867fd477c59eeb5b18"
+    },
+    {
+      "path": "auth-contract.json",
+      "type": "report",
+      "producer": "auth-contract",
+      "sha256": "bdf0452b38a7c6545fceff36be1a90a04ee5247c0b415223f153b0a42f7fb7cd"
+    },
+    {
+      "path": "logs/upgrade.log",
+      "type": "log",
+      "producer": "upgrade",
+      "sha256": "eaae1c91f753889c4587fb04e7291119e2f4c4e19f42d141bf1c33c269794efa"
+    },
+    {
+      "path": "logs/extra.log",
+      "type": "log",
+      "producer": "extra",
+      "sha256": "52e1becd852154e2836721f2ac5e1b60aa6154a888369e105c689d6d875b1fff"
+    },
+    {
+      "path": "logs/survivor-checks.log",
+      "type": "log",
+      "producer": "survivor-checks",
+      "sha256": "e0ea61349f6af7440cec2801f359debf82e9430b5e3d5c1c562e7c273294468e"
+    },
+    {
+      "path": "logs/import-semantic.log",
+      "type": "log",
+      "producer": "import-semantic",
+      "sha256": "e34144126f46bf7580cd11e44356543f43e01583d4658fc6f57cc5849821e7ad"
+    },
+    {
+      "path": "logs/ui.log",
+      "type": "log",
+      "producer": "ui",
+      "sha256": "2deaddc312f34c7bdc06fe284daa72adc83b8e9af47cddc85653f38ee8861856"
+    },
+    {
+      "path": "ui.json",
+      "type": "report",
+      "producer": "ui",
+      "sha256": "984aea9719b4209a7238445ecba09fc3e68633d04ef5ce526c26622811aca282"
+    },
+    {
+      "path": "logs/reference-holds-481927.log",
+      "type": "log",
+      "producer": "reference-holds-481927",
+      "sha256": "39e60475ca5e95b34c2deabf6e1f9cb92462cebbf0be061a8f496d04e1bb11d1"
+    },
+    {
+      "path": "reference-holds-481927/reference-report.json",
+      "type": "report",
+      "producer": "reference-holds-481927",
+      "sha256": "91fa58927e75412f76cee3cf2f076a7250a5a582b17e43b52abfb723afbeabec"
+    },
+    {
+      "path": "logs/reference-holds-7.log",
+      "type": "log",
+      "producer": "reference-holds-7",
+      "sha256": "65e18af8e2e3369897bcf7ba87bad0176dec190b1858aa5375cae238a359ea14"
+    },
+    {
+      "path": "reference-holds-7/reference-report.json",
+      "type": "report",
+      "producer": "reference-holds-7",
+      "sha256": "1fc91cc1e843b234c1b42373f534f926184f07dc7d17b43b8bb20e96fad14142"
+    },
+    {
+      "path": "logs/reference-holds-90210.log",
+      "type": "log",
+      "producer": "reference-holds-90210",
+      "sha256": "9a82c6d113b55a4ef492789430b986daefb5ab5d621627d0e40e2b3593d2e925"
+    },
+    {
+      "path": "reference-holds-90210/reference-report.json",
+      "type": "report",
+      "producer": "reference-holds-90210",
+      "sha256": "a991e60f803b22224bfb0e0f959dfc48895d45f3a630f7ac8ab2b8196e8624e3"
+    },
+    {
+      "path": "logs/reference-stage1-481927.log",
+      "type": "log",
+      "producer": "reference-stage1-481927",
+      "sha256": "a53497a1ff016351a9d7b886ef92c69e781ff61c3e4b6f9e27b4398b1345d9c3"
+    },
+    {
+      "path": "reference-stage1-481927/reference-report.json",
+      "type": "report",
+      "producer": "reference-stage1-481927",
+      "sha256": "5ca564264d38552372c3123805300467d62292665affcc86099d77702a412a95"
+    },
+    {
+      "path": "logs/reference-stage1-7.log",
+      "type": "log",
+      "producer": "reference-stage1-7",
+      "sha256": "85f13b081fa399fc73333ac647937533ca767c59e591b01b64836eea3dda7068"
+    },
+    {
+      "path": "reference-stage1-7/reference-report.json",
+      "type": "report",
+      "producer": "reference-stage1-7",
+      "sha256": "cea02fd55781f234b7b1229b4a15961959dd95f48647abc0d48d32aa6b27b27b"
+    },
+    {
+      "path": "logs/adversarial-holds.log",
+      "type": "log",
+      "producer": "adversarial-holds",
+      "sha256": "914bec83f076c6d14d8c2f4a4c4367c4d0a0342504a99965735a7192999ab311"
+    },
+    {
+      "path": "adversarial-holds.json",
+      "type": "report",
+      "producer": "adversarial-holds",
+      "sha256": "07d6ef2d566a6d8ac1686cd1b4dd6fa46855ebc49bd772064c98c6d12ca8edd5"
+    },
+    {
+      "path": "logs/adversarial.log",
+      "type": "log",
+      "producer": "adversarial",
+      "sha256": "9a0f36f66e21819e7884bdaa2374dd9a699ef5e83a0d9446f97e6429d096b5e6"
+    },
+    {
+      "path": "adversarial.json",
+      "type": "report",
+      "producer": "adversarial",
+      "sha256": "e6678b081b533d0f138bd395b4c28eb055d3c04f441f4c3270a5af3d3b8e2646"
+    },
+    {
+      "path": "logs/mutation-sample.log",
+      "type": "log",
+      "producer": "mutation-sample",
+      "sha256": "6c07b20366e84334178ad9fd15b8a8969f931574f07a580e2092c8006bc2d0c5"
+    },
+    {
+      "path": "mutation/mutation-report.json",
+      "type": "report",
+      "producer": "mutation-sample",
+      "sha256": "d370bdb44b734fbd595f5b2c264b057b31d7635f474733a85b8c7cfbf50b2e71"
+    }
+  ],
+  "verdict": "ACCEPT",
+  "verdictReasons": [],
+  "productionModificationByVerifier": "NONE"
+}

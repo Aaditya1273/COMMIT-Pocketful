@@ -1,0 +1,28 @@
+{
+  "runId": "20261005T141826Z-aa1198",
+  "factoryVersion": "1.0.0-rc.3",
+  "status": "COMPLETED",
+  "phase": "VERDICT ACCEPT",
+  "completedSteps": [
+    "clean-build",
+    "container",
+    "official-isolated",
+    "shipped-stage-1-host",
+    "contract",
+    "auth-contract",
+    "upgrade",
+    "extra",
+    "survivor-checks",
+    "import-semantic",
+    "ui",
+    "reference-holds-481927",
+    "reference-holds-7",
+    "reference-holds-90210",
+    "reference-stage1-481927",
+    "reference-stage1-7",
+    "adversarial-holds",
+    "adversarial",
+    "mutation-sample"
+  ],
+  "updatedAt": "2026-10-05T14:36:54.874Z"
+}
