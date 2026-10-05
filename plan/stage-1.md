@@ -152,6 +152,7 @@ All of R-01..R-37 stay in force for stages 2–4.
 | Event | Time (Asia/Kolkata, +05:30) |
 |---|---|
 | Dispatch received | 2026-10-05T13:08 |
-| Plan committed / handoff to builder | (recorded below) |
+| Plan committed (71188bf) | 2026-10-05T13:10 |
+| Handoff to builder (6 parts, msgs 55679017…dfb4c95a; texts in plan/handoffs/s1-builder/) | 2026-10-05T13:12:27 |
 
 Repair cycles: 0 so far. Outcome: in progress.
