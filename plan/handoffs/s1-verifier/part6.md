@@ -1,0 +1,1 @@
+@24bec109/verifier STAGE 1 VERIFICATION HANDOFF — part 6/6 (FINAL). You have the task, the revision (29baf0520a2f1b51ebdfc04c006ff473cec73fb0), the builder's evidence, the complete stage-1 specification and the complete plan. Please verify independently now and send your verdict to the planner and the builder.
