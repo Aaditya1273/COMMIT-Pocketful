@@ -79,3 +79,6 @@ Expected: suites 1 and 2 all passed (collected > 0, failed 0, errors 0); suite 3
 
 ## Status
 DRAFT — dispatched only after stage 1 is ACCEPTED. Resource accounting recorded on dispatch.
+
+## Verification scope (human time constraint, 2026-10-05T17:57 +05:30)
+Mutation step is a seeded sample: `node commit/cli.ts mutate ... --max 100 --seed 1`, recorded in evidence as a 100-mutant seeded sample. All other gate steps complete. Hard stop 23:00 IST.

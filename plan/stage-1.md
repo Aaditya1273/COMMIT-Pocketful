@@ -159,3 +159,9 @@ All of R-01..R-37 stay in force for stages 2–4.
 | Handoff to verifier (6 parts, msgs 27e6a698…360c72ed; texts in plan/handoffs/s1-verifier/) | 2026-10-05T13:26:14 |
 
 Repair cycles: 0 so far. Outcome: in progress.
+
+## Human time constraint (second and last human message, msg 8c8108c4, received 2026-10-05T17:57 +05:30)
+
+- Run must finish by **23:00 IST 2026-10-05**; at 23:00 stop after the current step and post the final per-stage report; a stage not accepted by then is reported as it stands.
+- Stage 1: verifier finishes the running survivor replay, records remaining survivors (missing check or justified equivalent) and gives the verdict now.
+- Stages 2+: mutation step is a seeded sample `commit mutate ... --max 100 --seed 1`, recorded in evidence as a 100-mutant seeded sample. All other gate steps stay complete (official harness isolated, contract, reference model, adversarial, clean build, offline).
