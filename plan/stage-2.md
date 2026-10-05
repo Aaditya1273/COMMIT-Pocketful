@@ -93,4 +93,14 @@ Mutation step is a seeded sample: `node commit/cli.ts mutate ... --max 100 --see
 | Builder handoff received: revision ef962af (msg cf28aff0; suites 1 147/147, 2 35/35 claimed) | 2026-10-05T19:07 |
 | Handoff to verifier (8 parts, msgs a4d5b2e6…ed3c5dbd; texts in plan/handoffs/s2-verifier/) | 2026-10-05T19:07:33 |
 
-Repair cycles: 0 so far. Outcome: in progress.
+| Verifier verdict ACCEPT (msg f9505878; evidence commit 6010e87) | 2026-10-05T20:33 (received) |
+
+Repair cycles: 0. Outcome: ACCEPTED (see below).
+
+## Outcome — ACCEPTED
+
+- **Accepted revision:** `ef962af95a5b8507cf97395525468c1510c1b51c` — `stage-2/` frozen at this revision. Copy-forward commit 04df3cd; stage-1/ identical to 29baf05.
+- **Verdict:** ACCEPT. Official isolated: suite 1 147/147, suite 2 35/35 (0 failed, 0 errors); suite 3 overshoot 6 collected / 2 passed / 1 failed (required). Contract 49/49; auth contract 14/14; upgrade (real stage-1 export → stage-2 import) 10/10; UI Playwright 16/16; reference model holds 3 seeds × 1,000 ops + stage-1 2 seeds × 1,000 ops all agree; adversarial-holds 25/25; adversarial 50/50. Mutation: **100-mutant seeded sample** (`--max 100 --seed 1`, per owner constraint) 79/99 valid = 79.8 % (20 survivors in unspecified/wording-only behaviour, dispositions in evidence README).
+- **Evidence:** `evidence/stage-2/README.md`, `evidence/stage-2/run-20261005T143900Z-5eacd7/` (manifest sha256 577d2c68…fed1), `evidence/stage-2/screenshots`, verification code `verification/stage-2/`.
+- **Known limitations:** mutation was a sample; hidden suite and product-quality judging not run; browser upgrade case uses stage-2 export/import between browser requests (stage 1 has no UI), API upgrade uses a real stage-1 service; seeded equal passwords share one salted hash.
+- **Repair cycles:** 0. **Stage wall time:** 18:28 → 20:33 (2 h 05 m: build 38 m, verification 86 m).
