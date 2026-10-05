@@ -1,0 +1,27 @@
+{
+  "kind": "reference-campaign",
+  "runId": "20261005T164346Z-d22391",
+  "factoryVersion": "1.0.0-rc.3",
+  "campaign": "pocketful-stage-3-ledger-reference",
+  "moduleSha256": "8c79e80e80de540d612be1a37e599ac22d7cbf9efc4c896683eb6b80d3d932c3",
+  "seed": 481927,
+  "operationsRequested": 1000,
+  "operationsExecuted": 1000,
+  "stateComparisons": 200,
+  "invariantChecks": 1200,
+  "outcomes": {
+    "200": 195,
+    "201": 394,
+    "200 replay": 60,
+    "409 idempotency_key_reuse": 25,
+    "409 stale_revision": 13,
+    "404 not_found": 58,
+    "409 insufficient_funds": 70,
+    "409 historical_overdraft": 166,
+    "403 forbidden": 19
+  },
+  "durationMs": 4779,
+  "result": "agree",
+  "firstDivergence": null,
+  "reproduction": "node commit/campaign.ts --module verification/stage-4/reference-ledger.mjs --base-url <url> --seed 481927 --operations 1000"
+}

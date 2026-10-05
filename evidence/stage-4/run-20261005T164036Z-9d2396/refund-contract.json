@@ -1,0 +1,63 @@
+{
+  "kind": "contract-checks",
+  "checks": 5,
+  "passed": 5,
+  "failed": 0,
+  "requests": 153,
+  "results": [
+    {
+      "id": "refund-basics",
+      "requirements": [
+        "R4-01",
+        "R4-02",
+        "plan:A4-01",
+        "plan:A4-02"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "refund-available-and-corrected-limits",
+      "requirements": [
+        "R4-01",
+        "R4-03",
+        "plan:edge-2",
+        "plan:edge-3"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "correction-batches",
+      "requirements": [
+        "R4-04",
+        "R4-05",
+        "R4-06",
+        "R4-07",
+        "plan:A4-03",
+        "plan:A4-04",
+        "plan:A4-05"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "batch-affordability-and-atomicity",
+      "requirements": [
+        "R4-06",
+        "plan:edge-8"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "protocol-violations",
+      "requirements": [
+        "R-05",
+        "R-06"
+      ],
+      "passed": true,
+      "failures": []
+    }
+  ]
+}

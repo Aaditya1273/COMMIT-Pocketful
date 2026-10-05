@@ -1,0 +1,138 @@
+{
+  "kind": "contract-checks",
+  "checks": 14,
+  "passed": 14,
+  "failed": 0,
+  "requests": 278,
+  "results": [
+    {
+      "id": "me-fields-no-holds",
+      "requirements": [
+        "R2-05",
+        "R2-01"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "seeded-holds",
+      "requirements": [
+        "R2-07",
+        "R2-05"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "seeded-hold-reset-errors",
+      "requirements": [
+        "R2-07"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "authorize-201-and-errors",
+      "requirements": [
+        "R2-09",
+        "R2-14"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "capture-final-default",
+      "requirements": [
+        "R2-10",
+        "R2-13",
+        "R2-04"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "capture-partial-extended",
+      "requirements": [
+        "R2-10",
+        "plan:edge-3",
+        "plan:edge-4"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "capture-errors-precedence",
+      "requirements": [
+        "R2-10",
+        "plan:A2-01",
+        "plan:A2-02",
+        "plan:edge-9"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "void-rules",
+      "requirements": [
+        "R2-11"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "expiry-by-clock",
+      "requirements": [
+        "R2-08",
+        "plan:edge-1",
+        "plan:edge-2",
+        "plan:A2-01"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "get-authorizations-filters-paging",
+      "requirements": [
+        "R2-12"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "available-governs-payments-requests-settlements",
+      "requirements": [
+        "R2-06",
+        "R2-04"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "content-negotiation",
+      "requirements": [
+        "R2-03",
+        "plan:A2-08"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "export-import-holds",
+      "requirements": [
+        "R2-16",
+        "R2-14"
+      ],
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "protocol-violations",
+      "requirements": [
+        "R-05",
+        "R-06"
+      ],
+      "passed": true,
+      "failures": []
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "stage": "pocketful stage 4",
+  "target": "stage-4",
+  "specification": "pocketful/spec/stage-4.md + stages 1-3; plan/stage-4.md (R4-01..R4-09, edge cases 1-9, A4-01..A4-05) + stage-1/2/3 regression sets",
+  "service": {
+    "start": "node src/server.js",
+    "health": "/health"
+  },
+  "steps": [
+    {
+      "id": "clean-build",
+      "kind": "build",
+      "blocking": true,
+      "requirements": [
+        "R-01",
+        "R2-28"
+      ],
+      "timeoutMs": 600000,
+      "cmd": "docker build --no-cache -t vf-pocketful-s4:verify stage-4"
+    },
+    {
+      "id": "container",
+      "kind": "offline",
+      "blocking": true,
+      "requirements": [
+        "R-01",
+        "R-02",
+        "R-03",
+        "R2-03..R2-28"
+      ],
+      "timeoutMs": 900000,
+      "cmd": "verification/stage-4/container.sh {out}/container vf-pocketful-s4:verify"
+    },
+    {
+      "id": "official-isolated",
+      "kind": "supplied-checks",
+      "blocking": true,
+      "requirements": [
+        "R-01..R-37",
+        "R2-01..R2-28",
+        "R3-01..R3-15",
+        "R4-01..R4-09"
+      ],
+      "timeoutMs": 3600000,
+      "report": "official/judgement.json",
+      "cmd": "verification/stage-4/official.sh {out}/official . 4"
+    },
+    {
+      "id": "shipped-stage-1-host",
+      "kind": "supplied-checks",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R2-01"
+      ],
+      "timeoutMs": 600000,
+      "cmd": "env -u PYTHONHOME -u PYTHONPATH -C \"${COMMIT_KICKOFF:-/home/bajrangi/Wins/dark-factory-wearedevs}\" \"${COMMIT_KICKOFF:-/home/bajrangi/Wins/dark-factory-wearedevs}/.venv/bin/python\" -m pytest -p harness.plugin pocketful/test/stage_1 --base-url {url} -q -p no:cacheprovider"
+    },
+    {
+      "id": "contract",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R2-01",
+        "R-02..R-37"
+      ],
+      "report": "contract.json",
+      "cmd": "node verification/stage-4/contract.mjs --base-url {url} --seed 1337 --out {out}/contract.json"
+    },
+    {
+      "id": "auth-contract",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R2-03..R2-16"
+      ],
+      "report": "auth-contract.json",
+      "cmd": "node verification/stage-4/auth-contract.mjs --base-url {url} --out {out}/auth-contract.json"
+    },
+    {
+      "id": "refund-contract",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R4-01..R4-08"
+      ],
+      "report": "refund-contract.json",
+      "cmd": "node verification/stage-4/refund-contract.mjs --base-url {url} --out {out}/refund-contract.json"
+    },
+    {
+      "id": "ledger-contract",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R3-01..R3-15"
+      ],
+      "report": "ledger-contract.json",
+      "cmd": "node verification/stage-4/ledger-contract.mjs --base-url {url} --out {out}/ledger-contract.json"
+    },
+    {
+      "id": "upgrade",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R4-09",
+        "R4-08",
+        "R3-13",
+        "R2-02"
+      ],
+      "cmd": "verification/stage-4/upgrade-step.sh {url}"
+    },
+    {
+      "id": "extra",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R-04",
+        "R-13",
+        "R-14",
+        "R-25",
+        "R-34",
+        "R-35"
+      ],
+      "cmd": "node verification/stage-4/extra.mjs {url}"
+    },
+    {
+      "id": "survivor-checks",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R-04",
+        "R-07",
+        "R-10",
+        "R-12",
+        "R-19",
+        "R-28",
+        "R-31",
+        "R-33",
+        "R-35"
+      ],
+      "cmd": "node verification/stage-4/survivors.mjs {url}"
+    },
+    {
+      "id": "import-semantic",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R-33"
+      ],
+      "cmd": "node verification/stage-4/import-semantic-probe.mjs {url}"
+    },
+    {
+      "id": "ui",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R2-17..R2-28"
+      ],
+      "report": "ui.json",
+      "cmd": "env -u PYTHONHOME -u PYTHONPATH \"${COMMIT_KICKOFF:-/home/bajrangi/Wins/dark-factory-wearedevs}/.venv/bin/python\" verification/stage-4/ui_checks.py {url} --out {out}/ui.json"
+    },
+    {
+      "id": "reference-ledger-481927",
+      "kind": "reference",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R3-03",
+        "R3-04",
+        "R3-06",
+        "R3-07",
+        "R3-09"
+      ],
+      "report": "reference-ledger-481927/reference-report.json",
+      "cmd": "node commit/campaign.ts --module verification/stage-4/reference-ledger.mjs --base-url {url} --seed 481927 --operations 1000 --out {out}/reference-ledger-481927"
+    },
+    {
+      "id": "reference-ledger-7",
+      "kind": "reference",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R3-03",
+        "R3-04",
+        "R3-06",
+        "R3-07",
+        "R3-09"
+      ],
+      "report": "reference-ledger-7/reference-report.json",
+      "cmd": "node commit/campaign.ts --module verification/stage-4/reference-ledger.mjs --base-url {url} --seed 7 --operations 1000 --out {out}/reference-ledger-7"
+    },
+    {
+      "id": "reference-ledger-90210",
+      "kind": "reference",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R3-03",
+        "R3-04",
+        "R3-06",
+        "R3-07",
+        "R3-09"
+      ],
+      "report": "reference-ledger-90210/reference-report.json",
+      "cmd": "node commit/campaign.ts --module verification/stage-4/reference-ledger.mjs --base-url {url} --seed 90210 --operations 1000 --out {out}/reference-ledger-90210"
+    },
+    {
+      "id": "reference-holds-481927",
+      "kind": "reference",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R2-04..R2-15"
+      ],
+      "report": "reference-holds-481927/reference-report.json",
+      "cmd": "node commit/campaign.ts --module verification/stage-4/reference-holds.mjs --base-url {url} --seed 481927 --operations 1000 --out {out}/reference-holds-481927"
+    },
+    {
+      "id": "reference-holds-7",
+      "kind": "reference",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R2-04..R2-15"
+      ],
+      "report": "reference-holds-7/reference-report.json",
+      "cmd": "node commit/campaign.ts --module verification/stage-4/reference-holds.mjs --base-url {url} --seed 7 --operations 1000 --out {out}/reference-holds-7"
+    },
+    {
+      "id": "reference-holds-90210",
+      "kind": "reference",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R2-04..R2-15"
+      ],
+      "report": "reference-holds-90210/reference-report.json",
+      "cmd": "node commit/campaign.ts --module verification/stage-4/reference-holds.mjs --base-url {url} --seed 90210 --operations 1000 --out {out}/reference-holds-90210"
+    },
+    {
+      "id": "reference-stage1-481927",
+      "kind": "reference",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R2-01",
+        "R-12",
+        "R-17..R-31"
+      ],
+      "report": "reference-stage1-481927/reference-report.json",
+      "cmd": "node commit/campaign.ts --module verification/stage-4/reference.mjs --base-url {url} --seed 481927 --operations 1000 --out {out}/reference-stage1-481927"
+    },
+    {
+      "id": "reference-stage1-7",
+      "kind": "reference",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R2-01",
+        "R-12",
+        "R-17..R-31"
+      ],
+      "report": "reference-stage1-7/reference-report.json",
+      "cmd": "node commit/campaign.ts --module verification/stage-4/reference.mjs --base-url {url} --seed 7 --operations 1000 --out {out}/reference-stage1-7"
+    },
+    {
+      "id": "adversarial-ledger",
+      "kind": "adversarial",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R3-10",
+        "R3-11",
+        "R3-07"
+      ],
+      "report": "adversarial-ledger.json",
+      "cmd": "node verification/stage-4/adversarial-ledger.mjs --base-url {url} --seeds 11,23,37,51,73 --burst 30 --out {out}/adversarial-ledger.json"
+    },
+    {
+      "id": "adversarial-holds",
+      "kind": "adversarial",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R2-04",
+        "R2-08",
+        "R2-10",
+        "R2-14",
+        "R2-15"
+      ],
+      "report": "adversarial-holds.json",
+      "cmd": "node verification/stage-4/adversarial-holds.mjs --base-url {url} --seeds 11,23,37,51,73 --burst 50 --out {out}/adversarial-holds.json"
+    },
+    {
+      "id": "adversarial",
+      "kind": "adversarial",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R2-01",
+        "R-12",
+        "R-20",
+        "R-25",
+        "R-36"
+      ],
+      "report": "adversarial.json",
+      "cmd": "node verification/stage-4/adversarial.mjs --base-url {url} --seeds 11,23,37,51,73 --burst 50 --out {out}/adversarial.json"
+    },
+    {
+      "id": "mutation-sample",
+      "kind": "mutation",
+      "blocking": true,
+      "requirements": [
+        "suite strength (100-mutant seeded sample, --max 100 --seed 1, per the owner's time constraint)"
+      ],
+      "timeoutMs": 5400000,
+      "report": "mutation/mutation-report.json",
+      "cmd": "COMMIT_MUTANT_TIMEOUT_MS=300000 node commit/mutate.ts --target stage-4 --start 'node src/server.js' --check \"$PWD/verification/stage-4/kill.sh {url}\" --out {out}/mutation --files src --jobs 4 --max 100 --seed 1"
+    }
+  ]
+}

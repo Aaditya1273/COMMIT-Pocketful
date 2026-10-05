@@ -1,0 +1,7 @@
+ok   refund-basics
+ok   refund-available-and-corrected-limits
+ok   correction-batches
+ok   batch-affordability-and-atomicity
+ok   protocol-violations
+
+refund-contract: 5/5 checks passed, 0 failed

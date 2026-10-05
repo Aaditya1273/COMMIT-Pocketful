@@ -1,0 +1,187 @@
+discovered 2242 mutants in 3 files; running 100
+baseline passes the check in 85573 ms
+[1/100] killed     m-8ce08bd4f2 src/public/app.js:82 arithmetic "+" -> "-"
+[2/100] killed     m-5c17a296c0 src/public/app.js:81 guard-bypass "mu === 0" -> "false"
+[3/100] killed     m-2b58c6221a src/public/app.js:83 literal-boundary "0" -> "1"
+[4/100] survived   m-67b6d62554 src/public/app.js:69 literal-boundary "16" -> "17"
+[5/100] survived   m-285c32e015 src/public/app.js:91 guard-bypass "text === ''" -> "false"
+[6/100] survived   m-6308121432 src/public/app.js:120 guard-bypass "diff < 60 * 1000" -> "false"
+[7/100] survived   m-c280bdd23f src/public/app.js:119 guard-bypass "diff <= 0" -> "false"
+[8/100] killed     m-4e1b838c72 src/public/app.js:219 boolean-literal "true" -> "false"
+[9/100] killed     m-b1ae5f0cae src/public/app.js:210 statement-deletion "navigate('/login', { replace: true });" -> ";"
+[10/100] survived   m-4d768e3609 src/public/app.js:152 logical "&&" -> "||"
+[11/100] survived   m-05a861f4f8 src/public/app.js:154 guard-bypass "FRIENDLY[code]" -> "false"
+[12/100] killed     m-ec478c3568 src/public/app.js:272 guard-bypass "inc.ok && out.ok" -> "false"
+[13/100] survived   m-194a324c56 src/public/app.js:238 guard-bypass "!r.ended" -> "false"
+[14/100] killed     m-51d635f2b3 src/public/app.js:299 boolean-literal "true" -> "false"
+[15/100] survived   m-26481170ad src/public/app.js:281 guard-bypass "S.authorizations.status !== 'ready'" -> "false"
+[16/100] killed     m-30d1d740cc src/public/app.js:306 guard-bypass "path !== window.location.pathname" -> "false"
+[17/100] killed     m-f3fc1de37c src/public/app.js:300 boolean-literal "true" -> "false"
+[18/100] killed     m-50efedfcfe src/public/app.js:326 negation-removal "!" -> ""
+[19/100] killed     m-59c4162f55 src/public/app.js:411 arithmetic "+" -> "-"
+[20/100] survived   m-8fc017248a src/public/app.js:359 boolean-literal "true" -> "false"
+[21/100] survived   m-2905bc8166 src/public/app.js:388 guard-bypass "slot && S.me" -> "false"
+[22/100] survived   m-eadb3d5fd6 src/public/app.js:423 boolean-literal "true" -> "false"
+[23/100] survived   m-0ce46fe58e src/public/app.js:465 boolean-literal "true" -> "false"
+[24/100] killed     m-087cf533a2 src/public/app.js:745 equality-negation "===" -> "!=="
+[25/100] survived   m-3a463cb912 src/public/app.js:636 negation-removal "!" -> ""
+[26/100] survived   m-aa5a44ac16 src/public/app.js:717 equality-negation "===" -> "!=="
+[27/100] killed     m-27c672f453 src/public/app.js:927 statement-deletion "f.busy = false;" -> ";"
+[28/100] killed     m-26100b0af5 src/public/app.js:967 equality-negation "===" -> "!=="
+[29/100] survived   m-cefe00e151 src/public/app.js:785 boolean-literal "true" -> "false"
+[30/100] killed     m-de00799a1a src/public/app.js:987 negation-removal "!" -> ""
+[31/100] killed     m-88e1f1b249 src/public/app.js:1061 logical "&&" -> "||"
+[32/100] killed     m-b1f926a603 src/server.js:39 statement-deletion "this.status = status;" -> ";"
+[33/100] survived   m-bc46ffa82d src/public/app.js:789 arithmetic "+" -> "-"
+[34/100] killed     m-38c922efdf src/server.js:155 statement-deletion "id = prefix + st.counter;" -> ";"
+[35/100] killed     m-49a3b9d133 src/server.js:306 logical "&&" -> "||"
+[36/100] killed     m-dfbdc4b2f8 src/server.js:306 equality-negation "!==" -> "==="
+[37/100] killed     m-bbd6e25b21 src/server.js:320 guard-bypass "n < 1 || n > 200" -> "false"
+[38/100] killed     m-2fc0cfa437 src/server.js:320 literal-boundary "200" -> "201"
+[39/100] survived   m-60d0fd8845 src/public/app.js:1049 arithmetic "+" -> "-"
+[40/100] killed     m-b6992ba506 src/server.js:423 statement-deletion "st.payments.set(p.id, p);" -> ";"
+[41/100] killed     m-2405831eba src/server.js:473 logical "||" -> "&&"
+[42/100] killed     m-7ac17b591f src/server.js:493 guard-bypass "knownAt" -> "false"
+[43/100] killed     m-ed7a3f104c src/server.js:94 literal-boundary "1" -> "2"
+[44/100] killed     m-222e2137a0 src/server.js:569 negation-removal "!" -> ""
+[45/100] killed     m-8051a68f34 src/server.js:503 arithmetic "-" -> "+"
+[46/100] killed     m-885d811e7a src/server.js:597 equality-negation "===" -> "!=="
+[47/100] killed     m-4f0c9cdfd0 src/server.js:668 guard-bypass "p.visibility === 'public' || p.from === me.id || p.to === me.id" -> "false"
+[48/100] killed     m-711372906b src/server.js:778 equality-negation "!==" -> "==="
+[49/100] killed     m-c13f6a76c5 src/server.js:788 equality-negation "===" -> "!=="
+[50/100] killed     m-7f89f48d67 src/server.js:892 literal-boundary "1" -> "2"
+[51/100] survived   m-e898fb6527 src/server.js:202 boundary "<=" -> "<"
+[52/100] killed     m-73af031c8f src/server.js:877 literal-boundary "10" -> "11"
+[53/100] killed     m-fe0f89a8ef src/server.js:940 literal-boundary "0" -> "1"
+[54/100] killed     m-14e46a6a00 src/server.js:1074 statement-deletion "moves.sort((x, y) => x.t - y.t);" -> ";"
+[55/100] killed     m-3d7392a6e8 src/server.js:1100 equality-negation "!==" -> "==="
+[56/100] killed     m-0ba4f8f445 src/server.js:1096 logical "||" -> "&&"
+[57/100] killed     m-beba2782c8 src/server.js:1100 equality-negation "!==" -> "==="
+[58/100] killed     m-d2d8d63e5a src/server.js:983 literal-boundary "1" -> "2"
+[59/100] killed     m-2219ffd60f src/server.js:1113 negation-removal "!" -> ""
+[60/100] killed     m-72b6071b01 src/server.js:1114 equality-negation "!==" -> "==="
+[61/100] killed     m-95b771222a src/server.js:1115 equality-negation "!==" -> "==="
+[62/100] killed     m-c6631a3d38 src/server.js:1164 arithmetic "+" -> "-"
+[63/100] killed     m-7331a1c82b src/server.js:1221 equality-negation "===" -> "!=="
+[64/100] killed     m-aaebd2ee68 src/server.js:1160 literal-boundary "1" -> "2"
+[65/100] killed     m-34cd5d4ff5 src/server.js:1115 logical "||" -> "&&"
+[66/100] survived   m-021310e0a5 src/server.js:1071 equality-negation "!==" -> "==="
+[67/100] killed     m-22b840b246 src/server.js:1333 literal-boundary "200" -> "201"
+[68/100] killed     m-caaee1baee src/server.js:1349 logical "||" -> "&&"
+[69/100] killed     m-74b22fa6b3 src/server.js:1286 arithmetic "-" -> "+"
+[70/100] killed     m-ad439453b4 src/server.js:1359 negation-removal "!" -> ""
+[71/100] killed     m-c426232408 src/server.js:1358 literal-boundary "0" -> "1"
+[72/100] killed     m-d80641eda1 src/server.js:1373 boundary "<" -> "<="
+[73/100] killed     m-ae8129e532 src/server.js:1370 logical "||" -> "&&"
+[74/100] killed     m-92debf3df4 src/server.js:1389 equality-negation "===" -> "!=="
+[75/100] killed     m-438086714e src/server.js:1409 equality-negation "!==" -> "==="
+[76/100] killed     m-d6988a2ca7 src/server.js:1393 guard-bypass "seededTs !== null && seededTs > Date.now()" -> "false"
+[77/100] killed     m-b9db49e830 src/server.js:1271 guard-bypass "q.settlement_id === sid" -> "false"
+[78/100] killed     m-69cda40ff6 src/server.js:1257 statement-deletion "st.correctionBatches.set(batchId, { id: batchId, recorded_at: revs[0].recorded_ -> ";"
+[79/100] killed     m-78484d0014 src/server.js:1444 logical "||" -> "&&"
+[80/100] killed     m-8c692288ef src/server.js:1445 negation-removal "!" -> ""
+[81/100] killed     m-db436e9889 src/server.js:1471 arithmetic "+" -> "-"
+[82/100] killed     m-7ff495e6d8 src/server.js:1409 logical "||" -> "&&"
+[83/100] killed     m-5f20dcf1e4 src/server.js:1460 equality-negation "===" -> "!=="
+[84/100] killed     m-d353edde03 src/server.js:1517 statement-deletion "item.seq = ++st.seq;" -> ";"
+[85/100] killed     m-dc255c0d1e src/server.js:1582 equality-negation "===" -> "!=="
+[86/100] killed     m-08eceba388 src/server.js:1548 literal-boundary "200" -> "201"
+[87/100] killed     m-246a0d2109 src/server.js:1614 guard-bypass "!isSafeInt(u.balance) || u.balance < 0" -> "false"
+[88/100] killed     m-bb15ea2e26 src/server.js:1635 logical "||" -> "&&"
+[89/100] killed     m-ec04ba7594 src/server.js:1470 arithmetic "-" -> "+"
+[90/100] killed     m-2de3775bcd src/server.js:1623 logical "||" -> "&&"
+[91/100] killed     m-ae24b63727 src/server.js:1681 logical "||" -> "&&"
+[92/100] killed     m-682fdc32ce src/server.js:1719 negation-removal "!" -> ""
+[93/100] killed     m-9a054bf860 src/server.js:1601 guard-bypass "!isCount(s.counter) || !isCount(s.seq) || !isCount(s.last_ts)" -> "false"
+[94/100] killed     m-427b192452 src/server.js:1713 logical "||" -> "&&"
+[95/100] killed     m-2b904ecdee src/server.js:1726 logical "||" -> "&&"
+[96/100] killed     m-a811c72ed6 src/server.js:1730 negation-removal "!" -> ""
+[97/100] survived   m-da33f5534f src/server.js:1713 guard-bypass "typeof t !== 'number' || !Number.isInteger(t) || t < 1 || t > 1e12" -> "false"
+[98/100] survived   m-14fad41821 src/server.js:1719 boundary "<" -> "<="
+[99/100] survived   m-4bbf85486a src/server.js:1754 guard-bypass "heldBy(st, u.id) > u.balance" -> "false"
+[100/100] survived   m-6a90fae101 src/server.js:1867 literal-boundary "204" -> "205"
+{
+  "kind": "mutation-campaign",
+  "factoryVersion": "1.0.0-rc.3",
+  "target": "stage-4",
+  "files": [
+    "src/public/app.js",
+    "src/server.js",
+    "src/ui.js"
+  ],
+  "start": "node src/server.js",
+  "check": "/tmp/vf-s4/verification/stage-4/kill.sh {url}",
+  "seed": 1,
+  "selection": "seeded-sample",
+  "discovered": 2242,
+  "executed": 100,
+  "tally": {
+    "killed": 77,
+    "survived": 23,
+    "timeout": 0,
+    "invalid": 0,
+    "error": 0,
+    "equivalent": 0
+  },
+  "layers": {
+    "adversarial": {
+      "killed": 0,
+      "onlyThisLayer": 0
+    },
+    "adversarial-holds": {
+      "killed": 0,
+      "onlyThisLayer": 0
+    },
+    "adversarial-ledger": {
+      "killed": 0,
+      "onlyThisLayer": 0
+    },
+    "auth-contract": {
+      "killed": 8,
+      "onlyThisLayer": 8
+    },
+    "contract": {
+      "killed": 25,
+      "onlyThisLayer": 25
+    },
+    "ledger-contract": {
+      "killed": 6,
+      "onlyThisLayer": 6
+    },
+    "reference": {
+      "killed": 0,
+      "onlyThisLayer": 0
+    },
+    "reference-holds": {
+      "killed": 0,
+      "onlyThisLayer": 0
+    },
+    "reference-ledger": {
+      "killed": 2,
+      "onlyThisLayer": 2
+    },
+    "refund-contract": {
+      "killed": 7,
+      "onlyThisLayer": 7
+    },
+    "survivors": {
+      "killed": 2,
+      "onlyThisLayer": 2
+    },
+    "ui": {
+      "killed": 27,
+      "onlyThisLayer": 27
+    }
+  },
+  "valid": 100,
+  "killRate": 0.77,
+  "detectionRate": 0.77,
+  "formula": "killRate = killed / (killed + survived + timeout); detectionRate counts timeouts as detected; invalid, error and equivalent are excluded from both and listed",
+  "campaignBroken": false,
+  "jobs": 4,
+  "mutantTimeoutMs": 300000,
+  "startedAt": "2026-10-05T16:44:59.452Z",
+  "finishedAt": "2026-10-05T17:06:26.799Z",
+  "durationMs": 1287347,
+  "replay": "node commit/mutate.ts --target stage-4 --start 'node src/server.js' --check '/tmp/vf-s4/verification/stage-4/kill.sh {url}' --only <id> --out <new dir>"
+}

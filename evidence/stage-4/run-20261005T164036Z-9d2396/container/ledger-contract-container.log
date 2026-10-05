@@ -1,0 +1,14 @@
+ok   seeded-timestamps-and-future-422
+ok   me-as-of
+ok   statement-window-order-balances-paging
+ok   statement-same-instant-tie-by-id
+ok   corrections-shape-money-revisions
+ok   correction-validation-precedence
+ok   historical-overdraft-and-insufficient
+ok   backdated-correction-moves-window-and-as-of
+ok   snapshots
+ok   historical-holds
+ok   correction-guards-available-with-holds
+ok   protocol-violations
+
+ledger-contract: 12/12 checks passed, 0 failed, 286 requests
