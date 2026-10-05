@@ -23,10 +23,16 @@ Without Docker (Node.js ≥ 22): `PORT=8080 node src/server.js`.
 
 ## Tests
 
-API checks (start the server in-process, or set `POCKETFUL_URL` to target a running one):
+API checks (each file starts its own server in-process):
 
 ```sh
 node --test test/*.test.js
+```
+
+Against one running service the files share state, so run them one at a time:
+
+```sh
+POCKETFUL_URL=http://127.0.0.1:8080 node --test --test-concurrency=1 test/*.test.js
 ```
 
 Browser checks (need Python with pytest, httpx and playwright + Chromium, e.g. the harness venv),
