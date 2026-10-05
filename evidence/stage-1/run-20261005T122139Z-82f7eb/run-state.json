@@ -1,0 +1,23 @@
+{
+  "runId": "20261005T122139Z-82f7eb",
+  "factoryVersion": "1.0.0-rc.3",
+  "status": "COMPLETED",
+  "phase": "VERDICT ACCEPT",
+  "completedSteps": [
+    "clean-build",
+    "container",
+    "official-isolated",
+    "shipped-host",
+    "contract",
+    "contract-fuzz-seed2",
+    "extra",
+    "import-semantic",
+    "survivor-checks",
+    "reference-481927",
+    "reference-7",
+    "reference-90210",
+    "adversarial",
+    "mutation"
+  ],
+  "updatedAt": "2026-10-05T12:56:05.808Z"
+}

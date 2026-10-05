@@ -1,0 +1,188 @@
+{
+  "stage": "pocketful stage 1",
+  "target": "stage-1",
+  "specification": "/home/bajrangi/Wins/dark-factory-wearedevs/pocketful/spec/stage-1.md + plan/stage-1.md (R-01..R-37, edge cases 1-20, A-01..A-14)",
+  "service": {
+    "start": "node src/server.js",
+    "health": "/health"
+  },
+  "steps": [
+    {
+      "id": "clean-build",
+      "kind": "build",
+      "blocking": true,
+      "requirements": [
+        "R-01"
+      ],
+      "timeoutMs": 600000,
+      "cmd": "docker build --no-cache -t vf-pocketful-s1:verify stage-1"
+    },
+    {
+      "id": "container",
+      "kind": "offline",
+      "blocking": true,
+      "requirements": [
+        "R-01",
+        "R-02",
+        "R-03",
+        "R-33"
+      ],
+      "timeoutMs": 600000,
+      "cmd": "verification/stage-1/container.sh {out}/container vf-pocketful-s1:verify"
+    },
+    {
+      "id": "official-isolated",
+      "kind": "supplied-checks",
+      "blocking": true,
+      "requirements": [
+        "R-01..R-37"
+      ],
+      "timeoutMs": 3600000,
+      "report": "official/judgement.json",
+      "cmd": "verification/stage-1/official.sh {out}/official ."
+    },
+    {
+      "id": "shipped-host",
+      "kind": "supplied-checks",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R-01..R-37"
+      ],
+      "timeoutMs": 600000,
+      "cmd": "env -u PYTHONHOME -u PYTHONPATH -C \"${COMMIT_KICKOFF:-/home/bajrangi/Wins/dark-factory-wearedevs}\" \"${COMMIT_KICKOFF:-/home/bajrangi/Wins/dark-factory-wearedevs}/.venv/bin/python\" -m pytest -p harness.plugin pocketful/test/stage_1 --base-url {url} -q -p no:cacheprovider"
+    },
+    {
+      "id": "contract",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R-02..R-37"
+      ],
+      "report": "contract.json",
+      "cmd": "node verification/stage-1/contract.mjs --base-url {url} --seed 1337 --out {out}/contract.json"
+    },
+    {
+      "id": "contract-fuzz-seed2",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R-33"
+      ],
+      "report": "contract-seed2.json",
+      "cmd": "node verification/stage-1/contract.mjs --base-url {url} --seed 7919 --out {out}/contract-seed2.json"
+    },
+    {
+      "id": "extra",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R-13",
+        "R-14",
+        "R-25",
+        "R-34",
+        "R-35",
+        "R-04"
+      ],
+      "cmd": "node verification/stage-1/extra.mjs {url}"
+    },
+    {
+      "id": "import-semantic",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R-33"
+      ],
+      "cmd": "node verification/stage-1/import-semantic-probe.mjs {url}"
+    },
+    {
+      "id": "survivor-checks",
+      "kind": "contract",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R-04",
+        "R-07",
+        "R-10",
+        "R-12",
+        "R-19",
+        "R-28",
+        "R-31",
+        "R-33",
+        "R-35"
+      ],
+      "cmd": "node verification/stage-1/survivors.mjs {url}"
+    },
+    {
+      "id": "reference-481927",
+      "kind": "reference",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R-12",
+        "R-17..R-31",
+        "R-35..R-37"
+      ],
+      "report": "reference-481927/reference-report.json",
+      "cmd": "node commit/campaign.ts --module verification/stage-1/reference.mjs --base-url {url} --seed 481927 --operations 1000 --out {out}/reference-481927"
+    },
+    {
+      "id": "reference-7",
+      "kind": "reference",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R-12",
+        "R-17..R-31",
+        "R-35..R-37"
+      ],
+      "report": "reference-7/reference-report.json",
+      "cmd": "node commit/campaign.ts --module verification/stage-1/reference.mjs --base-url {url} --seed 7 --operations 1000 --out {out}/reference-7"
+    },
+    {
+      "id": "reference-90210",
+      "kind": "reference",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R-12",
+        "R-17..R-31",
+        "R-35..R-37"
+      ],
+      "report": "reference-90210/reference-report.json",
+      "cmd": "node commit/campaign.ts --module verification/stage-1/reference.mjs --base-url {url} --seed 90210 --operations 1000 --out {out}/reference-90210"
+    },
+    {
+      "id": "adversarial",
+      "kind": "adversarial",
+      "blocking": true,
+      "needsService": true,
+      "requirements": [
+        "R-12",
+        "R-20",
+        "R-25",
+        "R-36",
+        "R-13",
+        "R-32",
+        "R-33"
+      ],
+      "report": "adversarial.json",
+      "cmd": "node verification/stage-1/adversarial.mjs --base-url {url} --seeds 11,23,37,51,73 --burst 50 --out {out}/adversarial.json"
+    },
+    {
+      "id": "mutation",
+      "kind": "mutation",
+      "blocking": true,
+      "requirements": [
+        "suite strength"
+      ],
+      "timeoutMs": 7200000,
+      "report": "mutation/mutation-report.json",
+      "cmd": "node commit/mutate.ts --target stage-1 --start 'node src/server.js' --check \"$PWD/verification/stage-1/kill.sh {url}\" --out {out}/mutation --files src --jobs 8 --exclude verification/stage-1/equivalents.json"
+    }
+  ]
+}

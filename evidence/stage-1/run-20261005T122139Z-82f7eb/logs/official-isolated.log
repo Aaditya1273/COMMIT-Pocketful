@@ -1,0 +1,27 @@
+building /tmp/vf-s1/stage-1 ...
+  stage 1: pass  (log: /tmp/vf-evidence-run/official/stage-1.log)
+  stage 2: fail  (log: /tmp/vf-evidence-run/official/stage-2.log)
+highest contiguous stage: 1
+claimed stage: 1 on the shipped checks
+report: /tmp/vf-evidence-run/official/report.json
+NOTE: this run only includes a portion of the full tests that are applied before judging; this is meant to provide directional feedback, and ultimately you may not pass the stage with the full set of tests.
+harness exit code: 0 (not used for the judgement)
+{
+  "kind": "official-harness",
+  "revision": "29baf0520a2f1b51ebdfc04c006ff473cec73fb0",
+  "mode": "isolated",
+  "stage1": {
+    "collected": 147,
+    "passed": 147,
+    "failed": 0,
+    "errors": 0
+  },
+  "stage2Overshoot": {
+    "collected": 35,
+    "passed": 0,
+    "failed": 1,
+    "errors": 0
+  },
+  "problems": [],
+  "failed": 0
+}

@@ -1,0 +1,317 @@
+{
+  "m-77e69fcee2": {
+    "classification": "equivalent",
+    "location": "src/server.js:26:31 literal-boundary \"8\" -> \"9\"",
+    "reason": "scrypt cost/salt parameters for new hashes: the hash stays a valid scrypt hash verified with its own stored parameters; only timing and the opaque export string differ."
+  },
+  "m-3e1912bf12": {
+    "classification": "equivalent",
+    "location": "src/server.js:26:37 literal-boundary \"1\" -> \"2\"",
+    "reason": "scrypt cost/salt parameters for new hashes: the hash stays a valid scrypt hash verified with its own stored parameters; only timing and the opaque export string differ."
+  },
+  "m-7c49948028": {
+    "classification": "equivalent",
+    "location": "src/server.js:26:48 literal-boundary \"32\" -> \"33\"",
+    "reason": "scrypt cost/salt parameters for new hashes: the hash stays a valid scrypt hash verified with its own stored parameters; only timing and the opaque export string differ."
+  },
+  "m-66f5e7a71f": {
+    "classification": "equivalent",
+    "location": "src/server.js:33:19 logical \"||\" -> \"&&\"",
+    "reason": "changes only the human-readable error message, whose wording the specification leaves free (§5 \"any wording\")."
+  },
+  "m-1268f8deff": {
+    "classification": "equivalent",
+    "location": "src/server.js:40:59 logical \"||\" -> \"&&\"",
+    "reason": "changes only the human-readable not_found message; §5 allows any wording."
+  },
+  "m-a9453d23ce": {
+    "classification": "equivalent",
+    "location": "src/server.js:41:60 logical \"||\" -> \"&&\"",
+    "reason": "changes only the human-readable forbidden message; §5 allows any wording."
+  },
+  "m-cbe2c5f35e": {
+    "classification": "equivalent",
+    "location": "src/server.js:69:14 boundary \">\" -> \">=\"",
+    "reason": "sign test for an infinite number in the canonical body form: +Infinity and -Infinity stay distinct under v>0, v>=0 and v>1, so body equality is unchanged."
+  },
+  "m-5a50baa811": {
+    "classification": "equivalent",
+    "location": "src/server.js:69:16 literal-boundary \"0\" -> \"1\"",
+    "reason": "sign test for an infinite number in the canonical body form: +Infinity and -Infinity stay distinct under v>0, v>=0 and v>1, so body equality is unchanged."
+  },
+  "m-64198eda3d": {
+    "classification": "equivalent",
+    "location": "src/server.js:78:35 literal-boundary \"16\" -> \"17\"",
+    "reason": "salt length for new hashes (16 vs 17 random bytes): no observable difference other than the opaque hash string."
+  },
+  "m-ce774fc6ab": {
+    "classification": "equivalent",
+    "location": "src/server.js:80:54 literal-boundary \"64\" -> \"65\"",
+    "reason": "scrypt maxmem for new hashes: N=16384, r=8 needs 16 MiB, below every mutated limit, so hashing behaves identically."
+  },
+  "m-2a97864ae6": {
+    "classification": "equivalent",
+    "location": "src/server.js:80:59 literal-boundary \"1024\" -> \"1025\"",
+    "reason": "scrypt maxmem for new hashes: N=16384, r=8 needs 16 MiB, below every mutated limit, so hashing behaves identically."
+  },
+  "m-fdd2fbe01c": {
+    "classification": "equivalent",
+    "location": "src/server.js:80:66 literal-boundary \"1024\" -> \"1025\"",
+    "reason": "scrypt maxmem for new hashes: N=16384, r=8 needs 16 MiB, below every mutated limit, so hashing behaves identically."
+  },
+  "m-539e48fef9": {
+    "classification": "equivalent",
+    "location": "src/server.js:117:17 literal-boundary \"2\" -> \"3\"",
+    "reason": "initial pre-reset state value; every reset and import overwrites it before any user (and so any authenticated request) exists."
+  },
+  "m-705d19a82f": {
+    "classification": "equivalent",
+    "location": "src/server.js:128:14 literal-boundary \"0\" -> \"1\"",
+    "reason": "initial pre-reset id counter; overwritten by reset/import, and ids are opaque strings, so an offset start is unobservable."
+  },
+  "m-de2ccff6b9": {
+    "classification": "equivalent",
+    "location": "src/server.js:129:10 literal-boundary \"0\" -> \"1\"",
+    "reason": "initial pre-reset sequence number; overwritten by reset/import and only used for relative ordering."
+  },
+  "m-a8856185ca": {
+    "classification": "equivalent",
+    "location": "src/server.js:130:13 literal-boundary \"0\" -> \"1\"",
+    "reason": "initial pre-reset clock floor; overwritten by reset/import, and Date.now() exceeds it either way."
+  },
+  "m-8a62450842": {
+    "classification": "equivalent",
+    "location": "src/server.js:144:19 literal-boundary \"1\" -> \"2\"",
+    "reason": "id counter step 1 vs 2: ids are opaque strings (§3.4); skipping numbers is unobservable."
+  },
+  "m-96ec2ebc96": {
+    "classification": "equivalent",
+    "location": "src/server.js:157:36 literal-boundary \"24\" -> \"25\"",
+    "reason": "token length (24 vs 25 random bytes): tokens are opaque; both are unguessable bearer tokens."
+  },
+  "m-381fce1e63": {
+    "classification": "equivalent",
+    "location": "src/server.js:202:55 arithmetic \"-\" -> \"+\"",
+    "reason": "tie-break between items with an identical timestamp: §8 leaves the order of same-second items unspecified."
+  },
+  "m-944ca59a09": {
+    "classification": "equivalent",
+    "location": "src/server.js:264:7 guard-bypass \"typeof header !== 'string'\" -> \"false\"",
+    "reason": "a missing Authorization header still fails the Bearer regex (RegExp.exec coerces undefined to \"undefined\"), so the response is the same 401."
+  },
+  "m-f9a230da0e": {
+    "classification": "equivalent",
+    "location": "src/server.js:376:21 boundary \"<\" -> \"<=\"",
+    "reason": "loop bound i<n vs i<=n in equalSplit: the extra (n+1)th share is never read, shares[0..n-1] are identical."
+  },
+  "m-d9bcf882c1": {
+    "classification": "equivalent",
+    "location": "src/server.js:462:28 equality-negation \"===\" -> \"!==\"",
+    "reason": "changes only the human-readable forbidden message; §5 allows any wording."
+  },
+  "m-b56a0102fb": {
+    "classification": "equivalent",
+    "location": "src/server.js:537:7 statement-deletion \"st.splits.set(splitId, split);\" -> \";\"",
+    "reason": "the split record map is never read by any endpoint; split replays come from idempotency records, and the export state is opaque."
+  },
+  "m-a2bd718280": {
+    "classification": "equivalent",
+    "location": "src/server.js:646:3 statement-deletion \"conflicts();\" -> \";\"",
+    "reason": "the first of two identical conflict checks; the re-check after hashing returns the same 409 codes, only later."
+  },
+  "m-d41a6d3942": {
+    "classification": "equivalent",
+    "location": "src/server.js:670:9 guard-bypass \"dummyHash\" -> \"false\"",
+    "reason": "dummy hash for unknown-email logins only equalises timing; the response is the same 401."
+  },
+  "m-77b4a7d927": {
+    "classification": "equivalent",
+    "location": "src/server.js:704:9 guard-bypass \"!isObject(u)\" -> \"false\"",
+    "reason": "a non-object fixture user still fails the next typeof id check with the same 422."
+  },
+  "m-6cb665550d": {
+    "classification": "equivalent",
+    "location": "src/server.js:727:9 guard-bypass \"!isObject(p)\" -> \"false\"",
+    "reason": "a non-object seeded payment still fails the next typeof id check with the same 422."
+  },
+  "m-57968b4b73": {
+    "classification": "equivalent",
+    "location": "src/server.js:788:11 literal-boundary \"0\" -> \"1\"",
+    "reason": "shifts every seeded timestamp by 1 ms into the past; relative order and the RFC 3339 form are unchanged."
+  },
+  "m-cbff45532a": {
+    "classification": "equivalent",
+    "location": "src/server.js:790:5 statement-deletion \"i += 1;\" -> \";\"",
+    "reason": "seeded timestamps spaced 0 or 2 ms instead of 1 ms (or all equal, ordered by sequence): fixture order and newest-first order are unchanged."
+  },
+  "m-385f839863": {
+    "classification": "equivalent",
+    "location": "src/server.js:790:10 literal-boundary \"1\" -> \"2\"",
+    "reason": "seeded timestamps spaced 0 or 2 ms instead of 1 ms (or all equal, ordered by sequence): fixture order and newest-first order are unchanged."
+  },
+  "m-1ef38d9fb2": {
+    "classification": "equivalent",
+    "location": "src/server.js:792:36 arithmetic \"-\" -> \"+\"",
+    "reason": "shifts seeded timestamps by 1-2 ms into the past; order unchanged."
+  },
+  "m-d9555db638": {
+    "classification": "equivalent",
+    "location": "src/server.js:792:38 literal-boundary \"1\" -> \"2\"",
+    "reason": "shifts seeded timestamps by 1-2 ms into the past; order unchanged."
+  },
+  "m-2c8d1aca14": {
+    "classification": "equivalent",
+    "location": "src/server.js:800:3 statement-deletion \"st.lastTs = Math.max(st.lastTs, base);\" -> \";\"",
+    "reason": "clock floor after reset: now() takes max(Date.now(), floor) and Date.now() is already >= the reset time."
+  },
+  "m-88be4a9265": {
+    "classification": "equivalent",
+    "location": "src/server.js:866:3 statement-deletion \"st.counter = s.counter;\" -> \";\"",
+    "reason": "imported id counter not restored: newId() skips ids already present, so no collision and ids stay opaque."
+  },
+  "m-614f929860": {
+    "classification": "equivalent",
+    "location": "src/server.js:867:3 statement-deletion \"st.seq = s.seq;\" -> \";\"",
+    "reason": "imported sequence number not restored: sequence only breaks ties between identical timestamps, which §8 leaves unordered."
+  },
+  "m-47f8858adf": {
+    "classification": "equivalent",
+    "location": "src/server.js:868:3 statement-deletion \"st.lastTs = s.last_ts;\" -> \";\"",
+    "reason": "imported clock floor not restored: new timestamps come from Date.now(), which is later than any exported time."
+  },
+  "m-3ab9b402e8": {
+    "classification": "equivalent",
+    "location": "src/server.js:1000:7 guard-bypass \"res.headersSent || res.destroyed\" -> \"false\"",
+    "reason": "headersSent/destroyed guard: every handler sends exactly once, so the guard never changes behaviour."
+  },
+  "m-1ec8236ab3": {
+    "classification": "equivalent",
+    "location": "src/server.js:1000:23 logical \"||\" -> \"&&\"",
+    "reason": "headersSent/destroyed guard: every handler sends exactly once, so the guard never changes behaviour."
+  },
+  "m-5a8188f402": {
+    "classification": "equivalent",
+    "location": "src/server.js:1001:7 guard-bypass \"status === 204\" -> \"false\"",
+    "reason": "Node never writes a body on a 204 response, so the 204 special case is behaviourally identical to the JSON path."
+  },
+  "m-591f6f3644": {
+    "classification": "equivalent",
+    "location": "src/server.js:1001:18 literal-boundary \"204\" -> \"205\"",
+    "reason": "Node never writes a body on a 204 response, so the 204 special case is behaviourally identical to the JSON path."
+  },
+  "m-5574c77b85": {
+    "classification": "equivalent",
+    "location": "src/server.js:1018:5 statement-deletion \"console.error(e);\" -> \";\"",
+    "reason": "logging of an unexpected error to stderr; no HTTP-observable effect."
+  },
+  "m-29e21ec300": {
+    "classification": "equivalent",
+    "location": "src/server.js:1019:5 statement-deletion \"send(res, 500, { error: { code: 'internal_error', message:  -> \";\"",
+    "reason": "the 500 fallback is unreachable: no handler throws a non-HttpError in any exercised path (no 5xx was ever observed)."
+  },
+  "m-70dba4bfce": {
+    "classification": "equivalent",
+    "location": "src/server.js:1019:15 literal-boundary \"500\" -> \"501\"",
+    "reason": "the 500 fallback is unreachable: no handler throws a non-HttpError in any exercised path (no 5xx was ever observed)."
+  },
+  "m-0b4fdb60c1": {
+    "classification": "equivalent",
+    "location": "src/server.js:1063:53 literal-boundary \"64\" -> \"65\"",
+    "reason": "maxHeaderSize 64 KiB vs 65 KiB: no specified request comes near the header size limit."
+  },
+  "m-09db0fefb8": {
+    "classification": "equivalent",
+    "location": "src/server.js:1063:58 literal-boundary \"1024\" -> \"1025\"",
+    "reason": "maxHeaderSize 64 KiB vs 65 KiB: no specified request comes near the header size limit."
+  },
+  "m-2af82f23bf": {
+    "classification": "equivalent",
+    "location": "src/server.js:1064:3 statement-deletion \"server.keepAliveTimeout = 75 * 1000;\" -> \";\"",
+    "reason": "keep-alive timeout of 75 s vs 76 s: far beyond the 5 s per-request window."
+  },
+  "m-b2b7220559": {
+    "classification": "equivalent",
+    "location": "src/server.js:1064:29 literal-boundary \"75\" -> \"76\"",
+    "reason": "keep-alive timeout of 75 s vs 76 s: far beyond the 5 s per-request window."
+  },
+  "m-3510900e37": {
+    "classification": "equivalent",
+    "location": "src/server.js:1064:34 literal-boundary \"1000\" -> \"1001\"",
+    "reason": "keep-alive timeout of 75 s vs 76 s: far beyond the 5 s per-request window."
+  },
+  "m-02fe3714d4": {
+    "classification": "equivalent",
+    "location": "src/server.js:1065:3 statement-deletion \"server.headersTimeout = 76 * 1000;\" -> \";\"",
+    "reason": "headers timeout of 76 s vs 77 s: far beyond the 5 s per-request window."
+  },
+  "m-102d3c5cb3": {
+    "classification": "equivalent",
+    "location": "src/server.js:1065:27 literal-boundary \"76\" -> \"77\"",
+    "reason": "headers timeout of 76 s vs 77 s: far beyond the 5 s per-request window."
+  },
+  "m-31c460c75c": {
+    "classification": "equivalent",
+    "location": "src/server.js:1065:32 literal-boundary \"1000\" -> \"1001\"",
+    "reason": "headers timeout of 76 s vs 77 s: far beyond the 5 s per-request window."
+  },
+  "m-aabb72392e": {
+    "classification": "equivalent",
+    "location": "src/server.js:1066:3 statement-deletion \"server.requestTimeout = 0;\" -> \";\"",
+    "reason": "requestTimeout 0 vs 1 ms / default: Node applies it only to slow uploads; every specified request body arrives within it."
+  },
+  "m-88ce05de6b": {
+    "classification": "equivalent",
+    "location": "src/server.js:1066:27 literal-boundary \"0\" -> \"1\"",
+    "reason": "requestTimeout 0 vs 1 ms / default: Node applies it only to slow uploads; every specified request body arrives within it."
+  },
+  "m-6a5d2c86b1": {
+    "classification": "equivalent",
+    "location": "src/server.js:1068:5 statement-deletion \"console.log(`pocketful stage 1 listening on 0.0.0.0:${port} -> \";\"",
+    "reason": "startup log line; no HTTP-observable effect."
+  },
+  "m-d4b2421473": {
+    "classification": "equivalent",
+    "location": "src/server.js:1070:3 statement-deletion \"hashPassword(crypto.randomBytes(12).toString('hex')).then(( -> \";\"",
+    "reason": "dummy hash for timing equalisation on unknown-email login; responses are unchanged."
+  },
+  "m-d332e7c718": {
+    "classification": "equivalent",
+    "location": "src/server.js:1070:35 literal-boundary \"12\" -> \"13\"",
+    "reason": "dummy hash for timing equalisation on unknown-email login; responses are unchanged."
+  },
+  "m-287b9e4efa": {
+    "classification": "equivalent",
+    "location": "src/server.js:1071:54 literal-boundary \"0\" -> \"1\"",
+    "reason": "graceful shutdown timing on SIGTERM/SIGINT; state need not survive a restart (§2)."
+  },
+  "m-475473ce21": {
+    "classification": "equivalent",
+    "location": "src/server.js:1071:58 logical \"&&\" -> \"||\"",
+    "reason": "graceful shutdown timing on SIGTERM/SIGINT; state need not survive a restart (§2)."
+  },
+  "m-2a0e5e700f": {
+    "classification": "equivalent",
+    "location": "src/server.js:1071:91 literal-boundary \"0\" -> \"1\"",
+    "reason": "graceful shutdown timing on SIGTERM/SIGINT; state need not survive a restart (§2)."
+  },
+  "m-af20daadda": {
+    "classification": "equivalent",
+    "location": "src/server.js:1071:95 literal-boundary \"500\" -> \"501\"",
+    "reason": "graceful shutdown timing on SIGTERM/SIGINT; state need not survive a restart (§2)."
+  },
+  "m-5e03ed8c9a": {
+    "classification": "equivalent",
+    "location": "src/server.js:1072:3 statement-deletion \"process.on('SIGTERM', stop);\" -> \";\"",
+    "reason": "SIGTERM handler; the container is stopped either way and state is ephemeral (§2)."
+  },
+  "m-126fe27986": {
+    "classification": "equivalent",
+    "location": "src/server.js:1073:3 statement-deletion \"process.on('SIGINT', stop);\" -> \";\"",
+    "reason": "SIGINT handler; no HTTP-observable effect."
+  },
+  "m-eb5f42efce": {
+    "classification": "equivalent",
+    "location": "src/server.js:1079:1 statement-deletion \"module.exports = { start, equalSplit, deriveHandle, canonic -> \";\"",
+    "reason": "module.exports for in-process tests; the service is started as a program and exports are unused."
+  }
+}

@@ -1,0 +1,671 @@
+{
+  "schemaVersion": 2,
+  "kind": "commit-evidence",
+  "runId": "20261005T122139Z-82f7eb",
+  "factoryVersion": "1.0.0-rc.3",
+  "stage": "pocketful stage 1",
+  "specification": "/home/bajrangi/Wins/dark-factory-wearedevs/pocketful/spec/stage-1.md + plan/stage-1.md (R-01..R-37, edge cases 1-20, A-01..A-14)",
+  "plan": "verification/stage-1/plan.json",
+  "revision": {
+    "commit": "29baf0520a2f1b51ebdfc04c006ff473cec73fb0",
+    "branch": "HEAD",
+    "targetDirty": false,
+    "targetDigest": "b517e87477236bde24ffbc7f2dba59c0fdb9834642400634c867dd1037fc4731",
+    "targetDigestAfter": "b517e87477236bde24ffbc7f2dba59c0fdb9834642400634c867dd1037fc4731",
+    "candidateChanged": false
+  },
+  "environment": {
+    "factoryVersion": "1.0.0-rc.3",
+    "node": "v26.5.0",
+    "platform": "linux",
+    "release": "7.1.5-arch1-2",
+    "arch": "x64",
+    "git": "git version 2.55.0",
+    "python": "Python 3.14.6",
+    "docker": {
+      "installed": true,
+      "daemonReachable": true,
+      "detail": "daemon 29.6.2"
+    }
+  },
+  "startedAt": "2026-10-05T12:21:39.281Z",
+  "finishedAt": "2026-10-05T12:56:05.808Z",
+  "service": {
+    "start": "node src/server.js",
+    "healthy": true
+  },
+  "steps": [
+    {
+      "id": "clean-build",
+      "kind": "build",
+      "blocking": true,
+      "requirements": [
+        "R-01"
+      ],
+      "command": "docker build --no-cache -t vf-pocketful-s1:verify stage-1",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 3016,
+      "outputBytes": 1398,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/clean-build.log",
+      "logSha256": "b3408851e99b2f26b3e905e6481035bbffbc2de2444a103dca8263eb9f655d8c",
+      "report": null
+    },
+    {
+      "id": "container",
+      "kind": "offline",
+      "blocking": true,
+      "requirements": [
+        "R-01",
+        "R-02",
+        "R-03",
+        "R-33"
+      ],
+      "command": "verification/stage-1/container.sh '../vf-evidence-run'/container vf-pocketful-s1:verify",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 16455,
+      "outputBytes": 545,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/container.log",
+      "logSha256": "b6fe0a0bc958dc74a521be871d37ade051b80ded3848ffdcb3d839296e914ad0",
+      "report": null
+    },
+    {
+      "id": "official-isolated",
+      "kind": "supplied-checks",
+      "blocking": true,
+      "requirements": [
+        "R-01..R-37"
+      ],
+      "command": "verification/stage-1/official.sh '../vf-evidence-run'/official .",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 39685,
+      "outputBytes": 876,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/official-isolated.log",
+      "logSha256": "e532a25453505bc30414cc27e8fcc0415708e773381be14649eaa009c227bd3d",
+      "report": "official/judgement.json"
+    },
+    {
+      "id": "shipped-host",
+      "kind": "supplied-checks",
+      "blocking": true,
+      "requirements": [
+        "R-01..R-37"
+      ],
+      "command": "env -u PYTHONHOME -u PYTHONPATH -C \"${COMMIT_KICKOFF:-/home/bajrangi/Wins/dark-factory-wearedevs}\" \"${COMMIT_KICKOFF:-/home/bajrangi/Wins/dark-factory-wearedevs}/.venv/bin/python\" -m pytest -p harness.plugin pocketful/test/stage_1 --base-url 'http://127.0.0.1:38003' -q -p no:cacheprovider",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 19351,
+      "outputBytes": 261,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/shipped-host.log",
+      "logSha256": "9f22d4fe8e9c2fb2186e7fc80717f959a28c89d88cf57c2ed692e764dc4bf996",
+      "report": null
+    },
+    {
+      "id": "contract",
+      "kind": "contract",
+      "blocking": true,
+      "requirements": [
+        "R-02..R-37"
+      ],
+      "command": "node verification/stage-1/contract.mjs --base-url 'http://127.0.0.1:38003' --seed 1337 --out '../vf-evidence-run'/contract.json",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 7032,
+      "outputBytes": 1556,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/contract.log",
+      "logSha256": "ce4e86839c19727fdde6422a3ac167f4a2caa01685f46ef92f718f583927bef8",
+      "report": "contract.json"
+    },
+    {
+      "id": "contract-fuzz-seed2",
+      "kind": "contract",
+      "blocking": true,
+      "requirements": [
+        "R-33"
+      ],
+      "command": "node verification/stage-1/contract.mjs --base-url 'http://127.0.0.1:38003' --seed 7919 --out '../vf-evidence-run'/contract-seed2.json",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 6878,
+      "outputBytes": 1556,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/contract-fuzz-seed2.log",
+      "logSha256": "c9393528e736c54c3fbccb5339b02edadd1700f0068ceb316f82cc4c7e25393d",
+      "report": "contract-seed2.json"
+    },
+    {
+      "id": "extra",
+      "kind": "contract",
+      "blocking": true,
+      "requirements": [
+        "R-13",
+        "R-14",
+        "R-25",
+        "R-34",
+        "R-35",
+        "R-04"
+      ],
+      "command": "node verification/stage-1/extra.mjs 'http://127.0.0.1:38003'",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 330,
+      "outputBytes": 36,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/extra.log",
+      "logSha256": "52e1becd852154e2836721f2ac5e1b60aa6154a888369e105c689d6d875b1fff",
+      "report": null
+    },
+    {
+      "id": "import-semantic",
+      "kind": "contract",
+      "blocking": true,
+      "requirements": [
+        "R-33"
+      ],
+      "command": "node verification/stage-1/import-semantic-probe.mjs 'http://127.0.0.1:38003'",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 260,
+      "outputBytes": 2351,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/import-semantic.log",
+      "logSha256": "62fdc988ccc036add0b261745f00d4cb562b8b737596434eb2368909d0463851",
+      "report": null
+    },
+    {
+      "id": "survivor-checks",
+      "kind": "contract",
+      "blocking": true,
+      "requirements": [
+        "R-04",
+        "R-07",
+        "R-10",
+        "R-12",
+        "R-19",
+        "R-28",
+        "R-31",
+        "R-33",
+        "R-35"
+      ],
+      "command": "node verification/stage-1/survivors.mjs 'http://127.0.0.1:38003'",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 3215,
+      "outputBytes": 93,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/survivor-checks.log",
+      "logSha256": "ab2f9b360a0d3397cb7774b3a48cd81d6562bb4d99ec11b9e8b6f307782a9b3c",
+      "report": null
+    },
+    {
+      "id": "reference-481927",
+      "kind": "reference",
+      "blocking": true,
+      "requirements": [
+        "R-12",
+        "R-17..R-31",
+        "R-35..R-37"
+      ],
+      "command": "node commit/campaign.ts --module verification/stage-1/reference.mjs --base-url 'http://127.0.0.1:38003' --seed 481927 --operations 1000 --out '../vf-evidence-run'/reference-481927",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 8252,
+      "outputBytes": 896,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/reference-481927.log",
+      "logSha256": "4af8a20ddfa7bdc02e66c0921881f895d14b4b6fce36c4a98f1cc105510745a7",
+      "report": "reference-481927/reference-report.json"
+    },
+    {
+      "id": "reference-7",
+      "kind": "reference",
+      "blocking": true,
+      "requirements": [
+        "R-12",
+        "R-17..R-31",
+        "R-35..R-37"
+      ],
+      "command": "node commit/campaign.ts --module verification/stage-1/reference.mjs --base-url 'http://127.0.0.1:38003' --seed 7 --operations 1000 --out '../vf-evidence-run'/reference-7",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 8276,
+      "outputBytes": 886,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/reference-7.log",
+      "logSha256": "29c6c10cbd57f2630b6742c0961836312345421cc71c27dc04cff7fd9f8eed2d",
+      "report": "reference-7/reference-report.json"
+    },
+    {
+      "id": "reference-90210",
+      "kind": "reference",
+      "blocking": true,
+      "requirements": [
+        "R-12",
+        "R-17..R-31",
+        "R-35..R-37"
+      ],
+      "command": "node commit/campaign.ts --module verification/stage-1/reference.mjs --base-url 'http://127.0.0.1:38003' --seed 90210 --operations 1000 --out '../vf-evidence-run'/reference-90210",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 8344,
+      "outputBytes": 894,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/reference-90210.log",
+      "logSha256": "866bf59fffbc5159ceefcb477c778949a9215537e76bb6b9061e184413f14a05",
+      "report": "reference-90210/reference-report.json"
+    },
+    {
+      "id": "adversarial",
+      "kind": "adversarial",
+      "blocking": true,
+      "requirements": [
+        "R-12",
+        "R-20",
+        "R-25",
+        "R-36",
+        "R-13",
+        "R-32",
+        "R-33"
+      ],
+      "command": "node verification/stage-1/adversarial.mjs --base-url 'http://127.0.0.1:38003' --seeds 11,23,37,51,73 --burst 50 --out '../vf-evidence-run'/adversarial.json",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 9870,
+      "outputBytes": 1886,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/adversarial.log",
+      "logSha256": "bfea1cda795ee934e1b0b2d57ae33c388a29b739f43013005b23c6c7e83bd89d",
+      "report": "adversarial.json"
+    },
+    {
+      "id": "mutation",
+      "kind": "mutation",
+      "blocking": true,
+      "requirements": [
+        "suite strength"
+      ],
+      "command": "node commit/mutate.ts --target stage-1 --start 'node src/server.js' --check \"$PWD/verification/stage-1/kill.sh {url}\" --out '../vf-evidence-run'/mutation --files src --jobs 8 --exclude verification/stage-1/equivalents.json",
+      "status": "PASSED",
+      "reason": null,
+      "exitCode": 0,
+      "durationMs": 1935205,
+      "outputBytes": 70778,
+      "outputTruncated": false,
+      "redactions": 0,
+      "log": "logs/mutation.log",
+      "logSha256": "acefa5f79f8d889243c60538f39016932db507cea6c220bd3d71e0ecf2661a58",
+      "report": "mutation/mutation-report.json"
+    }
+  ],
+  "reports": {
+    "official-isolated": {
+      "kind": "official-harness",
+      "revision": "29baf0520a2f1b51ebdfc04c006ff473cec73fb0",
+      "mode": "isolated",
+      "stage1": {
+        "collected": 147,
+        "passed": 147,
+        "failed": 0,
+        "errors": 0
+      },
+      "stage2Overshoot": {
+        "collected": 35,
+        "passed": 0,
+        "failed": 1,
+        "errors": 0
+      },
+      "problems": [],
+      "failed": 0
+    },
+    "contract": {
+      "kind": "contract-checks",
+      "base": "http://127.0.0.1:38003",
+      "checks": 49,
+      "passed": 49,
+      "failed": 0,
+      "requests": 1928
+    },
+    "contract-fuzz-seed2": {
+      "kind": "contract-checks",
+      "base": "http://127.0.0.1:38003",
+      "checks": 49,
+      "passed": 49,
+      "failed": 0,
+      "requests": 1940
+    },
+    "reference-481927": {
+      "kind": "reference-campaign",
+      "runId": "20261005T122315Z-36f33f",
+      "factoryVersion": "1.0.0-rc.3",
+      "campaign": "pocketful-stage-1-reference",
+      "moduleSha256": "82cef72ef02d4719aa57a1826f8bcc0a78c6beee76cd4248b395643e8d98187b",
+      "seed": 481927,
+      "operationsRequested": 1000,
+      "operationsExecuted": 1000,
+      "stateComparisons": 250,
+      "invariantChecks": 8000,
+      "outcomes": {
+        "200": 97,
+        "201": 477,
+        "409 insufficient_funds": 65,
+        "409 request_not_pending": 80,
+        "422 validation_failed": 44,
+        "404 not_found": 18,
+        "409 idempotency_key_reuse": 110,
+        "200 replay": 64,
+        "403 forbidden": 33,
+        "422 self_payment": 7,
+        "422 self_request": 5
+      },
+      "durationMs": 8170,
+      "result": "agree",
+      "firstDivergence": null,
+      "reproduction": "node commit/campaign.ts --module verification/stage-1/reference.mjs --base-url <url> --seed 481927 --operations 1000"
+    },
+    "reference-7": {
+      "kind": "reference-campaign",
+      "runId": "20261005T122324Z-572fbd",
+      "factoryVersion": "1.0.0-rc.3",
+      "campaign": "pocketful-stage-1-reference",
+      "moduleSha256": "82cef72ef02d4719aa57a1826f8bcc0a78c6beee76cd4248b395643e8d98187b",
+      "seed": 7,
+      "operationsRequested": 1000,
+      "operationsExecuted": 1000,
+      "stateComparisons": 250,
+      "invariantChecks": 8000,
+      "outcomes": {
+        "200": 88,
+        "201": 431,
+        "403 forbidden": 43,
+        "200 replay": 65,
+        "409 request_not_pending": 92,
+        "409 insufficient_funds": 91,
+        "409 idempotency_key_reuse": 92,
+        "404 not_found": 34,
+        "422 validation_failed": 47,
+        "422 self_payment": 14,
+        "422 self_request": 3
+      },
+      "durationMs": 8195,
+      "result": "agree",
+      "firstDivergence": null,
+      "reproduction": "node commit/campaign.ts --module verification/stage-1/reference.mjs --base-url <url> --seed 7 --operations 1000"
+    },
+    "reference-90210": {
+      "kind": "reference-campaign",
+      "runId": "20261005T122332Z-8d5d28",
+      "factoryVersion": "1.0.0-rc.3",
+      "campaign": "pocketful-stage-1-reference",
+      "moduleSha256": "82cef72ef02d4719aa57a1826f8bcc0a78c6beee76cd4248b395643e8d98187b",
+      "seed": 90210,
+      "operationsRequested": 1000,
+      "operationsExecuted": 1000,
+      "stateComparisons": 250,
+      "invariantChecks": 8000,
+      "outcomes": {
+        "200": 80,
+        "201": 464,
+        "409 insufficient_funds": 83,
+        "409 request_not_pending": 71,
+        "200 replay": 81,
+        "409 idempotency_key_reuse": 91,
+        "403 forbidden": 40,
+        "422 validation_failed": 34,
+        "422 self_payment": 16,
+        "404 not_found": 34,
+        "422 self_request": 6
+      },
+      "durationMs": 8261,
+      "result": "agree",
+      "firstDivergence": null,
+      "reproduction": "node commit/campaign.ts --module verification/stage-1/reference.mjs --base-url <url> --seed 90210 --operations 1000"
+    },
+    "adversarial": {
+      "kind": "adversarial-campaign",
+      "base": "http://127.0.0.1:38003",
+      "workers": 50,
+      "seeds": [
+        11,
+        23,
+        37,
+        51,
+        73
+      ],
+      "campaigns": 50,
+      "rounds": 50,
+      "checks": 380,
+      "passed": 50,
+      "failed": 0,
+      "requests": 5740
+    },
+    "mutation": {
+      "kind": "mutation-campaign",
+      "factoryVersion": "1.0.0-rc.3",
+      "target": "stage-1",
+      "files": [
+        "src/server.js"
+      ],
+      "start": "node src/server.js",
+      "check": "/tmp/vf-s1/verification/stage-1/kill.sh {url}",
+      "seed": 1,
+      "selection": "all",
+      "discovered": 782,
+      "executed": 782,
+      "tally": {
+        "killed": 653,
+        "survived": 53,
+        "timeout": 0,
+        "invalid": 13,
+        "error": 0,
+        "equivalent": 63
+      },
+      "layers": {
+        "adversarial": {
+          "killed": 2,
+          "onlyThisLayer": 2
+        },
+        "contract": {
+          "killed": 495,
+          "onlyThisLayer": 495
+        },
+        "extra": {
+          "killed": 16,
+          "onlyThisLayer": 16
+        },
+        "reference": {
+          "killed": 0,
+          "onlyThisLayer": 0
+        },
+        "semantic-import": {
+          "killed": 25,
+          "onlyThisLayer": 25
+        },
+        "survivors": {
+          "killed": 115,
+          "onlyThisLayer": 115
+        }
+      },
+      "valid": 706,
+      "killRate": 0.9249291784702549,
+      "detectionRate": 0.9249291784702549,
+      "formula": "killRate = killed / (killed + survived + timeout); detectionRate counts timeouts as detected; invalid, error and equivalent are excluded from both and listed",
+      "campaignBroken": false,
+      "jobs": 8,
+      "mutantTimeoutMs": 180000,
+      "startedAt": "2026-10-05T12:23:50.660Z",
+      "finishedAt": "2026-10-05T12:56:05.774Z",
+      "durationMs": 1935114,
+      "replay": "node commit/mutate.ts --target stage-1 --start 'node src/server.js' --check '/tmp/vf-s1/verification/stage-1/kill.sh {url}' --only <id> --out <new dir>"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "logs/clean-build.log",
+      "type": "log",
+      "producer": "clean-build",
+      "sha256": "b3408851e99b2f26b3e905e6481035bbffbc2de2444a103dca8263eb9f655d8c"
+    },
+    {
+      "path": "logs/container.log",
+      "type": "log",
+      "producer": "container",
+      "sha256": "b6fe0a0bc958dc74a521be871d37ade051b80ded3848ffdcb3d839296e914ad0"
+    },
+    {
+      "path": "logs/official-isolated.log",
+      "type": "log",
+      "producer": "official-isolated",
+      "sha256": "e532a25453505bc30414cc27e8fcc0415708e773381be14649eaa009c227bd3d"
+    },
+    {
+      "path": "official/judgement.json",
+      "type": "report",
+      "producer": "official-isolated",
+      "sha256": "822638dd3eb29c54b5d02f18caed2e1ed8961616bafd066bba8fa234e8d4b586"
+    },
+    {
+      "path": "logs/shipped-host.log",
+      "type": "log",
+      "producer": "shipped-host",
+      "sha256": "9f22d4fe8e9c2fb2186e7fc80717f959a28c89d88cf57c2ed692e764dc4bf996"
+    },
+    {
+      "path": "logs/contract.log",
+      "type": "log",
+      "producer": "contract",
+      "sha256": "ce4e86839c19727fdde6422a3ac167f4a2caa01685f46ef92f718f583927bef8"
+    },
+    {
+      "path": "contract.json",
+      "type": "report",
+      "producer": "contract",
+      "sha256": "e74876b7eed9b75cf093c7ca00cd1c2b8c210026d72acac2f765f8f0179cffb3"
+    },
+    {
+      "path": "logs/contract-fuzz-seed2.log",
+      "type": "log",
+      "producer": "contract-fuzz-seed2",
+      "sha256": "c9393528e736c54c3fbccb5339b02edadd1700f0068ceb316f82cc4c7e25393d"
+    },
+    {
+      "path": "contract-seed2.json",
+      "type": "report",
+      "producer": "contract-fuzz-seed2",
+      "sha256": "08a53bdda0c0302ea16e015ca4429d3e1d269fa93d21a4afa01e7c86f3b49947"
+    },
+    {
+      "path": "logs/extra.log",
+      "type": "log",
+      "producer": "extra",
+      "sha256": "52e1becd852154e2836721f2ac5e1b60aa6154a888369e105c689d6d875b1fff"
+    },
+    {
+      "path": "logs/import-semantic.log",
+      "type": "log",
+      "producer": "import-semantic",
+      "sha256": "62fdc988ccc036add0b261745f00d4cb562b8b737596434eb2368909d0463851"
+    },
+    {
+      "path": "logs/survivor-checks.log",
+      "type": "log",
+      "producer": "survivor-checks",
+      "sha256": "ab2f9b360a0d3397cb7774b3a48cd81d6562bb4d99ec11b9e8b6f307782a9b3c"
+    },
+    {
+      "path": "logs/reference-481927.log",
+      "type": "log",
+      "producer": "reference-481927",
+      "sha256": "4af8a20ddfa7bdc02e66c0921881f895d14b4b6fce36c4a98f1cc105510745a7"
+    },
+    {
+      "path": "reference-481927/reference-report.json",
+      "type": "report",
+      "producer": "reference-481927",
+      "sha256": "322cec858f52dc3b27e96d05bd54336ea774e5a3388a1edfb6c1d59924dc2f54"
+    },
+    {
+      "path": "logs/reference-7.log",
+      "type": "log",
+      "producer": "reference-7",
+      "sha256": "29c6c10cbd57f2630b6742c0961836312345421cc71c27dc04cff7fd9f8eed2d"
+    },
+    {
+      "path": "reference-7/reference-report.json",
+      "type": "report",
+      "producer": "reference-7",
+      "sha256": "3cd138c231f24646506fb07439d085a81c2530f38581efb4d64a3e7673da3e29"
+    },
+    {
+      "path": "logs/reference-90210.log",
+      "type": "log",
+      "producer": "reference-90210",
+      "sha256": "866bf59fffbc5159ceefcb477c778949a9215537e76bb6b9061e184413f14a05"
+    },
+    {
+      "path": "reference-90210/reference-report.json",
+      "type": "report",
+      "producer": "reference-90210",
+      "sha256": "ae41f0922c96bd6d5f211f96c521d853686b378965e45f0f0c5865ab4e126ce6"
+    },
+    {
+      "path": "logs/adversarial.log",
+      "type": "log",
+      "producer": "adversarial",
+      "sha256": "bfea1cda795ee934e1b0b2d57ae33c388a29b739f43013005b23c6c7e83bd89d"
+    },
+    {
+      "path": "adversarial.json",
+      "type": "report",
+      "producer": "adversarial",
+      "sha256": "f698b9121d76edf2b527e947af50d260a7199609a3b051594f00662875b1cd60"
+    },
+    {
+      "path": "logs/mutation.log",
+      "type": "log",
+      "producer": "mutation",
+      "sha256": "acefa5f79f8d889243c60538f39016932db507cea6c220bd3d71e0ecf2661a58"
+    },
+    {
+      "path": "mutation/mutation-report.json",
+      "type": "report",
+      "producer": "mutation",
+      "sha256": "11153c1985f7fe22c7cc63f6e8ea0c933f8f3102e64705f7e0a01a6e42c195ef"
+    }
+  ],
+  "verdict": "ACCEPT",
+  "verdictReasons": [],
+  "productionModificationByVerifier": "NONE"
+}
