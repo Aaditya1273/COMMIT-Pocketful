@@ -1,10 +1,21 @@
 # COMMIT × Pocketful — BAND result repository
 
-**Track:** pocketful · **Factory:** [COMMIT](https://github.com/Aaditya1273/COMMIT) v1.0.0-rc.3 · **Run:** 5 Oct 2026, 13:08 → 23:00 IST
+**Track:** pocketful · **Factory:** [COMMIT](https://github.com/Aaditya1273/COMMIT) v1.0.0-rc.3 · **Run:** 5 Oct 2026, 13:08 → 22:40 IST
 
 Every line under `stage-N/` was written by three Claude Code seats (Planner, Builder, Verifier;
 model `claude-opus-5-5`) working together in one BAND Desktop room. Nothing in a stage folder was
 written or edited by a human. `room.json` is the unedited full-session download of that room.
+
+<p align="center">
+  <a href="https://lablab.ai/ai-hackathons/wearedevelopers-hackathon/guerrero/commit-factory-that-measures-bad-work"><img src="media/commit-preview.gif" alt="COMMIT — film preview: who checks the checker, 27 charges for one payment, the COMMIT reveal, the real BAND run, the app it built" width="760"></a>
+</p>
+
+<p align="center">
+  <a href="https://lablab.ai/ai-hackathons/wearedevelopers-hackathon/guerrero/commit-factory-that-measures-bad-work"><b>▶ Watch the film (3:53)</b></a> &nbsp;·&nbsp;
+  <a href="https://storage.googleapis.com/lablab-static-eu/submissions/ajdxs9xxz0t764xhuqddyv99/mmgki45xibk6ufrn0r8gevx0/presentation/presentation_benph46sw7dnougxvgfjj7qa.pdf"><b>Presentation (PDF)</b></a> &nbsp;·&nbsp;
+  <a href="https://github.com/Aaditya1273/COMMIT"><b>The factory (COMMIT)</b></a> &nbsp;·&nbsp;
+  <a href="https://lablab.ai/ai-hackathons/wearedevelopers-hackathon/guerrero/commit-factory-that-measures-bad-work"><b>Hackathon submission</b></a>
+</p>
 
 ## Result
 
@@ -24,6 +35,23 @@ sha256 and a `reproduction.sh`. Re-check any of them from a fresh clone:
 ```sh
 node commit/cli.ts audit evidence/stage-*/run-*
 ```
+
+## What the factory built
+
+Pocketful — a wallet with payments, requests, splits, holds, a revisioned ledger, statements,
+corrections and refunds — written entirely in the BAND room. Screenshots of the accepted
+stage-4 revision (`cc1d710`), running locally with the band's own UI:
+
+<p align="center"><img src="media/app-home.jpg" alt="Pocketful home: available balance, a payment to Bob in the activity feed, a hold and a request just placed" width="74%"> <img src="media/app-mobile.jpg" alt="Pocketful on a phone" width="22%"></p>
+<p align="center"><img src="media/app-holds.jpg" alt="Holds page: money reserved for Cy and Bob" width="49%"> <img src="media/app-requests.jpg" alt="Requests page: a pending request to Cy" width="49%"></p>
+
+Run it: `cd stage-4 && docker build -t pocketful . && docker run --rm -p 8080:8080 pocketful`,
+seed with `POST /_test/reset`, then open <http://localhost:8080/login> (see [`stage-4/RUN.md`](stage-4/RUN.md)).
+
+## The run, at a glance
+
+<p align="center"><img src="media/slide-real-run.jpg" alt="4/4 stages accepted: timeline from the 13:08 dispatch to stage 4 at 22:37, next to the real BAND room showing the final report" width="49%"> <img src="media/slide-cost.jpg" alt="What it cost: $33.57 model spend, 9 h 32 m, 0 stage-code lines by a human; work split Planner 150, Builder 335, Verifier 536 turns" width="49%"></p>
+<p align="center"><img src="media/slide-architecture.jpg" alt="Architecture: spec into a BAND room with Planner, Builder and a read-only Verifier running a six-layer release gate" width="49%"> <img src="media/slide-workflow.jpg" alt="Workflow of one stage with real stage-3 times and the reject-repair loop" width="49%"></p>
 
 ## How the work was shared
 
@@ -77,5 +105,14 @@ from each seat's own Claude Code session transcript (summed from the `usage` fie
 | `commit/` | the COMMIT verifier toolkit, dependency-free (Node ≥ 22) |
 | `FACTORY.md` | how the factory works, its design choices, costs and failures |
 | `room.json` | the unedited BAND room download |
+| `media/` | README images: screenshots of the running app and slides from the presentation (added after the run; not part of any stage) |
 
-Film, cover and presentation: see the lablab submission.
+## Links
+
+| | |
+|---|---|
+| Film (3:53) | [watch on the submission page](https://lablab.ai/ai-hackathons/wearedevelopers-hackathon/guerrero/commit-factory-that-measures-bad-work) · [download MP4](https://storage.googleapis.com/lablab-video-submissions/submissions/ajdxs9xxz0t764xhuqddyv99/mmgki45xibk6ufrn0r8gevx0/video/video_l4mjeog53xysagt5gb0qnqxe.mp4) |
+| Presentation | [PDF, 15 slides](https://storage.googleapis.com/lablab-static-eu/submissions/ajdxs9xxz0t764xhuqddyv99/mmgki45xibk6ufrn0r8gevx0/presentation/presentation_benph46sw7dnougxvgfjj7qa.pdf) |
+| The factory (mandates, toolkit, calibration) | <https://github.com/Aaditya1273/COMMIT> |
+| Hackathon submission | [lablab.ai — COMMIT: Factory That Measures Bad Work](https://lablab.ai/ai-hackathons/wearedevelopers-hackathon/guerrero/commit-factory-that-measures-bad-work) |
+
